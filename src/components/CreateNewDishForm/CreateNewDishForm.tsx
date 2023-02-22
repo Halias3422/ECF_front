@@ -1,3 +1,5 @@
+import { API_ROUTES } from '@/api/routes';
+import { postDataToAPI } from '@/api/utils';
 import { DishFormData } from '@/interfaces/dishes';
 import { FormEvent, useState } from 'react';
 import styled from 'styled-components';
@@ -6,6 +8,7 @@ const CreateNewDishForm = () => {
   const [dishFormData, setDishFormData] = useState<DishFormData | null>(null);
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
+    postDataToAPI(API_ROUTES.dishes.createNewDish, dishFormData);
   };
 
   return (
