@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 export const postDataToAPI = async (endpointUrl: string, data: any) => {
   try {
-    await axios.post(endpointUrl, data);
+    await axios.post(process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl, data);
   } catch (error) {
     handleAPIError(error as AxiosError);
   }
