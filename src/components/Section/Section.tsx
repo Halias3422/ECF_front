@@ -1,30 +1,29 @@
-import colorscheme from '@/styles/colorscheme';
 import { merriweatherSans } from '@/styles/fonts';
+import React from 'react';
 import styled from 'styled-components';
 
-const BasicHero = ({
+const Section = ({
   header,
   paragraphs,
   image,
   imageAlt,
-  textIsLeft,
+  childComponents,
+  $textIsLeft,
+  $isOdd,
 }: {
   header: string;
   paragraphs: string[];
   image: string;
   imageAlt: string;
-  textIsLeft: boolean;
+  childComponents: JSX.Element[];
+  $textIsLeft: boolean;
+  $isOdd: boolean;
 }) => {
   return (
-    <div className="section odd">
-      <HeroContainer className="container">
+    <article className={`section ${$isOdd ? 'odd' : 'even'}`}>
+      <HeroContainer className="container" $textIsLeft={$textIsLeft}>
         <TextContainer>
-          <div
-            className={merriweatherSans.className}
-            dangerouslySetInnerHTML={{
-              __html: `<h1>` + header + '</h1>',
-            }}
-          />
+          <h2 className={merriweatherSans.className}>{header}</h2>
           {paragraphs.map((paragraph, index) => {
             return (
               <div
@@ -35,18 +34,21 @@ const BasicHero = ({
               />
             );
           })}
+          {childComponents.map((child, index) => {
+            return <React.Fragment key={index}>{child}</React.Fragment>;
+          })}
         </TextContainer>
-        <HeroImage src={image} alt={imageAlt} />
+        {image && <Image src={image} alt={imageAlt} />}
       </HeroContainer>
-    </div>
+    </article>
   );
 };
 
-const HeroContainer = styled.div`
+const HeroContainer = styled.div<{ $textIsLeft: boolean }>`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 1025px) {
-    flex-direction: row;
+    flex-direction: ${(props) => (props.$textIsLeft ? 'row' : 'row-reverse')};
     justify-content: space-between;
     align-items: center;
   }
@@ -55,10 +57,13 @@ const HeroContainer = styled.div`
 const TextContainer = styled.div`
   margin-bottom: 20px;
   @media screen and (min-width: 1025px) {
-    max-width: 35%;
+    max-width: 45%;
+  }
+  @media screen and (min-width: 1201px) {
+    max-width: 40%;
   }
 `;
 
-const HeroImage = styled.img``;
+const Image = styled.img``;
 
-export default BasicHero;
+export default Section;
