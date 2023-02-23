@@ -1,23 +1,42 @@
 import { dancingScript } from '@/styles/fonts';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DesktopMenu from './DesktopMenu';
+import DynamicMobileMenu from './DynamicMobileMenu';
 import HamburgerMenu from './HamburgerMenu';
 
 const Navbar = () => {
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+  const handleResize = () => {
+    if (window.screen.width > 1024) {
+      setHamburgerOpen(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <NavbarSection className="section">
-      <NavbarContainer className="container">
-        <LogoContainer href="/" className={`${dancingScript.className}`}>
-          Le Quai Antique
-        </LogoContainer>
-        <HamburgerMenu />
-        <DesktopMenu />
-      </NavbarContainer>
-    </NavbarSection>
+    <>
+      <NavbarSection className="section">
+        <NavbarContainer className="container">
+          <LogoContainer href="/" className={`${dancingScript.className}`}>
+            Le Quai Antique
+          </LogoContainer>
+          <HamburgerMenu
+            hamburgerOpen={hamburgerOpen}
+            setHamburgerOpen={setHamburgerOpen}
+          />
+          <DesktopMenu />
+        </NavbarContainer>
+      </NavbarSection>
+      <DynamicMobileMenu hamburgerOpen={hamburgerOpen} />
+    </>
   );
 };
 
-const NavbarSection = styled.div`
+const NavbarSection = styled.nav`
   background-color: ${(props) => props.theme.darkGreen};
   min-height: 50px;
 `;

@@ -45,7 +45,6 @@ const DesktopMenuContainer = styled.div`
     display: flex;
     width: 70%;
     justify-content: right;
-    flex-shrink: 0;
     gap: 5%;
   }
 `;
