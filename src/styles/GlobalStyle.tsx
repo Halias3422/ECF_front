@@ -15,14 +15,33 @@ a {
 	color: ${colorscheme.darkGrey}
 }
 
+.themeLightGreen {
+background-color: ${colorscheme.lightGreen};
+}
+
+.themeDarkGreen {
+background-color: ${colorscheme.darkGreen};
+color: ${colorscheme.snow}
+}
+
+.themeDarkGrey {
+background-color: ${colorscheme.darkGrey};
+color: ${colorscheme.snow}
+}
+
 .section {
-	padding: 0.75rem 10%;
+	padding: 0.75rem;
+width: 100%;
+}
+
+.container {
+width: 80%;
+margin: 0 auto;
 }
 
 @media screen and (min-width: 1025px) {
 .container {
 	max-width: 1400px;
-margin: auto;
 }
 }
 `;

@@ -1,7 +1,7 @@
 import { dancingScript } from '@/styles/fonts';
 import styled from 'styled-components';
-import HamburgerMenu from '../svg/HamburgerMenu';
-import NavbarGreenLink from './NavbarGreenLink';
+import DesktopMenu from './DesktopMenu';
+import HamburgerMenu from './HamburgerMenu';
 
 const Navbar = () => {
   return (
@@ -11,17 +11,7 @@ const Navbar = () => {
           Le Quai Antique
         </LogoContainer>
         <HamburgerMenu />
-        <DesktopMenu>
-          <MenuLinkSeparator>
-            <NavbarGreenLink textContent="Les Menus" url="/les-menus" />
-            <NavbarGreenLink textContent="La Carte" url="'/la-carte" />
-          </MenuLinkSeparator>
-          <MenuLinkSeparator>
-            <NavbarGreenLink textContent="Contact" url="/contact" />
-            <NavbarGreenLink textContent="Connexion" url="/connexion" />
-          </MenuLinkSeparator>
-          <NavbarGreenLink textContent="Réserver" url="/reserver" />
-        </DesktopMenu>
+        <DesktopMenu />
       </NavbarContainer>
     </NavbarSection>
   );
@@ -29,7 +19,7 @@ const Navbar = () => {
 
 const NavbarSection = styled.div`
   background-color: ${(props) => props.theme.darkGreen};
-  height: 50px;
+  min-height: 50px;
 `;
 
 const NavbarContainer = styled.div`
@@ -57,21 +47,5 @@ const LogoContainer = styled.a`
 `;
 
 //hide buttons for smaller displays
-const DesktopMenu = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  min-width: 50%;
-  align-items: center;
-
-  @media screen and (max-width: 1025px) {
-    display: none;
-  }
-`;
-
-const MenuLinkSeparator = styled.div`
-  height: 100%;
-  gap: 0.5rem;
-  display: flex;
-`;
 
 export default Navbar;
