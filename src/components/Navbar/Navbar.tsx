@@ -46,6 +46,7 @@ const NavbarSection = styled.nav`
 const NavbarContainer = styled.div`
   width: 80%;
   min-width: 230px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

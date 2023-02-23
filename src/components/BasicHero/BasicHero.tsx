@@ -45,10 +45,18 @@ const BasicHero = ({
 const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 1025px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const TextContainer = styled.div`
   margin-bottom: 20px;
+  @media screen and (min-width: 1025px) {
+    max-width: 35%;
+  }
 `;
 
 const HeroImage = styled.img``;

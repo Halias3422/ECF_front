@@ -41,8 +41,8 @@ color: ${colorscheme.snow}
 
 .section {
 width: 100%;
-padding-top: 60px;
-padding-bottom: 60px;
+padding-top: 50px;
+padding-bottom: 50px;
 }
 
 .odd {
@@ -56,12 +56,40 @@ background-color: ${colorscheme.lightBlue};
 .container {
 width: 80%;
 margin: 0 auto;
+max-width: 1200px;
+}
+
+@media screen and (min-width: 481px) {
+
+}
+
+@media screen and (min-width: 769px) {
+h1 {
+font-size: 38px;
+}
 }
 
 @media screen and (min-width: 1025px) {
-.container {
-	max-width: 1400px;
+h1 {
+font-size: 42px;
 }
+
+p {
+font-size: 18px;
+}
+
+img {
+max-width: 55%;
+}
+
+.section {
+padding-top: 80px;
+padding-bottom: 80px;
+}
+}
+
+@media screen and (min-width: 1201px) {
+
 }
 `;
 
