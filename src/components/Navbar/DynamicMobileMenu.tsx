@@ -39,7 +39,8 @@ const DynamicMobileMenu = ({ hamburgerOpen }: { hamburgerOpen: boolean }) => {
 };
 
 const DynamicMenuPopUp = styled.div`
-  float: right;
+  position: absolute;
+  right: 0;
   overflow-x: none;
   width: 0%;
   height: fit-content;
@@ -54,7 +55,7 @@ const DynamicMenuPopUp = styled.div`
   &.slideIn {
     width: 50%;
     @media screen and (max-width: 481px) {
-      width: 100%;
+      width: calc(100% - 4px);
     }
   }
   &.slideOut {

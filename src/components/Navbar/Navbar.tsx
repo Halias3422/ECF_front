@@ -19,8 +19,8 @@ const Navbar = () => {
 
   return (
     <>
-      <NavbarSection className="section">
-        <NavbarContainer className="container">
+      <NavbarSection>
+        <NavbarContainer>
           <LogoContainer href="/" className={`${dancingScript.className}`}>
             Le Quai Antique
           </LogoContainer>
@@ -39,9 +39,15 @@ const Navbar = () => {
 const NavbarSection = styled.nav`
   background-color: ${(props) => props.theme.darkGreen};
   min-height: 50px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 `;
 
 const NavbarContainer = styled.div`
+  width: 80%;
+  min-width: 230px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
