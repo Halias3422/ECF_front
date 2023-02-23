@@ -51,6 +51,7 @@ const DesktopMenuContainer = styled.div`
 
 const MenuLinkSeparator = styled.div`
   display: flex;
+  align-items: center;
   gap: 5%;
 `;
 
