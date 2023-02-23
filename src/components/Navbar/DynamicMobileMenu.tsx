@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import DesktopMenu from './DesktopMenu';
 import NavbarLink from './NavbarLink';
 
 const DynamicMobileMenu = ({ hamburgerOpen }: { hamburgerOpen: boolean }) => {
   return (
-    <DynamicMenuPopUp className={hamburgerOpen ? 'slideIn' : 'slideOut'}>
+    <DynamicMenuPopUp
+      id="dynamicMenuPopUp"
+      className={hamburgerOpen ? 'slideIn' : 'slideOut'}
+    >
       <MenuColumns>
         <NavbarLink
           textContent="Menus"
@@ -13,7 +15,7 @@ const DynamicMobileMenu = ({ hamburgerOpen }: { hamburgerOpen: boolean }) => {
         />
         <NavbarLink
           textContent="Carte"
-          url="'/la-carte"
+          url="/la-carte"
           className="themeDarkGreen"
         />
         <NavbarLink

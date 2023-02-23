@@ -3,7 +3,7 @@ import NavbarLink from './NavbarLink';
 
 const DesktopMenu = () => {
   return (
-    <DesktopMenuContainer>
+    <DesktopMenuContainer id="desktopMenu">
       <GreenLinksContainer>
         <MenuLinkSeparator>
           <NavbarLink
@@ -13,7 +13,7 @@ const DesktopMenu = () => {
           />
           <NavbarLink
             textContent="Carte"
-            url="'/la-carte"
+            url="/la-carte"
             className="themeLightGreen"
           />
         </MenuLinkSeparator>
