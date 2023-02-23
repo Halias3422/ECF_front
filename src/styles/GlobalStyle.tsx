@@ -15,6 +15,16 @@ a {
 	color: ${colorscheme.darkGrey}
 }
 
+h1 {
+	margin-bottom: 52px;
+	font-size: 36px;
+}
+
+p {
+	margin-bottom: 42px;
+	font-size: 16px;
+}
+
 .themeLightGreen {
 background-color: ${colorscheme.lightGreen};
 }
@@ -30,8 +40,17 @@ color: ${colorscheme.snow}
 }
 
 .section {
-	padding: 0.75rem;
 width: 100%;
+padding-top: 60px;
+padding-bottom: 60px;
+}
+
+.odd {
+background-color: ${colorscheme.snow};
+}
+
+.even {
+background-color: ${colorscheme.lightBlue};
 }
 
 .container {
