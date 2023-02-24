@@ -31,6 +31,10 @@ p, li {
 	font-size: 16px;
 }
 
+img {
+border-radius: 8px;
+}
+
 .themeLightGreen {
 background-color: ${colorscheme.lightGreen};
 }
@@ -91,19 +95,24 @@ font-size: 36px;
 img {
 max-width: 40%;
 }
+
+.section {
+padding-top: 80px;
+padding-bottom: 80px;
+}
 }
 
 @media screen and (min-width: 1201px) {
 .section {
-padding-top: 80px;
-padding-bottom: 80px;
+padding-top: 100px;
+padding-bottom: 100px;
 }
 
 p, li {
 font-size: 18px;
 }
 img {
-max-width: 50%;
+max-width: 55%;
 }
 
 }

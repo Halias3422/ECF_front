@@ -56,10 +56,10 @@ const HeroContainer = styled.div`
 const TextContainer = styled.div`
   margin-bottom: 20px;
   @media screen and (min-width: 1025px) {
-    max-width: 45%;
+    max-width: 40%;
   }
   @media screen and (min-width: 1201px) {
-    max-width: 40%;
+    max-width: 35%;
   }
 `;
 
