@@ -17,13 +17,13 @@ const Section = ({
   paragraphs: string[];
   image: string;
   imageAlt: string;
-  childComponents: JSX.Element[];
+  childComponents?: JSX.Element[];
   $textIsLeft: boolean;
   $isOdd: boolean;
 }) => {
   return (
     <article id={id} className={`section ${$isOdd ? 'odd' : 'even'}`}>
-      <HeroContainer className="container" $textIsLeft={$textIsLeft}>
+      <SectionContainer className="container" $textIsLeft={$textIsLeft}>
         <TextContainer>
           <h2 className={merriweatherSans.className}>{header}</h2>
           {paragraphs.map((paragraph, index) => {
@@ -31,22 +31,22 @@ const Section = ({
               <div
                 key={index}
                 dangerouslySetInnerHTML={{
-                  __html: '<p align="justify">' + paragraph + '<p>',
+                  __html: '<p>' + paragraph + '<p>',
                 }}
               />
             );
           })}
-          {childComponents.map((child, index) => {
+          {childComponents?.map((child, index) => {
             return <React.Fragment key={index}>{child}</React.Fragment>;
           })}
         </TextContainer>
-        {image && <Image src={image} alt={imageAlt} />}
-      </HeroContainer>
+        {image && <Image src={image} alt={imageAlt} title={imageAlt} />}
+      </SectionContainer>
     </article>
   );
 };
 
-const HeroContainer = styled.div<{ $textIsLeft: boolean }>`
+const SectionContainer = styled.div<{ $textIsLeft: boolean }>`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 1025px) {

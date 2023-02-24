@@ -29,10 +29,13 @@ font-size: 30px;
 p, li {
 	margin-bottom: 42px;
 	font-size: 16px;
+	text-align: justify
 }
 
 img {
 border-radius: 8px;
+max-width: 100%;
+max-height: 100%;
 }
 
 .themeLightGreen {
@@ -103,6 +106,12 @@ padding-bottom: 80px;
 }
 
 @media screen and (min-width: 1201px) {
+h1 {
+font-size: 46px;
+}
+h2 {
+font-size: 38px;
+}
 .section {
 padding-top: 100px;
 padding-bottom: 100px;
