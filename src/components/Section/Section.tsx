@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Section = ({
+  id,
   header,
   paragraphs,
   image,
@@ -11,6 +12,7 @@ const Section = ({
   $textIsLeft,
   $isOdd,
 }: {
+  id: string;
   header: string;
   paragraphs: string[];
   image: string;
@@ -20,7 +22,7 @@ const Section = ({
   $isOdd: boolean;
 }) => {
   return (
-    <article className={`section ${$isOdd ? 'odd' : 'even'}`}>
+    <article id={id} className={`section ${$isOdd ? 'odd' : 'even'}`}>
       <HeroContainer className="container" $textIsLeft={$textIsLeft}>
         <TextContainer>
           <h2 className={merriweatherSans.className}>{header}</h2>

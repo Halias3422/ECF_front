@@ -128,4 +128,22 @@ describe('Navbar Desktop', () => {
   });
 });
 
+describe('Strong Points Section Mobile', () => {
+  it('should contain a link redirecting to /reserver', () => {
+    cy.viewport('iphone-6');
+    cy.visit(baseUrl);
+    cy.get('article[id="strongPoints"]').find('a[href="/reserver"]').click();
+    cy.url().should('equal', baseUrl + 'reserver');
+  });
+});
+
+describe('Strong Points Section Desktop', () => {
+  it('should contain a link redirecting to /reserver', () => {
+    cy.viewport('macbook-13');
+    cy.visit(baseUrl);
+    cy.get('article[id="strongPoints"]').find('a[href="/reserver"]').click();
+    cy.url().should('equal', baseUrl + 'reserver');
+  });
+});
+
 export default describe;
