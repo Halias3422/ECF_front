@@ -12,7 +12,8 @@ div#__next {
 
 a {
 	text-decoration: none;
-	color: ${colorscheme.darkGrey}
+	color: ${colorscheme.darkGrey};
+	border-radius: 6px;
 }
 
 h1 {
@@ -20,9 +21,18 @@ h1 {
 	font-size: 36px;
 }
 
-p {
+h2 {
+	margin-bottom: 38px;
+font-size: 30px;
+}
+
+p, li {
 	margin-bottom: 42px;
 	font-size: 16px;
+}
+
+img {
+border-radius: 8px;
 }
 
 .themeLightGreen {
@@ -51,6 +61,7 @@ background-color: ${colorscheme.snow};
 
 .even {
 background-color: ${colorscheme.lightBlue};
+color: ${colorscheme.snow}
 }
 
 .container {
@@ -67,19 +78,22 @@ max-width: 1200px;
 h1 {
 font-size: 38px;
 }
+h2 {
+font-size: 32px;
+}
 }
 
 @media screen and (min-width: 1025px) {
 h1 {
 font-size: 42px;
 }
-
-p {
-font-size: 18px;
+h2 {
+font-size: 36px;
 }
 
+
 img {
-max-width: 55%;
+max-width: 40%;
 }
 
 .section {
@@ -89,6 +103,17 @@ padding-bottom: 80px;
 }
 
 @media screen and (min-width: 1201px) {
+.section {
+padding-top: 100px;
+padding-bottom: 100px;
+}
+
+p, li {
+font-size: 18px;
+}
+img {
+max-width: 55%;
+}
 
 }
 `;

@@ -1,22 +1,23 @@
-import colorscheme from '@/styles/colorscheme';
 import { merriweatherSans } from '@/styles/fonts';
 import styled from 'styled-components';
 
-const BasicHero = ({
+const Hero = ({
   header,
   paragraphs,
   image,
   imageAlt,
-  textIsLeft,
+  $textIsLeft,
+  $isOdd,
 }: {
   header: string;
   paragraphs: string[];
   image: string;
   imageAlt: string;
-  textIsLeft: boolean;
+  $textIsLeft: boolean;
+  $isOdd: boolean;
 }) => {
   return (
-    <div className="section odd">
+    <article className={`section ${$isOdd ? 'odd' : 'even'}`}>
       <HeroContainer className="container">
         <TextContainer>
           <div
@@ -36,9 +37,9 @@ const BasicHero = ({
             );
           })}
         </TextContainer>
-        <HeroImage src={image} alt={imageAlt} />
+        <img src={image} alt={imageAlt} />
       </HeroContainer>
-    </div>
+    </article>
   );
 };
 
@@ -55,10 +56,11 @@ const HeroContainer = styled.div`
 const TextContainer = styled.div`
   margin-bottom: 20px;
   @media screen and (min-width: 1025px) {
+    max-width: 40%;
+  }
+  @media screen and (min-width: 1201px) {
     max-width: 35%;
   }
 `;
 
-const HeroImage = styled.img``;
-
-export default BasicHero;
+export default Hero;

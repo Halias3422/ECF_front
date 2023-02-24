@@ -9,31 +9,31 @@ const DesktopMenu = () => {
           <NavbarLink
             textContent="Menus"
             url="/les-menus"
-            className="themeLightGreen"
+            theme="themeLightGreen"
           />
           <NavbarLink
             textContent="Carte"
             url="/la-carte"
-            className="themeLightGreen"
+            theme="themeLightGreen"
           />
         </MenuLinkSeparator>
         <MenuLinkSeparator>
           <NavbarLink
             textContent="Contact"
             url="/contact"
-            className="themeLightGreen"
+            theme="themeLightGreen"
           />
           <NavbarLink
             textContent="Connexion"
             url="/connexion"
-            className="themeLightGreen"
+            theme="themeLightGreen"
           />
         </MenuLinkSeparator>
       </GreenLinksContainer>
       <NavbarLink
         textContent="Réserver"
         url="/reserver"
-        className="themeDarkGrey"
+        theme="themeDarkGrey"
       />
     </DesktopMenuContainer>
   );
@@ -52,12 +52,12 @@ const DesktopMenuContainer = styled.div`
 const MenuLinkSeparator = styled.div`
   display: flex;
   align-items: center;
-  gap: 5%;
+  gap: 0.5vw;
 `;
 
 const GreenLinksContainer = styled.div`
   display: flex;
-  gap: 5%;
+  gap: 2vw;
   justify-content: space-evenly;
 `;
 

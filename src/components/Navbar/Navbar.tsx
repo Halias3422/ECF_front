@@ -18,10 +18,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <>
+    <header>
       <NavbarSection>
         <NavbarContainer>
-          <LogoContainer href="/" className={`${dancingScript.className}`}>
+          <LogoContainer
+            href="/"
+            className={`${dancingScript.className}`}
+            role="button"
+          >
             Le Quai Antique
           </LogoContainer>
           <HamburgerMenu
@@ -32,7 +36,7 @@ const Navbar = () => {
         </NavbarContainer>
       </NavbarSection>
       <DynamicMobileMenu hamburgerOpen={hamburgerOpen} />
-    </>
+    </header>
   );
 };
 
