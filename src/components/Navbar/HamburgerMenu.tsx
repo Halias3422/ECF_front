@@ -10,13 +10,10 @@ const HamburgerMenu = ({
   hamburgerOpen: boolean;
   setHamburgerOpen: Dispatch<SetStateAction<boolean>>;
 }) => (
-  <IconContainer
-    type="button"
-    id="hamburgerMenu"
-    name="hamburgerMenu"
-    onClick={() => setHamburgerOpen(!hamburgerOpen)}
-  >
+  <IconContainer type="button" id="hamburgerMenu" name="hamburgerMenu">
     <svg
+      id="hamburgerMenuIcon"
+      onClick={() => setHamburgerOpen(!hamburgerOpen)}
       width="48px"
       height="48px"
       viewBox="0 0 24 24"
@@ -24,6 +21,7 @@ const HamburgerMenu = ({
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
+        id="hamburgerPath"
         d="M4 17h16M4 12h16M4 7h16"
         stroke={colorscheme.lightGreen}
         strokeWidth={1.5}
