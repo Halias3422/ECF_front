@@ -1,7 +1,31 @@
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
 import NavbarLink from './NavbarLink';
 
-const DynamicMobileMenu = ({ hamburgerOpen }: { hamburgerOpen: boolean }) => {
+const DynamicMobileMenu = ({
+  hamburgerOpen,
+  setHamburgerOpen,
+}: {
+  hamburgerOpen: boolean;
+  setHamburgerOpen: Dispatch<SetStateAction<boolean>>;
+}) => {
+  useEffect(() => {
+    window.addEventListener('click', (event) => {
+      const dynamicMenu = document.querySelector('#dynamicMenuPopUp');
+      const hamburgerMenuIcon = document.querySelector('#hamburgerMenuIcon');
+      const hamburgerMenu = document.querySelector('#hamburgerMenu');
+      const hamburgerMenuPath = document.querySelector('#hamburgerPath');
+      if (
+        dynamicMenu?.className.includes('slideIn') &&
+        event.target !== dynamicMenu &&
+        event.target !== hamburgerMenu &&
+        event.target !== hamburgerMenuIcon &&
+        event.target !== hamburgerMenuPath
+      ) {
+        setHamburgerOpen(false);
+      }
+    });
+  }, []);
   return (
     <DynamicMenuPopUp
       id="dynamicMenuPopUp"
@@ -11,27 +35,27 @@ const DynamicMobileMenu = ({ hamburgerOpen }: { hamburgerOpen: boolean }) => {
         <NavbarLink
           textContent="Menus"
           url="/les-menus"
-          className="themeDarkGreen"
+          theme="themeDarkGreen"
         />
         <NavbarLink
           textContent="Carte"
           url="/la-carte"
-          className="themeDarkGreen"
+          theme="themeDarkGreen"
         />
         <NavbarLink
           textContent="Contact"
           url="/contact"
-          className="themeDarkGreen"
+          theme="themeDarkGreen"
         />
         <NavbarLink
           textContent="Connexion"
           url="/connexion"
-          className="themeDarkGreen"
+          theme="themeDarkGreen"
         />
         <NavbarLink
           textContent="Réserver"
           url="/reserver"
-          className="themeDarkGrey"
+          theme="themeDarkGrey"
         />
       </MenuColumns>
     </DynamicMenuPopUp>

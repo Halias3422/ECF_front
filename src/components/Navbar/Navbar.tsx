@@ -17,8 +17,12 @@ const Navbar = () => {
     window.addEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    console.log('hamburgerOpen = ' + hamburgerOpen);
+  }, [hamburgerOpen]);
+
   return (
-    <header>
+    <header style={{ position: 'sticky', top: '0' }}>
       <NavbarSection>
         <NavbarContainer>
           <LogoContainer
@@ -35,7 +39,10 @@ const Navbar = () => {
           <DesktopMenu />
         </NavbarContainer>
       </NavbarSection>
-      <DynamicMobileMenu hamburgerOpen={hamburgerOpen} />
+      <DynamicMobileMenu
+        hamburgerOpen={hamburgerOpen}
+        setHamburgerOpen={setHamburgerOpen}
+      />
     </header>
   );
 };
