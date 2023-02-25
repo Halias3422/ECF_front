@@ -1,9 +1,15 @@
+import { InferGetStaticPropsType } from 'next';
 import Section from '@/components/Section/Section';
 import Hero from '@/components/Hero/Hero';
 import StrongPointsList from '@/components/StrongPointsList/StrongPointsList';
 import MainCTA from '@/components/MainCTA/MainCTA';
+import { getDataFromAPI } from '@/api/utils';
+import { API_ROUTES } from '@/api/routes';
+import GalleryDishes from '@/components/GalleryDishes/GalleryDishes';
 
-export default function Home() {
+export default function Home({
+  galleryDishes,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <main>
       <Hero
@@ -40,6 +46,17 @@ export default function Home() {
         $textIsLeft={false}
         $isOdd={false}
       />
+      <GalleryDishes $isOdd={true} galleryDishes={galleryDishes} />
     </main>
   );
 }
+
+export const getStaticProps = async () => {
+  const response = await getDataFromAPI(API_ROUTES.dishesGallery.getAllDishes);
+  const galleryDishes = response.rows;
+  return {
+    props: {
+      galleryDishes,
+    },
+  };
+};

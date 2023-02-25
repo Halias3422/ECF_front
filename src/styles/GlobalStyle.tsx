@@ -17,11 +17,13 @@ a {
 }
 
 h1 {
+	margin-top: 0px;
 	margin-bottom: 52px;
 	font-size: 36px;
 }
 
 h2 {
+	margin-top: 0px;
 	margin-bottom: 38px;
 font-size: 30px;
 }
@@ -29,10 +31,13 @@ font-size: 30px;
 p, li {
 	margin-bottom: 42px;
 	font-size: 16px;
+	text-align: justify
 }
 
 img {
 border-radius: 8px;
+max-width: 100%;
+max-height: 100%;
 }
 
 .themeLightGreen {
@@ -51,8 +56,8 @@ color: ${colorscheme.snow}
 
 .section {
 width: 100%;
-padding-top: 50px;
-padding-bottom: 50px;
+padding-top: 70px;
+padding-bottom: 70px;
 }
 
 .odd {
@@ -81,6 +86,11 @@ font-size: 38px;
 h2 {
 font-size: 32px;
 }
+
+.section {
+padding-top: 90px;
+padding-bottom: 90px;
+}
 }
 
 @media screen and (min-width: 1025px) {
@@ -97,12 +107,18 @@ max-width: 40%;
 }
 
 .section {
-padding-top: 80px;
-padding-bottom: 80px;
+padding-top: 110px;
+padding-bottom: 110px;
 }
 }
 
 @media screen and (min-width: 1201px) {
+h1 {
+font-size: 46px;
+}
+h2 {
+font-size: 38px;
+}
 .section {
 padding-top: 100px;
 padding-bottom: 100px;

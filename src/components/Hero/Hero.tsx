@@ -31,13 +31,13 @@ const Hero = ({
               <div
                 key={index}
                 dangerouslySetInnerHTML={{
-                  __html: '<p align="justify">' + paragraph + '<p>',
+                  __html: '<p>' + paragraph + '<p>',
                 }}
               />
             );
           })}
         </TextContainer>
-        <img src={image} alt={imageAlt} />
+        <img src={image} alt={imageAlt} title={imageAlt} />
       </HeroContainer>
     </article>
   );
