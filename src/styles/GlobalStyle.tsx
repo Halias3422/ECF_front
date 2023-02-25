@@ -112,7 +112,7 @@ font-size: 36px;
 
 
 img {
-max-width: 40%;
+max-width: 55%;
 }
 
 .section {
