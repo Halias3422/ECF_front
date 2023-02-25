@@ -27,7 +27,7 @@ export default function Home({
         $isOdd={true}
       />
       <Section
-        id="strongPoints"
+        id="strongPointsSection"
         header={'Nos points forts'}
         paragraphs={[
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
