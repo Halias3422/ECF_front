@@ -21,17 +21,36 @@ export const getDataFromAPI = async (endpointUrl: string, data?: any) => {
   }
 };
 
+// need to secure alert() call in case of it not being defined
+
 const handleAPIError = (error: AxiosError) => {
   if (error.response) {
-    alert(
-      'Erreur: le serveur a répondu avec le code ' +
-        error.response.status +
-        ': \n' +
-        JSON.stringify(error.response.data)
-    );
+    try {
+      alert(
+        'Erreur: le serveur a répondu avec le code ' +
+          error.response.status +
+          ': \n' +
+          JSON.stringify(error.response.data)
+      );
+    } catch (e) {
+      console.log(
+        'Erreur: le serveur a répondu avec le code ' +
+          error.response.status +
+          ': \n' +
+          JSON.stringify(error.response.data)
+      );
+    }
   } else if (error.request) {
-    alert('Erreur: le serveur ne répond pas.');
+    try {
+      alert('Erreur: le serveur ne répond pas.');
+    } catch (e) {
+      console.log('Erreur: le serveur ne répond pas.');
+    }
   } else {
-    alert('Erreur inattendue: ' + error.message);
+    try {
+      alert('Erreur inattendue: ' + error.message);
+    } catch (e) {
+      console.log('Erreur inattendue: ' + error.message);
+    }
   }
 };

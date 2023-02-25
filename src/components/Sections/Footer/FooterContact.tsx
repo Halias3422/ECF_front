@@ -4,7 +4,7 @@ import ContactInfoItem from './ContactInfoItem';
 
 const FooterContact = () => {
   return (
-    <div>
+    <FooterContactContainer>
       <h2>Nous contacter</h2>
       <ContactInfoItem
         label="Adresse"
@@ -18,15 +18,24 @@ const FooterContact = () => {
       <a href="//umap.openstreetmap.fr/en/map/untitled-map_875494">
         <u>Voir plein écran</u>
       </a>
-    </div>
+    </FooterContactContainer>
   );
 };
+
+const FooterContactContainer = styled.div`
+  @media screen and (min-width: 769px) {
+    width: 80%;
+  }
+  @media screen and (min-width: 1025px) {
+    width: 42%;
+  }
+`;
 
 const OpenStreetMapFrame = styled.iframe`
   margin-top: 30px;
   width: 100%;
   height: 50vw;
-  max-height: 300px;
+  max-height: 200px;
 `;
 
 export default FooterContact;

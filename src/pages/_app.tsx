@@ -1,5 +1,4 @@
 import Navbar from '@/components/Navbar/Navbar';
-import Footer from '@/components/Sections/Footer/Footer';
 import colorscheme from '@/styles/colorscheme';
 import { roboto } from '@/styles/fonts';
 import GlobalStyle from '@/styles/GlobalStyle';
@@ -13,7 +12,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className={roboto.className}>
         <Navbar />
         <Component {...pageProps} />
-        <Footer />
       </div>
     </ThemeProvider>
   );
