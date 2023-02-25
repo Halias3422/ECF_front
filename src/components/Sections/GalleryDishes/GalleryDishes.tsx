@@ -1,9 +1,9 @@
+import MainCTA from '@/components/MainCTA/MainCTA';
 import { GalleryDishData } from '@/interfaces/dishes';
 import colorscheme from '@/styles/colorscheme';
 import { merriweatherSans } from '@/styles/fonts';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import MainCTA from '../MainCTA/MainCTA';
 import GalleryDishItem from './GalleryDishItem';
 
 const GalleryDishes = ({

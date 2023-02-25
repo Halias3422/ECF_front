@@ -1,12 +1,12 @@
 import { InferGetStaticPropsType } from 'next';
-import Section from '@/components/Section/Section';
 import Hero from '@/components/Hero/Hero';
 import StrongPointsList from '@/components/StrongPointsList/StrongPointsList';
 import MainCTA from '@/components/MainCTA/MainCTA';
 import { getDataFromAPI } from '@/api/utils';
 import { API_ROUTES } from '@/api/routes';
-import GalleryDishes from '@/components/GalleryDishes/GalleryDishes';
-import ReservationSection from '@/components/ReservationSection/ReservationSection';
+import Section from '@/components/Sections/Section';
+import GalleryDishes from '@/components/Sections/GalleryDishes/GalleryDishes';
+import ReservationSection from '@/components/Sections/ReservationSection';
 
 export default function Home({
   galleryDishes,
@@ -23,7 +23,6 @@ export default function Home({
           'https://storage.kempinski.com/cdn-cgi/image/w=1920,f=auto,g=auto,fit=scale-down/ki-cms-prod/images/1/9/8/6/86891-1-eng-GB/5b43edfee48c-73660559_4K.jpg'
         }
         imageAlt="Photo du restaurant."
-        $textIsLeft={true}
         $isOdd={true}
       />
       <Section
