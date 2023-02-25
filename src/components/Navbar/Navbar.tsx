@@ -17,10 +17,6 @@ const Navbar = () => {
     window.addEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    console.log('hamburgerOpen = ' + hamburgerOpen);
-  }, [hamburgerOpen]);
-
   return (
     <header style={{ position: 'sticky', top: '0' }}>
       <NavbarSection>
