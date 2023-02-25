@@ -58,7 +58,7 @@ const handleGridDisplay = (
     const imageContainers = galleryContainer.getElementsByClassName(
       'galleryDishItemContainer'
     );
-    if (screenWidth < 769 && prevScreenWidth > 768) {
+    if (screenWidth < 769 && (prevScreenWidth > 768 || prevScreenWidth === 0)) {
       resetImagesContainersMargins(imageContainers);
     }
     if (screenWidth > 768 && screenWidth < 1025) {
