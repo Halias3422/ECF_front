@@ -6,14 +6,12 @@ const Hero = ({
   paragraphs,
   image,
   imageAlt,
-  $textIsLeft,
   $isOdd,
 }: {
   header: string;
   paragraphs: string[];
   image: string;
   imageAlt: string;
-  $textIsLeft: boolean;
   $isOdd: boolean;
 }) => {
   return (
