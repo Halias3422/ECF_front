@@ -14,7 +14,10 @@ const GalleryDishes = ({
   galleryDishes: GalleryDishData[];
 }) => {
   return (
-    <article className={`section ${$isOdd ? 'odd' : 'even'}`}>
+    <article
+      id="galleryDishesSection"
+      className={`section ${$isOdd ? 'odd' : 'even'}`}
+    >
       <GalleryDishesContainer id="galleryDishesContainer" className="container">
         <h2 className={merriweatherSans.className}>Les bons plats du Chef</h2>
         <p>

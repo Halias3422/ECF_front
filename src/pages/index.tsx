@@ -6,6 +6,7 @@ import MainCTA from '@/components/MainCTA/MainCTA';
 import { getDataFromAPI } from '@/api/utils';
 import { API_ROUTES } from '@/api/routes';
 import GalleryDishes from '@/components/GalleryDishes/GalleryDishes';
+import ReservationSection from '@/components/ReservationSection/ReservationSection';
 
 export default function Home({
   galleryDishes,
@@ -26,7 +27,7 @@ export default function Home({
         $isOdd={true}
       />
       <Section
-        id="strongPoints"
+        id="strongPointsSection"
         header={'Nos points forts'}
         paragraphs={[
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
@@ -47,6 +48,7 @@ export default function Home({
         $isOdd={false}
       />
       <GalleryDishes $isOdd={true} galleryDishes={galleryDishes} />
+      <ReservationSection theme="themeLightGreen" $isOdd={false} />
     </main>
   );
 }

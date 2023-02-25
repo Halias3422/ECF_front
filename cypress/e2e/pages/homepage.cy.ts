@@ -132,7 +132,9 @@ describe('Strong Points Section Mobile', () => {
   it('should contain a link redirecting to /reserver', () => {
     cy.viewport('iphone-6');
     cy.visit(baseUrl);
-    cy.get('article[id="strongPoints"]').find('a[href="/reserver"]').click();
+    cy.get('article[id="strongPointsSection"]')
+      .find('a[href="/reserver"]')
+      .click();
     cy.url().should('equal', baseUrl + 'reserver');
   });
 });
@@ -141,7 +143,99 @@ describe('Strong Points Section Desktop', () => {
   it('should contain a link redirecting to /reserver', () => {
     cy.viewport('macbook-13');
     cy.visit(baseUrl);
-    cy.get('article[id="strongPoints"]').find('a[href="/reserver"]').click();
+    cy.get('article[id="strongPointsSection"]')
+      .find('a[href="/reserver"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'reserver');
+  });
+});
+
+describe('Dishes Gallery Section Mobile', () => {
+  it('images should have a title and alt', () => {
+    cy.viewport('iphone-6');
+    cy.visit(baseUrl);
+    cy.get('article[id="galleryDishesSection"]')
+      .find('img')
+      .each(($image) => {
+        const images = Array.from($image);
+        for (const image of images) {
+          expect(image.title).to.not.be.empty;
+          expect((image as HTMLImageElement).alt).to.not.be.empty;
+        }
+      });
+  });
+
+  it('should contain a link redirecting to /les-menus', () => {
+    cy.viewport('iphone-6');
+    cy.visit(baseUrl);
+    cy.get('article[id="galleryDishesSection"]')
+      .find('a[href="/les-menus"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'les-menus');
+  });
+
+  it('should contain a link redirecting to /la-carte', () => {
+    cy.viewport('iphone-6');
+    cy.visit(baseUrl);
+    cy.get('article[id="galleryDishesSection"]')
+      .find('a[href="/la-carte"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'la-carte');
+  });
+});
+
+describe('Dishes Gallery Section Desktop', () => {
+  it('images should have a title and alt', () => {
+    cy.viewport('macbook-13');
+    cy.visit(baseUrl);
+    cy.get('article[id="galleryDishesSection"]')
+      .find('img')
+      .each(($image) => {
+        const images = Array.from($image);
+        for (const image of images) {
+          expect(image.title).to.not.be.empty;
+          expect((image as HTMLImageElement).alt).to.not.be.empty;
+        }
+      });
+  });
+
+  it('should contain a link redirecting to /les-menus', () => {
+    cy.viewport('macbook-13');
+    cy.visit(baseUrl);
+    cy.get('article[id="galleryDishesSection"]')
+      .find('a[href="/les-menus"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'les-menus');
+  });
+
+  it('should contain a link redirecting to /la-carte', () => {
+    cy.viewport('macbook-13');
+    cy.visit(baseUrl);
+    cy.get('article[id="galleryDishesSection"]')
+      .find('a[href="/la-carte"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'la-carte');
+  });
+});
+
+describe('Reservation Section mobile', () => {
+  it('should contain a link redirecting to /reserver', () => {
+    cy.viewport('iphone-6');
+    cy.visit(baseUrl);
+    cy.get('article[id="reservationSection"]')
+      .find('a[href="/reserver"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'reserver');
+  });
+});
+
+describe('Reservation Section desktop', () => {
+  it('should contain a link redirecting to /reserver', () => {
+    cy.viewport('macbook-13');
+    cy.visit(baseUrl);
+    cy.get('article[id="reservationSection"]')
+      .find('a[href="/reserver"]')
+      .click();
     cy.url().should('equal', baseUrl + 'reserver');
   });
 });
