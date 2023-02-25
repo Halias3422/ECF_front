@@ -6,6 +6,7 @@ import MainCTA from '@/components/MainCTA/MainCTA';
 import { getDataFromAPI } from '@/api/utils';
 import { API_ROUTES } from '@/api/routes';
 import GalleryDishes from '@/components/GalleryDishes/GalleryDishes';
+import ReservationSection from '@/components/ReservationSection/ReservationSection';
 
 export default function Home({
   galleryDishes,
@@ -47,6 +48,7 @@ export default function Home({
         $isOdd={false}
       />
       <GalleryDishes $isOdd={true} galleryDishes={galleryDishes} />
+      <ReservationSection theme="themeLightGreen" $isOdd={false} />
     </main>
   );
 }

@@ -28,6 +28,12 @@ h2 {
 font-size: 30px;
 }
 
+h3 {
+	margin-top: 0px;
+	margin-bottom: 32px;
+font-size: 22px;
+}
+
 p, li {
 	margin-bottom: 42px;
 	font-size: 16px;
@@ -85,6 +91,9 @@ font-size: 38px;
 }
 h2 {
 font-size: 32px;
+}
+h3 {
+font-size: 24px;
 }
 
 .section {
