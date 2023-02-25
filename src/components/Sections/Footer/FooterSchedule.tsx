@@ -39,9 +39,9 @@ const FooterSchedule = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
       {weekSchedule?.map((day: DaySchedule, index: number) => {
         return (
           <DayScheduleContainer key={`dayScheduleContainer${index}`}>
-            <p>
+            <DayOfWeek>
               <b>{day.day_of_week}:</b>
-            </p>
+            </DayOfWeek>
             <DayScheduleHours>{formatDayScheduleHours(day)}</DayScheduleHours>
           </DayScheduleContainer>
         );
@@ -62,22 +62,29 @@ const FooterScheduleContainer = styled.div`
   }
 `;
 
+const DayOfWeek = styled.p`
+  margin: 0;
+`;
+
 const DayScheduleContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 20%;
-  p {
-    margin-bottom: 10px;
-  }
   @media screen and (max-width: 320px) {
     flex-direction: column;
   }
 `;
-const DayScheduleHours = styled.p`
+const DayScheduleHours = styled.small`
   text-align: end;
   white-space: pre-line;
+  margin-bottom: 25px;
+  font-size: 14px;
   @media screen and (max-width: 320px) {
     text-align: start;
+  }
+  @media screen and (min-width: 1025px) {
+    font-size: 16px;
   }
 `;
 
