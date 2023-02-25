@@ -240,4 +240,26 @@ describe('Reservation Section desktop', () => {
   });
 });
 
+describe('Subscribe Section mobile', () => {
+  it('should contain a link redirecting to /inscription', () => {
+    cy.viewport('iphone-6');
+    cy.visit(baseUrl);
+    cy.get('article[id="subscribeSection"]')
+      .find('a[href="/inscription"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'inscription');
+  });
+});
+
+describe('Subscribe Section desktop', () => {
+  it('should contain a link redirecting to /inscription', () => {
+    cy.viewport('macbook-13');
+    cy.visit(baseUrl);
+    cy.get('article[id="subscribeSection"]')
+      .find('a[href="/inscription"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'inscription');
+  });
+});
+
 export default describe;

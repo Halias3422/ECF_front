@@ -50,7 +50,7 @@ export default function Home({
       <GalleryDishes $isOdd={true} galleryDishes={galleryDishes} />
       <ReservationSection theme="themeLightGreen" $isOdd={false} />
       <Section
-        id="suscribeSection"
+        id="subscribeSection"
         header="C'est tellement plus simple !"
         paragraphs={[
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',

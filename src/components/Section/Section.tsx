@@ -65,9 +65,6 @@ const TextContainer = styled.div`
     margin-bottom: 0px;
     max-width: 35%;
   }
-  @media screen and (min-width: 1201px) {
-    max-width: 35%;
-  }
 `;
 
 const Image = styled.img``;
