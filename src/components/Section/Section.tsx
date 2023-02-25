@@ -60,9 +60,10 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   @media screen and (min-width: 1025px) {
-    max-width: 40%;
+    margin-bottom: 0px;
+    max-width: 35%;
   }
   @media screen and (min-width: 1201px) {
     max-width: 35%;
