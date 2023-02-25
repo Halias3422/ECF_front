@@ -214,4 +214,26 @@ describe('Dishes Gallery Section Desktop', () => {
   });
 });
 
+describe('Reservation Section mobile', () => {
+  it('should contain a link redirecting to /reserver', () => {
+    cy.viewport('iphone-6');
+    cy.visit(baseUrl);
+    cy.get('article[id="reservationSection"]')
+      .find('a[href="/reserver"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'reserver');
+  });
+});
+
+describe('Reservation Section desktop', () => {
+  it('should contain a link redirecting to /reserver', () => {
+    cy.viewport('macbook-13');
+    cy.visit(baseUrl);
+    cy.get('article[id="reservationSection"]')
+      .find('a[href="/reserver"]')
+      .click();
+    cy.url().should('equal', baseUrl + 'reserver');
+  });
+});
+
 export default describe;
