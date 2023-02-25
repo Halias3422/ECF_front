@@ -136,9 +136,6 @@ padding-bottom: 100px;
 p, li {
 font-size: 18px;
 }
-img {
-max-width: 55%;
-}
 
 }
 `;
