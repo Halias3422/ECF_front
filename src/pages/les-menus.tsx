@@ -2,10 +2,18 @@ import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI } from '@/api/utils';
 import Hero from '@/components/Hero/Hero';
 import Footer from '@/components/Sections/Footer/Footer';
+import MenusSection from '@/components/Sections/Menus/MenusSection';
 import ReservationSection from '@/components/Sections/ReservationSection';
+import { Menu } from '@/interfaces/menus';
 import { DaySchedule } from '@/interfaces/schedule';
 
-const LesMenus = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
+const MenusPage = ({
+  weekSchedule,
+  menus,
+}: {
+  weekSchedule: DaySchedule[];
+  menus: Menu[];
+}) => {
   return (
     <>
       <Hero
@@ -17,22 +25,26 @@ const LesMenus = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
         imageAlt="Un bon en-cas le temps de lire le menu"
         $isOdd
       />
+      <MenusSection menus={menus} $isOdd={false} />
       <ReservationSection theme="themeDarkGreen" $isOdd />
       <Footer weekSchedule={weekSchedule} />
     </>
   );
 };
 
-export default LesMenus;
-
 export const getStaticProps = async () => {
   const scheduleResponse = await getDataFromAPI(
     API_ROUTES.schedule.getWeekSchedule
   );
   const weekSchedule = scheduleResponse?.rows;
+  const menusResponse = await getDataFromAPI(API_ROUTES.menus.getAllMenus);
+  const menus = menusResponse?.rows;
   return {
     props: {
       weekSchedule,
+      menus,
     },
   };
 };
+
+export default MenusPage;

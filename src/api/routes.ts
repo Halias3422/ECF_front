@@ -8,4 +8,7 @@ export const API_ROUTES = {
   schedule: {
     getWeekSchedule: '/api/get-week-schedule',
   },
+  menus: {
+    getAllMenus: '/api/get-all-menus',
+  },
 };

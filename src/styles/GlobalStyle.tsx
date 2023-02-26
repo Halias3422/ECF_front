@@ -48,6 +48,7 @@ max-height: 100%;
 
 .themeLightGreen {
 background-color: ${colorscheme.lightGreen};
+color: ${colorscheme.darkGrey};
 }
 
 .themeDarkGreen {
@@ -58,6 +59,11 @@ color: ${colorscheme.snow}
 .themeDarkGrey {
 background-color: ${colorscheme.darkGrey};
 color: ${colorscheme.snow}
+}
+
+.themeDarkBlue {
+background-color: ${colorscheme.darkBlue};
+color: ${colorscheme.snow};
 }
 
 .section {
