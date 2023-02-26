@@ -24,6 +24,7 @@ const MenusPage = ({
         image="images/menu.jpg"
         imageAlt="Un bon en-cas le temps de lire le menu"
         $isOdd
+        $textIsLeft
       />
       <MenusSection menus={menus} $isOdd={false} />
       <ReservationSection theme="themeDarkGreen" $isOdd />
