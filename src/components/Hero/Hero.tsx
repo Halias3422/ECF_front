@@ -1,4 +1,5 @@
 import { merriweatherSans } from '@/styles/fonts';
+import React from 'react';
 import styled from 'styled-components';
 
 const Hero = ({
@@ -6,17 +7,21 @@ const Hero = ({
   paragraphs,
   image,
   imageAlt,
+  childComponents,
+  $textIsLeft,
   $isOdd,
 }: {
   header: string;
   paragraphs: string[];
   image: string;
   imageAlt: string;
+  childComponents?: JSX.Element[];
+  $textIsLeft: boolean;
   $isOdd: boolean;
 }) => {
   return (
     <article className={`section ${$isOdd ? 'odd' : 'even'}`}>
-      <HeroContainer className="container">
+      <HeroContainer className="container" $textIsLeft={$textIsLeft}>
         <TextContainer>
           <div
             className={merriweatherSans.className}
@@ -34,6 +39,9 @@ const Hero = ({
               />
             );
           })}
+          {childComponents?.map((child, index) => {
+            return <React.Fragment key={index}>{child}</React.Fragment>;
+          })}
         </TextContainer>
         <img src={image} alt={imageAlt} title={imageAlt} />
       </HeroContainer>
@@ -41,11 +49,11 @@ const Hero = ({
   );
 };
 
-const HeroContainer = styled.div`
+const HeroContainer = styled.div<{ $textIsLeft: boolean }>`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 1025px) {
-    flex-direction: row;
+    flex-direction: ${(props) => (props.$textIsLeft ? 'row' : 'row-reverse')};
     justify-content: space-between;
     align-items: center;
   }
