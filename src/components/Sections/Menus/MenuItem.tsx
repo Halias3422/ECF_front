@@ -9,13 +9,22 @@ const MenuItem = ({ menu, index }: { menu: Menu; index: number }) => {
   return (
     <MenuItemContainer>
       <TitleContainer className={theme}>
-        <MenuTitle className={merriweatherSans.className}>
+        <MenuTitle
+          id={`menuTitle${index}`}
+          className={merriweatherSans.className}
+        >
           {menu.title}
         </MenuTitle>
       </TitleContainer>
       <FormulasContainer>
-        {menu.formulas.map((formula, index) => {
-          return <FormulaItem formula={formula} key={index} />;
+        {menu.formulas.map((formula, formulaIndex) => {
+          return (
+            <FormulaItem
+              formula={formula}
+              key={formulaIndex}
+              id={`formula${formulaIndex}Menu${index}`}
+            />
+          );
         })}
       </FormulasContainer>
     </MenuItemContainer>

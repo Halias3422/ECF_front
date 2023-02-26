@@ -2,9 +2,9 @@ import { Formula } from '@/interfaces/formulas';
 import { merriweatherSans } from '@/styles/fonts';
 import styled from 'styled-components';
 
-const FormulaItem = ({ formula }: { formula: Formula }) => {
+const FormulaItem = ({ formula, id }: { formula: Formula; id: string }) => {
   return (
-    <FormulaItemContainer>
+    <FormulaItemContainer id={id}>
       <h3 className={merriweatherSans.className}>{formula.title}</h3>
       <p>{formula.description}</p>
       <FormulaPrice className="themeDarkBlue">{`${formula.price} €`}</FormulaPrice>
