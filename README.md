@@ -14,7 +14,7 @@ yarn
 //to format files
 yarn prettier
 
-//to check prettier format and run jest tests
+//to check prettier format and run cypress tests
 yarn test
 
 //to run locally

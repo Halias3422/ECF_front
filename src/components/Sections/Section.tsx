@@ -63,7 +63,7 @@ const TextContainer = styled.div`
   margin-bottom: 40px;
   @media screen and (min-width: 1025px) {
     margin-bottom: 0px;
-    max-width: 35%;
+    max-width: 40%;
   }
 `;
 

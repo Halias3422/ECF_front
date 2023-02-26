@@ -53,7 +53,7 @@ const HeroContainer = styled.div`
 
 const TextContainer = styled.div`
   @media screen and (min-width: 1025px) {
-    max-width: 35%;
+    max-width: 40%;
   }
 `;
 
