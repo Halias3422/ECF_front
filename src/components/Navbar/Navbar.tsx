@@ -18,7 +18,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header style={{ position: 'sticky', top: '0' }}>
+    <Header>
       <NavbarSection>
         <NavbarContainer>
           <LogoContainer
@@ -39,9 +39,15 @@ const Navbar = () => {
         hamburgerOpen={hamburgerOpen}
         setHamburgerOpen={setHamburgerOpen}
       />
-    </header>
+    </Header>
   );
 };
+
+const Header = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 10;
+`;
 
 const NavbarSection = styled.nav`
   background-color: ${(props) => props.theme.darkGreen};
