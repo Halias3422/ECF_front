@@ -1,6 +1,7 @@
 export const API_ROUTES = {
   dishes: {
     createNewDish: '/api/create-new-dish',
+    getAllDishesByCategories: '/api/get-all-dishes-by-categories',
   },
   dishesGallery: {
     getAllDishes: '/api/get-all-dishes-gallery',
