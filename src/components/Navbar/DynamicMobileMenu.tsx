@@ -74,7 +74,7 @@ const DynamicMenuPopUp = styled.div`
   background-color: ${(props) => props.theme.darkGreen};
   padding-top: 20px;
   padding-bottom: 20px;
-  transition: width ease-out 0.5s;
+  transition: width ease-out 0.3s;
   border: ${(props) => props.theme.lightGreen} 2px solid;
   &.slideIn {
     width: 50%;

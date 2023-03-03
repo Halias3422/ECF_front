@@ -27,6 +27,7 @@ export default function Home({
           }
           imageAlt="Photo du restaurant."
           $isOdd={true}
+          $textIsLeft
         />
         <Section
           id="strongPointsSection"
