@@ -25,9 +25,9 @@ const CarteDishItem = ({
           <HeaderContainer
             className={$isOdd ? 'themeLightGreen' : 'themeDarkGreen'}
           >
-            <h3>{dish.title}</h3>
+            <h3 className="dishTitle">{dish.title}</h3>
           </HeaderContainer>
-          <p>{dish.description}</p>
+          <p className="dishDescription">{dish.description}</p>
         </DishTextContainer>
       </DishCardContainer>
     </DishItemContainer>

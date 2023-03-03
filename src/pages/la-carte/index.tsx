@@ -3,7 +3,7 @@ import { getDataFromAPI } from '@/api/utils';
 import Hero from '@/components/Hero/Hero';
 import CarteCategory from '@/components/Sections/Carte/CarteCategory';
 import { CarteCategoryData } from '@/interfaces/carte';
-import React, { useState } from 'react';
+import React from 'react';
 import ChefsQuote from './ChefsQuote';
 
 const CartePage = ({ carteDishes }: { carteDishes: CarteCategoryData[] }) => {

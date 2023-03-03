@@ -1,5 +1,5 @@
 import { CarteCategoryData } from '@/interfaces/carte';
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import CarteDishItem from './CarteDishItem';
 
