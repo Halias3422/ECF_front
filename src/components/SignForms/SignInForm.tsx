@@ -5,10 +5,14 @@ import MainCTA from '../MainCTA/MainCTA';
 const SignInForm = () => {
   return (
     <SignFormContainer className="themeLightGreen">
-      <label htmlFor="mailInput">Adresse mail:</label>
-      <FormInput type="text" id="mailInput" />
-      <label htmlFor="passwordInput">Mot de passe:</label>
-      <FormInput type="password" id="passwordInput" />
+      <InputContainer>
+        <label htmlFor="mailInput">Adresse mail:</label>
+        <FormInput type="text" id="mailInput" />
+      </InputContainer>
+      <InputContainer>
+        <label htmlFor="passwordInput">Mot de passe:</label>
+        <FormInput type="password" id="passwordInput" />
+      </InputContainer>
       <Separator />
       <FormSubmit textContent="Connexion" theme="themeDarkGrey" />
 
@@ -30,6 +34,16 @@ const SignFormContainer = styled.form`
   gap: 25px;
   width: 80%;
   margin-bottom: 42px;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  @media screen and (min-width: 1024px) {
+  }
 `;
 
 const Separator = styled.div`

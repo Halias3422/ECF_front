@@ -56,12 +56,13 @@ const HeroContainer = styled.div<{ $textIsLeft: boolean }>`
     flex-direction: ${(props) => (props.$textIsLeft ? 'row' : 'row-reverse')};
     justify-content: space-between;
     align-items: center;
+    gap: 10%;
   }
 `;
 
 const TextContainer = styled.div`
   @media screen and (min-width: 1025px) {
-    max-width: 40%;
+    max-width: 50%;
   }
 `;
 

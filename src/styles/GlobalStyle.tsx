@@ -126,8 +126,8 @@ font-size: 36px;
 
 
 img {
-max-width: 55%;
-max-height: 800px;
+max-width: 50%;
+max-height: 700px;
 }
 
 .section {
