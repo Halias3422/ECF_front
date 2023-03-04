@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import MainCTA from '../MainCTA/MainCTA';
-import Section from '../Section/Section';
 
 const ReservationSection = ({
   theme,
