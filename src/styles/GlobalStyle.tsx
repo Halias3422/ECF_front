@@ -40,6 +40,14 @@ p, li {
 	text-align: justify
 }
 
+input, label {
+	font-size: 18px;
+}
+
+label {
+font-weight: bold;
+}
+
 img {
 border-radius: 8px;
 max-width: 100%;
@@ -119,6 +127,7 @@ font-size: 36px;
 
 img {
 max-width: 55%;
+max-height: 800px;
 }
 
 .section {
@@ -141,6 +150,10 @@ padding-bottom: 100px;
 
 p, li {
 font-size: 18px;
+}
+
+label, input {
+font-size: 22px;
 }
 
 }
