@@ -1,5 +1,4 @@
 import { DaySchedule } from '@/interfaces/schedule';
-import { useEffect } from 'react';
 import styled from 'styled-components';
 import FooterContact from './FooterContact';
 import FooterSchedule from './FooterSchedule';
