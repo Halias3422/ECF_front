@@ -27,6 +27,7 @@ const Submit = styled.input`
   padding: 4px 0px;
   font-weight: bold;
 	border-radius 6px;
+	cursor: pointer;
 
   @media screen and (min-width: 769px) {
     font-size: 24px;

@@ -12,4 +12,7 @@ export const API_ROUTES = {
   menus: {
     getAllMenus: '/api/get-all-menus',
   },
+  users: {
+    login: '/api/user-login',
+  },
 };
