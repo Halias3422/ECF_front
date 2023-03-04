@@ -20,7 +20,7 @@ const FooterContact = () => {
   );
 };
 
-const FooterContactContainer = styled.div`
+const FooterContactContainer = styled.article`
   border-top: ${(props) => `1px solid ${props.theme.snow}`};
   padding-top: 60px;
   @media screen and (min-width: 769px) {

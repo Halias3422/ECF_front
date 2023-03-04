@@ -11,35 +11,37 @@ import { DaySchedule } from '@/interfaces/schedule';
 const ConnexionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   return (
     <>
-      <Hero
-        header="Contents de vous revoir !"
-        paragraphs={[]}
-        image="images/waiter-smiling.jpg"
-        imageAlt="Notre serveuse Magalie vous attend"
-        childComponents={[<SignInForm />]}
-        $textIsLeft={false}
-        $isOdd={true}
-      />
-      <ReservationSection theme="themeLightGreen" $isOdd={false} />
-      <Section
-        id="ItsSoMuchSimpler"
-        header="C'est tellement plus simple !"
-        paragraphs={[
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
-          'consectetur adipiscing elit. Morbi at ante pharetra consectetur adipiscing.',
-        ]}
-        image="images/table-clients.jpg"
-        imageAlt="Pas de tracas, place au plaisir !"
-        childComponents={[
-          <MainCTA
-            textContent="Inscription"
-            url="/inscription"
-            theme="themeDarkGreen"
-          />,
-        ]}
-        $textIsLeft={true}
-        $isOdd={true}
-      />
+      <main>
+        <Hero
+          header="Contents de vous revoir !"
+          paragraphs={[]}
+          image="images/waiter-smiling.jpg"
+          imageAlt="Notre serveuse Magalie vous attend"
+          childComponents={[<SignInForm />]}
+          $textIsLeft={false}
+          $isOdd={true}
+        />
+        <ReservationSection theme="themeLightGreen" $isOdd={false} />
+        <Section
+          id="ItsSoMuchSimpler"
+          header="C'est tellement plus simple !"
+          paragraphs={[
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
+            'consectetur adipiscing elit. Morbi at ante pharetra consectetur adipiscing.',
+          ]}
+          image="images/table-clients.jpg"
+          imageAlt="Pas de tracas, place au plaisir !"
+          childComponents={[
+            <MainCTA
+              textContent="Inscription"
+              url="/inscription"
+              theme="themeDarkGreen"
+            />,
+          ]}
+          $textIsLeft={true}
+          $isOdd={true}
+        />
+      </main>
       <Footer weekSchedule={weekSchedule} />
     </>
   );
@@ -50,12 +52,9 @@ export const getStaticProps = async () => {
     API_ROUTES.schedule.getWeekSchedule
   );
   const weekSchedule = scheduleResponse?.rows;
-  const menusResponse = await getDataFromAPI(API_ROUTES.menus.getAllMenus);
-  const menus = menusResponse?.rows;
   return {
     props: {
       weekSchedule,
-      menus,
     },
   };
 };

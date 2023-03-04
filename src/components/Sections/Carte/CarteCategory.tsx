@@ -35,7 +35,7 @@ const CarteCategory = ({
   );
 };
 
-const CategoryNameContainer = styled.section`
+const CategoryNameContainer = styled.article`
   display: flex;
   justify-content: center;
   h2 {

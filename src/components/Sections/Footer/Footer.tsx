@@ -14,7 +14,7 @@ const Footer = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   );
 };
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.section`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 769px) {

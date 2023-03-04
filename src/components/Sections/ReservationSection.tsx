@@ -10,7 +10,7 @@ const ReservationSection = ({
   $isOdd: boolean;
 }) => {
   return (
-    <article
+    <section
       id="reservationSection"
       className={`section ${$isOdd ? 'odd' : 'even'}`}
     >
@@ -21,11 +21,11 @@ const ReservationSection = ({
         </CenteredHeader>
         <MainCTA textContent="Réservation" url="/reserver" theme={theme} />
       </ReservationSectionContainer>
-    </article>
+    </section>
   );
 };
 
-const ReservationSectionContainer = styled.div`
+const ReservationSectionContainer = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;

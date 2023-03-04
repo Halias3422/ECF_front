@@ -22,7 +22,7 @@ const Section = ({
   $isOdd: boolean;
 }) => {
   return (
-    <article id={id} className={`section ${$isOdd ? 'odd' : 'even'}`}>
+    <section id={id} className={`section ${$isOdd ? 'odd' : 'even'}`}>
       <SectionContainer className="container" $textIsLeft={$textIsLeft}>
         <TextContainer>
           <h2 className={merriweatherSans.className}>{header}</h2>
@@ -42,11 +42,11 @@ const Section = ({
         </TextContainer>
         {image && <Image src={image} alt={imageAlt} title={imageAlt} />}
       </SectionContainer>
-    </article>
+    </section>
   );
 };
 
-const SectionContainer = styled.div<{ $textIsLeft: boolean }>`
+const SectionContainer = styled.article<{ $textIsLeft: boolean }>`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 1025px) {

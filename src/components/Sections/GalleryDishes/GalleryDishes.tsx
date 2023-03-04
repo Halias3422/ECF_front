@@ -14,7 +14,7 @@ const GalleryDishes = ({
   galleryDishes: GalleryDishData[];
 }) => {
   return (
-    <article
+    <section
       id="galleryDishesSection"
       className={`section ${$isOdd ? 'odd' : 'even'}`}
     >
@@ -55,7 +55,7 @@ const GalleryDishes = ({
           />
         </MoreDishesCTAContainer>
       </GalleryDishesContainer>
-    </article>
+    </section>
   );
 };
 
