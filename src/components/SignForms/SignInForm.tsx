@@ -1,6 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { postDataToAPI } from '@/api/utils';
-import { FormEvent, useEffect, useState } from 'react';
+import UserContext from '@/context/UserContext';
+import { FormEvent, useContext, useState } from 'react';
 import styled from 'styled-components';
 import FormSubmit from '../FormSubmit/FormSubmit';
 import MainCTA from '../MainCTA/MainCTA';
@@ -13,6 +14,8 @@ const SignInForm = () => {
     email: '',
     password: '',
   });
+
+  const { userContext, setUserContext } = useContext(UserContext);
 
   //trigger reflow -> https://css-tricks.com/restart-css-animation/#aa-update-another-javascript-method-to-restart-a-css-animation
   const triggerErrorAnimation = () => {
