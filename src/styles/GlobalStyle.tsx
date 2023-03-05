@@ -40,7 +40,7 @@ p, li {
 	text-align: justify
 }
 
-input, label {
+input {
 	font-size: 18px;
 }
 
@@ -93,6 +93,28 @@ color: ${colorscheme.snow}
 width: 80%;
 margin: 0 auto;
 max-width: 1200px;
+}
+
+.errorShake {
+	animation: error-shaking 0.15s 2;
+  @keyframes error-shaking {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(0eg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
 }
 
 @media screen and (min-width: 481px) {
@@ -148,11 +170,11 @@ padding-top: 100px;
 padding-bottom: 100px;
 }
 
-p, li {
+label, p, li {
 font-size: 18px;
 }
 
-label, input {
+input {
 font-size: 22px;
 }
 

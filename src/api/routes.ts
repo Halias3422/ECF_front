@@ -14,5 +14,7 @@ export const API_ROUTES = {
   },
   users: {
     login: '/api/user-login',
+    signup: '/api/user-signup',
+    updateOptionalInfo: '/api/user-update-optional-info',
   },
 };

@@ -1,6 +1,6 @@
 import { API_ROUTES } from '@/api/routes';
 import { postDataToAPI } from '@/api/utils';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import FormSubmit from '../FormSubmit/FormSubmit';
 import MainCTA from '../MainCTA/MainCTA';
@@ -8,20 +8,31 @@ import MainCTA from '../MainCTA/MainCTA';
 const SignInForm = () => {
   const [emailWarning, setEmailWarning] = useState<string>('');
   const [passwordWarning, setPasswordWarning] = useState<string>('');
+  const [formWarning, setFormWarning] = useState<string>('');
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
   });
 
+  //trigger reflow -> https://css-tricks.com/restart-css-animation/#aa-update-another-javascript-method-to-restart-a-css-animation
+  const triggerErrorAnimation = () => {
+    const form = document.querySelector('#signInForm') as HTMLFormElement;
+    form?.classList.remove('errorShake');
+    void form?.offsetWidth;
+    form?.classList.add('errorShake');
+  };
+
   const verifyLoginValues = (): boolean => {
     if (loginInfo.email.length === 0) {
       setEmailWarning('Veuillez renseigner une adresse mail');
+      triggerErrorAnimation();
       return false;
     } else {
       setEmailWarning('');
     }
     if (loginInfo.password.length === 0) {
       setPasswordWarning('Veuillez renseigner un mot de passe');
+      triggerErrorAnimation();
       return false;
     } else {
       setPasswordWarning('');
@@ -33,18 +44,25 @@ const SignInForm = () => {
     event.preventDefault();
     if (verifyLoginValues()) {
       const res = await postDataToAPI(API_ROUTES.users.login, loginInfo);
+      if (res === undefined || res.status !== 200) {
+        setFormWarning('Adresse mail ou mot de passe incorrect');
+        triggerErrorAnimation();
+      } else if (res.status === 200) {
+        setFormWarning('');
+      }
     }
   };
 
   return (
-    <SignFormContainer
+    <SignInFormContainer
+      id="signInForm"
       className="themeLightGreen"
       onSubmit={(event) => handleLoginSubmit(event)}
     >
       <InputContainer>
         <label htmlFor="mailInput">Adresse mail:</label>
         <FormInput
-          type="text"
+          type="email"
           id="mailInput"
           onChange={(event) =>
             setLoginInfo({ ...loginInfo, email: event.target.value })
@@ -65,18 +83,18 @@ const SignInForm = () => {
       </InputContainer>
       <Separator />
       <FormSubmit textContent="Connexion" theme="themeDarkGrey" />
-
+      {formWarning.length > 0 && <Warning>{formWarning}</Warning>}
       <NoAccountParaph>Vous n'avez pas de compte ?</NoAccountParaph>
       <MainCTA
         textContent="Inscription"
         url="/inscription"
         theme="themeDarkGreen"
       />
-    </SignFormContainer>
+    </SignInFormContainer>
   );
 };
 
-const SignFormContainer = styled.form`
+const SignInFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,6 +102,7 @@ const SignFormContainer = styled.form`
   gap: 25px;
   width: 80%;
   margin-bottom: 42px;
+  border-radius: 12px;
 `;
 
 const InputContainer = styled.div`
@@ -99,6 +118,7 @@ const InputContainer = styled.div`
 const Warning = styled.p`
   color: darkRed;
   margin: 0;
+  text-align: center;
 `;
 
 const Separator = styled.div`

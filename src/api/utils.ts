@@ -2,9 +2,13 @@ import axios, { AxiosError } from 'axios';
 
 export const postDataToAPI = async (endpointUrl: string, data: any) => {
   try {
-    await axios.post(process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl, data);
+    const res = await axios.post(
+      process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl,
+      data
+    );
+    return res;
   } catch (error) {
-    handleAPIError(error as AxiosError);
+    return (error as AxiosError)?.response;
   }
 };
 
@@ -12,18 +16,17 @@ export const getDataFromAPI = async (endpointUrl: string, data?: any) => {
   try {
     const response = await axios.get(
       process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl,
-      data ? data : null
+      data || null
     );
     return response.data;
   } catch (error) {
-    handleAPIError(error as AxiosError);
-    return null;
+    return (error as AxiosError)?.response;
   }
 };
 
 // need to secure alert() call in case of it not being defined
 
-const handleAPIError = (error: AxiosError) => {
+const handleAdminAPIError = (error: AxiosError) => {
   if (error.response) {
     try {
       alert(
