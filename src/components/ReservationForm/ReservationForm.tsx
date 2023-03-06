@@ -1,5 +1,6 @@
 import { ReservationFormData } from '@/interfaces/reservation';
-import { useState } from 'react';
+import { roboto } from '@/styles/fonts';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import FormSubmit from '../FormSubmit/FormSubmit';
 
@@ -10,7 +11,16 @@ const ReservationForm = ({ $isOdd }: { $isOdd: boolean }) => {
     time: '',
     allergies: '',
   });
+  const today = new Date();
+  //return yyyy-mm-dd format
+  const minReservation = today.toISOString().split('T')[0];
+  const maxReservation = new Date(today.setDate(today.getDate() + 90))
+    .toISOString()
+    .split('T')[0];
 
+  // TODO add max reservation time in admin panel ?
+  // TODO add max guest size
+  // TODO retreive default guests and allergies values
   return (
     <section
       id="reservationSection"
@@ -20,38 +30,48 @@ const ReservationForm = ({ $isOdd }: { $isOdd: boolean }) => {
         <ReservationFormContainer>
           <Header className="themeLightGreen">Réservation</Header>
           <Form>
-            <FormItem>
-              <label htmlFor="numberGuests">Nombre de couverts:</label>
-              <input
-                type="number"
-                id="numberGuests"
-                onChange={(e) =>
-                  setReservationData({
-                    ...reservationData,
-                    guestNumber: e.target.value,
-                  })
-                }
-              />
-            </FormItem>
-            <FormItem>
-              <label htmlFor="date">Date:</label>
-              <input
-                type="date"
-                id="date"
-                onChange={(e) =>
-                  setReservationData({
-                    ...reservationData,
-                    date: e.target.value,
-                  })
-                }
-              />
-            </FormItem>
+            <GuestsAndDateContainer>
+              <FormItem>
+                <label htmlFor="numberGuests">Nombre de couverts:</label>
+                <input
+                  type="number"
+                  id="numberGuests"
+                  className={`flexInput ${roboto.className}`}
+                  min="1"
+                  max="45"
+                  defaultValue="1"
+                  onChange={(e) =>
+                    setReservationData({
+                      ...reservationData,
+                      guestNumber: e.target.value,
+                    })
+                  }
+                />
+              </FormItem>
+              <FormItem>
+                <label htmlFor="date">Date:</label>
+                <input
+                  type="date"
+                  id="date"
+                  className={`flexInput ${roboto.className}`}
+                  min={minReservation}
+                  max={maxReservation}
+                  onChange={(e) =>
+                    setReservationData({
+                      ...reservationData,
+                      date: e.target.value,
+                    })
+                  }
+                />
+              </FormItem>
+            </GuestsAndDateContainer>
             <FormItem>
               <label htmlFor="allergies">
                 Allergies ou demandes supplémentaires:
               </label>
               <TextArea
                 id="allergies"
+                className={roboto.className}
                 onChange={(e) =>
                   setReservationData({
                     ...reservationData,
@@ -60,7 +80,9 @@ const ReservationForm = ({ $isOdd }: { $isOdd: boolean }) => {
                 }
               />
             </FormItem>
-            <FormSubmit textContent="Confirmer" theme="themeDarkGreen" />
+            <FormItem id="submitItem">
+              <FormSubmit textContent="Confirmer" theme="themeDarkGreen" />
+            </FormItem>
           </Form>
         </ReservationFormContainer>
       </div>
@@ -92,6 +114,19 @@ const Form = styled.form`
   padding: 60px 10%;
   text-align: center;
   width: 80%;
+  #submitItem {
+    margin-bottom: 10px;
+  }
+`;
+
+const GuestsAndDateContainer = styled.div`
+  @media screen and (min-width: 769px) {
+    display: flex;
+    gap: 10%;
+    .flexInput {
+      max-width: 320px;
+    }
+  }
 `;
 
 const FormItem = styled.div`
