@@ -1,6 +1,6 @@
 import { ReservationFormData } from '@/interfaces/reservation';
 import { roboto } from '@/styles/fonts';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import FormSubmit from '../FormSubmit/FormSubmit';
 
@@ -21,6 +21,7 @@ const ReservationForm = ({ $isOdd }: { $isOdd: boolean }) => {
   // TODO add max reservation time in admin panel ?
   // TODO add max guest size
   // TODO retreive default guests and allergies values
+  // TODO handle form submit
   return (
     <section
       id="reservationSection"
