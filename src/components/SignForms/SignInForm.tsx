@@ -59,6 +59,7 @@ const SignInForm = () => {
           token: res.data.token,
           id: res.data.id.data,
         });
+        window.location.href = '/';
       }
     }
   };
