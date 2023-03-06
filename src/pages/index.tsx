@@ -81,11 +81,11 @@ export const getStaticProps = async () => {
   const galleryResponse = await getDataFromAPI(
     API_ROUTES.dishesGallery.getAllDishes
   );
-  const galleryDishes = galleryResponse?.rows;
+  const galleryDishes = galleryResponse?.data;
   const scheduleResponse = await getDataFromAPI(
     API_ROUTES.schedule.getWeekSchedule
   );
-  const weekSchedule = scheduleResponse?.rows;
+  const weekSchedule = scheduleResponse?.data;
   return {
     props: {
       galleryDishes,

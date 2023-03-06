@@ -50,7 +50,7 @@ const FooterSchedule = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   );
 };
 
-const FooterScheduleContainer = styled.div`
+const FooterScheduleContainer = styled.article`
   padding-bottom: 60px;
   @media screen and (min-width: 769px) {
     width: 80%;

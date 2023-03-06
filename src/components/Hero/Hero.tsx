@@ -20,7 +20,7 @@ const Hero = ({
   $isOdd: boolean;
 }) => {
   return (
-    <article className={`section ${$isOdd ? 'odd' : 'even'}`}>
+    <section className={`section ${$isOdd ? 'odd' : 'even'}`}>
       <HeroContainer className="container" $textIsLeft={$textIsLeft}>
         <TextContainer>
           <div
@@ -45,23 +45,24 @@ const Hero = ({
         </TextContainer>
         <img src={image} alt={imageAlt} title={imageAlt} />
       </HeroContainer>
-    </article>
+    </section>
   );
 };
 
-const HeroContainer = styled.div<{ $textIsLeft: boolean }>`
+const HeroContainer = styled.article<{ $textIsLeft: boolean }>`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 1025px) {
     flex-direction: ${(props) => (props.$textIsLeft ? 'row' : 'row-reverse')};
     justify-content: space-between;
     align-items: center;
+    gap: 10%;
   }
 `;
 
 const TextContainer = styled.div`
   @media screen and (min-width: 1025px) {
-    max-width: 40%;
+    max-width: 50%;
   }
 `;
 

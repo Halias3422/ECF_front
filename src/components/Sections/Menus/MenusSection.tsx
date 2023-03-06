@@ -10,13 +10,13 @@ const MenusSection = ({
   $isOdd: boolean;
 }) => {
   return (
-    <div id="menusSection" className={`section ${$isOdd ? 'odd' : 'even'}`}>
+    <section id="menusSection" className={`section ${$isOdd ? 'odd' : 'even'}`}>
       <MenusContainer className="container">
         {menus.map((menu, index) => {
           return <MenuItem menu={menu} index={index} key={index} />;
         })}
       </MenusContainer>
-    </div>
+    </section>
   );
 };
 

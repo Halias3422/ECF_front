@@ -12,7 +12,7 @@ const FormulaItem = ({ formula, id }: { formula: Formula; id: string }) => {
   );
 };
 
-const FormulaItemContainer = styled.section`
+const FormulaItemContainer = styled.div`
   overflow-wrap: anywhere;
   p {
     text-align: center;

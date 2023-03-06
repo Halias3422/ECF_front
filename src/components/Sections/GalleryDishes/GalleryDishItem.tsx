@@ -90,7 +90,7 @@ const GalleryDishItem = ({ dish }: { dish: GalleryDishData }) => {
   );
 };
 
-const GalleryDishItemContainer = styled.div`
+const GalleryDishItemContainer = styled.article`
   display: flex;
   justify-content: center;
   flex-grow: 1;

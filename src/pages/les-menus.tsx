@@ -16,18 +16,20 @@ const MenusPage = ({
 }) => {
   return (
     <>
-      <Hero
-        header="Le <b>Quai Antique</b> est fier de vous présenter ses menus"
-        paragraphs={[
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta.',
-        ]}
-        image="images/menu.jpg"
-        imageAlt="Un bon en-cas le temps de lire le menu"
-        $isOdd
-        $textIsLeft
-      />
-      <MenusSection menus={menus} $isOdd={false} />
-      <ReservationSection theme="themeDarkGreen" $isOdd />
+      <main>
+        <Hero
+          header="Le <b>Quai Antique</b> est fier de vous présenter ses menus"
+          paragraphs={[
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta.',
+          ]}
+          image="images/menu.jpg"
+          imageAlt="Un bon en-cas le temps de lire le menu"
+          $isOdd
+          $textIsLeft
+        />
+        <MenusSection menus={menus} $isOdd={false} />
+        <ReservationSection theme="themeDarkGreen" $isOdd />
+      </main>
       <Footer weekSchedule={weekSchedule} />
     </>
   );
@@ -37,9 +39,9 @@ export const getStaticProps = async () => {
   const scheduleResponse = await getDataFromAPI(
     API_ROUTES.schedule.getWeekSchedule
   );
-  const weekSchedule = scheduleResponse?.rows;
+  const weekSchedule = scheduleResponse?.data;
   const menusResponse = await getDataFromAPI(API_ROUTES.menus.getAllMenus);
-  const menus = menusResponse?.rows;
+  const menus = menusResponse?.data;
   return {
     props: {
       weekSchedule,
