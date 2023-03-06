@@ -5,7 +5,7 @@ import colorscheme from '@/styles/colorscheme';
 import { roboto } from '@/styles/fonts';
 import GlobalStyle from '@/styles/GlobalStyle';
 import type { AppProps } from 'next/app';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -13,6 +13,20 @@ export default function App({ Component, pageProps }: AppProps) {
     id: '',
     token: '',
   });
+
+  useEffect(() => {
+    const localSession = localStorage.getItem('lqa_user_session');
+    if (localSession) {
+      const sessionItem = JSON.parse(localSession);
+      if (sessionItem && sessionItem.token && sessionItem.id) {
+      }
+      setUserContext({
+        id: sessionItem.id,
+        token: sessionItem.token,
+      });
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={colorscheme}>
       <GlobalStyle />

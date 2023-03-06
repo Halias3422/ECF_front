@@ -74,6 +74,16 @@ background-color: ${colorscheme.darkBlue};
 color: ${colorscheme.snow};
 }
 
+.themeLightBlue {
+background-color: ${colorscheme.lightBlue};
+color: ${colorscheme.snow};
+}
+
+.themeSnow {
+background-color: ${colorscheme.snow};
+color: ${colorscheme.darkGrey};
+}
+
 .section {
 width: 100%;
 padding-top: 70px;

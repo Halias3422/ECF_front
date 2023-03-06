@@ -1,7 +1,8 @@
+import { UserLoginState } from '@/interfaces/users';
 import styled from 'styled-components';
 import NavbarLink from './NavbarLink';
 
-const DesktopMenu = () => {
+const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
   return (
     <DesktopMenuContainer id="desktopMenu">
       <GreenLinksContainer>
@@ -23,11 +24,19 @@ const DesktopMenu = () => {
             url="/contact"
             theme="themeLightGreen"
           />
-          <NavbarLink
-            textContent="Connexion"
-            url="/connexion"
-            theme="themeLightGreen"
-          />
+          {!userContext.id || !userContext.token ? (
+            <NavbarLink
+              textContent="Connexion"
+              url="/connexion"
+              theme="themeLightGreen"
+            />
+          ) : (
+            <NavbarLink
+              textContent="Mon compte"
+              url="/mon-compte"
+              theme="themeSnow"
+            />
+          )}
         </MenuLinkSeparator>
       </GreenLinksContainer>
       <NavbarLink

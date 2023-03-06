@@ -1,3 +1,4 @@
+import { UserLoginState } from '@/interfaces/users';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
 import NavbarLink from './NavbarLink';
@@ -5,9 +6,11 @@ import NavbarLink from './NavbarLink';
 const DynamicMobileMenu = ({
   hamburgerOpen,
   setHamburgerOpen,
+  userContext,
 }: {
   hamburgerOpen: boolean;
   setHamburgerOpen: Dispatch<SetStateAction<boolean>>;
+  userContext: UserLoginState;
 }) => {
   useEffect(() => {
     window.addEventListener('click', (event) => {
@@ -47,11 +50,19 @@ const DynamicMobileMenu = ({
           url="/contact"
           theme="themeDarkGreen"
         />
-        <NavbarLink
-          textContent="Connexion"
-          url="/connexion"
-          theme="themeDarkGreen"
-        />
+        {!userContext.id || !userContext.token ? (
+          <NavbarLink
+            textContent="Connexion"
+            url="/connexion"
+            theme="themeDarkGreen"
+          />
+        ) : (
+          <NavbarLink
+            textContent="Mon compte"
+            url="/mon-compte"
+            theme="themeSnow"
+          />
+        )}
         <NavbarLink
           textContent="Réserver"
           url="/reserver"

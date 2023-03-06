@@ -52,7 +52,7 @@ const SignInForm = () => {
       } else if (res.status === 200) {
         setFormWarning('');
         localStorage.setItem(
-          'session',
+          'lqa_user_session',
           `{"token": "${res.data.token}", "id": "${res.data.id.data}"}`
         );
         setUserContext({
