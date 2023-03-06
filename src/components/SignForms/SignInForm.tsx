@@ -14,8 +14,7 @@ const SignInForm = () => {
     email: '',
     password: '',
   });
-
-  const { userContext, setUserContext } = useContext(UserContext);
+  const { setUserContext } = useContext(UserContext);
 
   //trigger reflow -> https://css-tricks.com/restart-css-animation/#aa-update-another-javascript-method-to-restart-a-css-animation
   const triggerErrorAnimation = () => {
@@ -52,6 +51,14 @@ const SignInForm = () => {
         triggerErrorAnimation();
       } else if (res.status === 200) {
         setFormWarning('');
+        localStorage.setItem(
+          'session',
+          `{"token": "${res.data.data[0].token}", "id": "${res.data.data[0].id.data}"}`
+        );
+        setUserContext({
+          token: res.data.data[0].token,
+          id: res.data.data[0].id.data,
+        });
       }
     }
   };

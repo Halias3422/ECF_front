@@ -13,7 +13,7 @@ export interface UserOptionalInfo {
 }
 
 export interface UserLoginState {
-  isLoggedIn: boolean;
+  id: string;
   token: string;
 }
 

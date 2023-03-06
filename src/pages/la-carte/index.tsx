@@ -57,12 +57,12 @@ export const getStaticProps = async () => {
   const carteDishesResponse = await getDataFromAPI(
     API_ROUTES.dishes.getAllDishesByCategories
   );
-  const carteDishes = carteDishesResponse?.rows;
+  const carteDishes = carteDishesResponse?.data;
 
   const scheduleResponse = await getDataFromAPI(
     API_ROUTES.schedule.getWeekSchedule
   );
-  const weekSchedule = scheduleResponse?.rows;
+  const weekSchedule = scheduleResponse?.data;
   return {
     props: {
       carteDishes,

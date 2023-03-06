@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [userContext, setUserContext] = useState<UserLoginState>({
-    isLoggedIn: false,
+    id: '',
     token: '',
   });
   return (

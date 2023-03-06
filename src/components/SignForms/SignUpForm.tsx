@@ -1,8 +1,15 @@
 import { API_ROUTES } from '@/api/routes';
 import { postDataToAPI } from '@/api/utils';
+import UserContext from '@/context/UserContext';
 import { UserSignUpInfo } from '@/interfaces/users';
 import axios from 'axios';
-import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import {
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useContext,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 import FormSubmit from '../FormSubmit/FormSubmit';
 
@@ -20,6 +27,7 @@ const SignUpForm = ({
   const [emailWarning, setEmailWarning] = useState<string>('');
   const [passwordWarning, setPasswordWarning] = useState<string>('');
   const [formWarning, setFormWarning] = useState<string>('');
+  const { setUserContext } = useContext(UserContext);
 
   const verifySignUpValues = () => {
     if (!signUpInfo.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
@@ -61,7 +69,7 @@ const SignUpForm = ({
     event.preventDefault();
     if (verifySignUpValues()) {
       const res = await postDataToAPI(API_ROUTES.users.signup, signUpInfo);
-      if (res === undefined || res.status !== 200) {
+      if (res === undefined || res.status !== 201) {
         triggerErrorAnimation();
       }
       if (res === undefined || res.status === 500) {
@@ -72,9 +80,17 @@ const SignUpForm = ({
         } else {
           setFormWarning('Erreur, identifiants non conformes');
         }
-      } else if (res.status === 200) {
+      } else if (res.status === 201) {
         setFilledMandatoryInfo(true);
         setFormWarning('');
+        localStorage.setItem(
+          'session',
+          `{"token": "${res.data.data[0].token}", "id": "${res.data.data[0].id.data}"}`
+        );
+        setUserContext({
+          token: res.data.data[0].token,
+          id: res.data.data[0].id.data,
+        });
       }
     } else {
       triggerErrorAnimation();

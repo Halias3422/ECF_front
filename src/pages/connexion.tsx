@@ -51,7 +51,7 @@ export const getStaticProps = async () => {
   const scheduleResponse = await getDataFromAPI(
     API_ROUTES.schedule.getWeekSchedule
   );
-  const weekSchedule = scheduleResponse?.rows;
+  const weekSchedule = scheduleResponse?.data;
   return {
     props: {
       weekSchedule,
