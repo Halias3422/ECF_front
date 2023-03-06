@@ -2,7 +2,6 @@ import { API_ROUTES } from '@/api/routes';
 import { postDataToAPI } from '@/api/utils';
 import UserContext from '@/context/UserContext';
 import { UserSignUpInfo } from '@/interfaces/users';
-import axios from 'axios';
 import {
   Dispatch,
   FormEvent,
@@ -85,11 +84,11 @@ const SignUpForm = ({
         setFormWarning('');
         localStorage.setItem(
           'session',
-          `{"token": "${res.data.data[0].token}", "id": "${res.data.data[0].id.data}"}`
+          `{"token": "${res.data.token}", "id": "${res.data.id.data}"}`
         );
         setUserContext({
-          token: res.data.data[0].token,
-          id: res.data.data[0].id.data,
+          token: res.data.token,
+          id: res.data.id.data,
         });
       }
     } else {

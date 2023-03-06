@@ -20,6 +20,7 @@ export const getDataFromAPI = async (endpointUrl: string, data?: any) => {
     );
     return response.data;
   } catch (error) {
+    console.log('error = ' + JSON.stringify(error));
     return (error as AxiosError)?.response;
   }
 };
