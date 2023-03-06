@@ -13,8 +13,8 @@ export interface UserOptionalInfo {
 }
 
 export interface UserLoginState {
-  id: string;
-  token: string;
+  loggedIn: boolean;
+  userSession: string;
 }
 
 export interface UserLoginContext {

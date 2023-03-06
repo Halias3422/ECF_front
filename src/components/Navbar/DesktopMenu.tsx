@@ -25,7 +25,7 @@ const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
             url="/contact"
             theme="themeLightGreen"
           />
-          {!userContext.id || !userContext.token ? (
+          {!userContext.userSession ? (
             <NavbarLink
               textContent="Connexion"
               url="/connexion"

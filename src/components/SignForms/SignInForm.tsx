@@ -46,20 +46,19 @@ const SignInForm = () => {
     event.preventDefault();
     if (verifyLoginValues()) {
       const res = await postDataToAPI(API_ROUTES.users.login, loginInfo);
+      console.log('res = ' + JSON.stringify(res));
       if (res === undefined || res.status !== 200) {
         setFormWarning('Adresse mail ou mot de passe incorrect');
         triggerErrorAnimation();
-      } else if (res.status === 200) {
+      } else if (res.status === 200 && res.data.session) {
+        console.log('res.data = ' + res.data.session);
         setFormWarning('');
-        localStorage.setItem(
-          'lqa_user_session',
-          `{"token": "${res.data.token}", "id": "${res.data.id.data}"}`
-        );
+        localStorage.setItem('lqa_user_session', res.data.session);
         setUserContext({
-          token: res.data.token,
-          id: res.data.id.data,
+          loggedIn: true,
+          userSession: res.data.session,
         });
-        window.location.href = '/';
+        // window.location.href = '/';
       }
     }
   };

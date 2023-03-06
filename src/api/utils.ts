@@ -12,15 +12,32 @@ export const postDataToAPI = async (endpointUrl: string, data: any) => {
   }
 };
 
-export const getDataFromAPI = async (endpointUrl: string, data?: any) => {
+export const getDataFromAPI = async (endpointUrl: string) => {
   try {
     const response = await axios.get(
-      process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl,
-      data || null
+      process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl
     );
     return response.data;
   } catch (error) {
-    console.log('error = ' + JSON.stringify(error));
+    return (error as AxiosError)?.response;
+  }
+};
+
+export const getProtectedDataFromAPI = async (
+  endpointUrl: string,
+  header: string
+) => {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl,
+      {
+        headers: {
+          Authorization: `${header}`,
+        },
+      }
+    );
+    return response.data.data;
+  } catch (error) {
     return (error as AxiosError)?.response;
   }
 };
