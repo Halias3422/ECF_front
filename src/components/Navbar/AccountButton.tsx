@@ -18,6 +18,12 @@ const AccountButton = ({
   const [myAccountSubMenu, setMyAccountSubMenu] = useState<boolean>(false);
   const buttonValue: string =
     textContent + '\u{0020}' + (myAccountSubMenu ? '\u{25C2}' : '\u{25BE}');
+
+  const handleLogOut = () => {
+    localStorage.removeItem('lqa_user_session');
+    window.location.href = '/';
+  };
+
   return (
     <div>
       <MyAccount
@@ -34,9 +40,15 @@ const AccountButton = ({
           <NavbarLink
             textContent="Mes infos"
             url="/mon-compte"
-            theme="themeLightBlue"
+            theme={openedTheme}
           />
-          <MyAccount $myAccountSubMenu={false}>Déconnexion</MyAccount>
+          <MyAccount
+            theme={theme}
+            $myAccountSubMenu={false}
+            onClick={handleLogOut}
+          >
+            Déconnexion
+          </MyAccount>
         </SubMenuContainer>
       )}
     </div>
