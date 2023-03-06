@@ -51,7 +51,7 @@ const DynamicMobileMenu = ({
           url="/contact"
           theme="themeDarkGreen"
         />
-        {!userContext.id || !userContext.token ? (
+        {!userContext.userSession ? (
           <NavbarLink
             textContent="Connexion"
             url="/connexion"

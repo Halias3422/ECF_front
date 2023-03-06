@@ -79,16 +79,13 @@ const SignUpForm = ({
         } else {
           setFormWarning('Erreur, identifiants non conformes');
         }
-      } else if (res.status === 201) {
+      } else if (res.status === 201 && res.data.session) {
         setFilledMandatoryInfo(true);
         setFormWarning('');
-        localStorage.setItem(
-          'lqa_user_session',
-          `{"token": "${res.data.token}", "id": "${res.data.id.data}"}`
-        );
+        localStorage.setItem('lqa_user_session', res.data.session);
         setUserContext({
-          token: res.data.token,
-          id: res.data.id.data,
+          loggedIn: true,
+          userSession: res.data.session,
         });
       }
     } else {

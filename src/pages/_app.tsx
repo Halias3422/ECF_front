@@ -10,19 +10,16 @@ import { ThemeProvider } from 'styled-components';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [userContext, setUserContext] = useState<UserLoginState>({
-    id: '',
-    token: '',
+    loggedIn: false,
+    userSession: '',
   });
 
   useEffect(() => {
     const localSession = localStorage.getItem('lqa_user_session');
     if (localSession) {
-      const sessionItem = JSON.parse(localSession);
-      if (sessionItem && sessionItem.token && sessionItem.id) {
-      }
       setUserContext({
-        id: sessionItem.id,
-        token: sessionItem.token,
+        loggedIn: true,
+        userSession: localSession,
       });
     }
   }, []);
