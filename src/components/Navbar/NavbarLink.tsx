@@ -30,7 +30,7 @@ const Link = styled.a`
   font-size: ${(props) => (props.href === '/reserver' ? '16px' : '14px')};
   padding: ${(props) => (props.href === '/reserver' ? '8px 15px' : '4px 8px')};
   min-width: 5rem;
-  width: fit-content;
+  width: 120px;
   @media screen and (min-width: 1201px) {
     font-size: ${(props) => (props.href === '/reserver' ? '18px' : '16px')};
     padding: ${(props) =>

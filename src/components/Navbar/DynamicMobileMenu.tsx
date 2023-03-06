@@ -1,13 +1,17 @@
+import { UserLoginState } from '@/interfaces/users';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
+import AccountButton from './AccountButton';
 import NavbarLink from './NavbarLink';
 
 const DynamicMobileMenu = ({
   hamburgerOpen,
   setHamburgerOpen,
+  userContext,
 }: {
   hamburgerOpen: boolean;
   setHamburgerOpen: Dispatch<SetStateAction<boolean>>;
+  userContext: UserLoginState;
 }) => {
   useEffect(() => {
     window.addEventListener('click', (event) => {
@@ -17,9 +21,9 @@ const DynamicMobileMenu = ({
       const hamburgerMenuPath = document.querySelector('#hamburgerPath');
       if (
         dynamicMenu?.className.includes('slideIn') &&
-        event.target !== dynamicMenu &&
-        event.target !== hamburgerMenu &&
+        !dynamicMenu?.contains(event.target as HTMLElement) &&
         event.target !== hamburgerMenuIcon &&
+        event.target !== hamburgerMenu &&
         event.target !== hamburgerMenuPath
       ) {
         setHamburgerOpen(false);
@@ -47,11 +51,19 @@ const DynamicMobileMenu = ({
           url="/contact"
           theme="themeDarkGreen"
         />
-        <NavbarLink
-          textContent="Connexion"
-          url="/connexion"
-          theme="themeDarkGreen"
-        />
+        {!userContext.id || !userContext.token ? (
+          <NavbarLink
+            textContent="Connexion"
+            url="/connexion"
+            theme="themeDarkGreen"
+          />
+        ) : (
+          <AccountButton
+            textContent="Mon compte"
+            theme="themeSnow"
+            openedTheme="themeLightBlue"
+          />
+        )}
         <NavbarLink
           textContent="Réserver"
           url="/reserver"

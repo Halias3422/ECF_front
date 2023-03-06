@@ -1,5 +1,6 @@
+import UserContext from '@/context/UserContext';
 import { dancingScript } from '@/styles/fonts';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DesktopMenu from './DesktopMenu';
 import DynamicMobileMenu from './DynamicMobileMenu';
@@ -7,6 +8,7 @@ import HamburgerMenu from './HamburgerMenu';
 
 const Navbar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const { userContext } = useContext(UserContext);
 
   const handleResize = () => {
     if (window.screen.width > 1024) {
@@ -32,12 +34,13 @@ const Navbar = () => {
             hamburgerOpen={hamburgerOpen}
             setHamburgerOpen={setHamburgerOpen}
           />
-          <DesktopMenu />
+          <DesktopMenu userContext={userContext} />
         </NavbarContainer>
       </NavbarSection>
       <DynamicMobileMenu
         hamburgerOpen={hamburgerOpen}
         setHamburgerOpen={setHamburgerOpen}
+        userContext={userContext}
       />
     </Header>
   );
