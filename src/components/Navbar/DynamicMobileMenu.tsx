@@ -1,6 +1,7 @@
 import { UserLoginState } from '@/interfaces/users';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
+import AccountButton from './AccountButton';
 import NavbarLink from './NavbarLink';
 
 const DynamicMobileMenu = ({
@@ -20,9 +21,9 @@ const DynamicMobileMenu = ({
       const hamburgerMenuPath = document.querySelector('#hamburgerPath');
       if (
         dynamicMenu?.className.includes('slideIn') &&
-        event.target !== dynamicMenu &&
-        event.target !== hamburgerMenu &&
+        !dynamicMenu?.contains(event.target as HTMLElement) &&
         event.target !== hamburgerMenuIcon &&
+        event.target !== hamburgerMenu &&
         event.target !== hamburgerMenuPath
       ) {
         setHamburgerOpen(false);
@@ -57,10 +58,10 @@ const DynamicMobileMenu = ({
             theme="themeDarkGreen"
           />
         ) : (
-          <NavbarLink
+          <AccountButton
             textContent="Mon compte"
-            url="/mon-compte"
             theme="themeSnow"
+            openedTheme="themeLightBlue"
           />
         )}
         <NavbarLink

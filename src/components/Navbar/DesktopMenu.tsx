@@ -1,5 +1,6 @@
 import { UserLoginState } from '@/interfaces/users';
 import styled from 'styled-components';
+import AccountButton from './AccountButton';
 import NavbarLink from './NavbarLink';
 
 const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
@@ -31,10 +32,10 @@ const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
               theme="themeLightGreen"
             />
           ) : (
-            <NavbarLink
+            <AccountButton
               textContent="Mon compte"
-              url="/mon-compte"
               theme="themeSnow"
+              openedTheme="themeLightBlue"
             />
           )}
         </MenuLinkSeparator>
