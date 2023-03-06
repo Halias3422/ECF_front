@@ -53,11 +53,11 @@ const SignInForm = () => {
         setFormWarning('');
         localStorage.setItem(
           'session',
-          `{"token": "${res.data.data[0].token}", "id": "${res.data.data[0].id.data}"}`
+          `{"token": "${res.data.token}", "id": "${res.data.id.data}"}`
         );
         setUserContext({
-          token: res.data.data[0].token,
-          id: res.data.data[0].id.data,
+          token: res.data.token,
+          id: res.data.id.data,
         });
       }
     }
