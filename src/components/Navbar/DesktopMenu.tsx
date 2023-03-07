@@ -1,9 +1,28 @@
+import { API_ROUTES } from '@/api/routes';
+import { getProtectedDataFromAPI } from '@/api/utils';
 import { UserLoginState } from '@/interfaces/users';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AccountButton from './AccountButton';
 import NavbarLink from './NavbarLink';
 
 const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
+  const [userRole, setUserRole] = useState<boolean>(false);
+
+  useEffect(() => {
+    const getUserRole = async () => {
+      if (userContext.userSession) {
+        const userRole = await getProtectedDataFromAPI(
+          API_ROUTES.users.getUserRole,
+          userContext.userSession
+        );
+        if (userRole) {
+          setUserRole(userRole);
+        }
+      }
+    };
+    getUserRole();
+  }, [userContext]);
   return (
     <DesktopMenuContainer id="desktopMenu">
       <GreenLinksContainer>
@@ -35,7 +54,8 @@ const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
             <AccountButton
               textContent="Mon compte"
               theme="themeSnow"
-              openedTheme="themeLightBlue"
+              openedTheme="themeDarkBlue"
+              userRole={userRole}
             />
           )}
         </MenuLinkSeparator>

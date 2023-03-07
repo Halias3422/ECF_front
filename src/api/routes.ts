@@ -17,5 +17,6 @@ export const API_ROUTES = {
     signup: '/api/user-signup',
     updateOptionalInfo: '/api/user-update-optional-info',
     getOptionalInfo: '/api/user-get-optional-info',
+    getUserRole: '/api/user-get-role',
   },
 };

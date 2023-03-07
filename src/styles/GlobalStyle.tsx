@@ -124,7 +124,28 @@ max-width: 1200px;
       transform: rotate(0deg);
     }
   }
+}
 
+.dashboardMenuOpening {
+	animation: menu-opening ease-out 1s;
+	@keyframes menu-opening {
+		from {
+			max-height: 0px;
+		} to {
+			max-height: 1000px;
+		}
+	}
+}
+
+.dashboardMenuLinkOpening {
+	animation: link-opening ease-out 0.3s;
+	@keyframes link-opening {
+		from {
+			max-height: 0px;
+		} to {
+			max-height: 150px;
+		}
+	}
 }
 
 @media screen and (min-width: 481px) {
