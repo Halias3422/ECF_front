@@ -138,12 +138,36 @@ max-width: 1200px;
 }
 
 .dashboardMenuLinkOpening {
-	animation: link-opening ease-out 0.3s;
+	animation: link-opening ease-out 0.5s;
 	@keyframes link-opening {
 		from {
 			max-height: 0px;
 		} to {
 			max-height: 150px;
+		}
+	}
+}
+
+.dashboardConfigPanelOpening {
+	animation: panel-opening linear 1.5s;
+	@keyframes panel-opening {
+		from {
+			max-height: 0px;
+		} to {
+			max-height: 1000px;
+		}
+	}
+}
+
+.dashboardGalleryImageOpening {
+	animation: image-opening ease-out 0.5s;
+	@keyframes image-opening {
+		from {
+			max-height: 0px;
+			max-width: 0px;
+		} to {
+			max-height: 250px;
+			max-width: 250px;
 		}
 	}
 }

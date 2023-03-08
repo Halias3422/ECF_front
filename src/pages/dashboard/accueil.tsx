@@ -1,30 +1,9 @@
-import DashboardMenuLink from '@/components/Dashboard/DashboardMenuLink';
+import DashboardMenuLink from '@/components/Dashboard/menus/DashboardMenuLink';
 import { merriweatherSans } from '@/styles/fonts';
 import Head from 'next/head';
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const DashboardAccueilPage = () => {
-  const [openedConfigPanel, setOpenedConfigPanel] = useState<string>('');
-
-  const displayOpenedConfigPanel = () => {
-    switch (openedConfigPanel) {
-      case 'Galerie dimages':
-        return <></>;
-      case 'La Carte':
-        return <></>;
-      case 'Les Menus':
-        return <></>;
-      case 'Réservations':
-        return <></>;
-      case 'Les Horaires':
-        return <></>;
-      case "Capacité d'accueil":
-        return <></>;
-      case 'La Carte':
-        return <></>;
-    }
-  };
   return (
     <>
       <Head>
@@ -38,9 +17,8 @@ const DashboardAccueilPage = () => {
       <main>
         <section className="section odd">
           <MainMenuContainer className="container">
-            <DashboardMenuLink setOpenedConfigPanel={setOpenedConfigPanel} />
+            <DashboardMenuLink />
           </MainMenuContainer>
-          {displayOpenedConfigPanel()}
         </section>
       </main>
     </>
@@ -59,7 +37,7 @@ const MainMenuContainer = styled.div`
   align-items: center;
   padding-bottom: 60px;
   width: 100%;
-  height: 50vh;
+  min-height: 50vh;
 `;
 
 export default DashboardAccueilPage;

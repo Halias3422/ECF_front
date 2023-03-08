@@ -1,18 +1,22 @@
-import SvgReservations from '@/components/svgs/reservations';
-import { Dispatch, SetStateAction, useState } from 'react';
+import SvgLesHoraires from '@/components/svgs/lesHoraires';
+import SvgNumberClients from '@/components/svgs/numberClients';
+import { useState } from 'react';
 import styled from 'styled-components';
-import DashboardButton from './DashboardButton';
+import DashboardButton from '../DashboardButton';
 
-const TheClients = ({
-  setOpenedConfigPanel,
-}: {
-  setOpenedConfigPanel: Dispatch<SetStateAction<string>>;
-}) => {
+const TheRestaurant = ({}: {}) => {
+  const [openedConfigPanel, setOpenedConfigPanel] = useState<string>('');
+
   return (
     <MenuContainer className="dashboardMenuOpening" id="menuLinksContainer">
       <DashboardButton
-        title="Réservations"
-        svg={<SvgReservations />}
+        title="Les Horaires"
+        svg={<SvgLesHoraires />}
+        setOpenedConfigPanel={setOpenedConfigPanel}
+      />
+      <DashboardButton
+        title="Capacité d'accueil"
+        svg={<SvgNumberClients />}
         setOpenedConfigPanel={setOpenedConfigPanel}
       />
     </MenuContainer>
@@ -33,4 +37,4 @@ const MenuContainer = styled.div`
   overflow: hidden;
 `;
 
-export default TheClients;
+export default TheRestaurant;
