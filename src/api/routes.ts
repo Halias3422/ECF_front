@@ -5,6 +5,8 @@ export const API_ROUTES = {
   },
   dishesGallery: {
     getAllDishes: '/api/get-all-dishes-gallery',
+    deleteDishGalleryItem: '/api/delete-dish-gallery-item',
+    createNewDishGalleryItem: '/api/create-new-dish-gallery-item',
   },
   schedule: {
     getWeekSchedule: '/api/get-week-schedule',

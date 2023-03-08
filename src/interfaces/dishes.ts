@@ -14,6 +14,17 @@ export interface DishCarteData {
 }
 
 export interface GalleryDishData {
-  image?: string;
-  title?: string;
+  image: string;
+  title: string;
+}
+
+export interface GalleryDishDashboard {
+  title: string;
+  click: boolean;
+  confirm: boolean;
+}
+
+export interface GalleryDishModifyDashboard {
+  context: GalleryDishDashboard;
+  attributes: GalleryDishData;
 }

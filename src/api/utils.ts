@@ -12,6 +12,27 @@ export const postDataToAPI = async (endpointUrl: string, data: any) => {
   }
 };
 
+export const postProtectedDataToAPI = async (
+  endpointUrl: string,
+  data: any,
+  headers: string
+) => {
+  try {
+    const res = await axios.post(
+      process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl,
+      data,
+      {
+        headers: {
+          Authorization: headers,
+        },
+      }
+    );
+    return res;
+  } catch (error) {
+    return (error as AxiosError)?.response;
+  }
+};
+
 export const getDataFromAPI = async (endpointUrl: string) => {
   try {
     const response = await axios.get(

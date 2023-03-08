@@ -1,5 +1,5 @@
 import colorscheme from '@/styles/colorscheme';
-import { Dispatch, SetStateAction, SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import styled from 'styled-components';
 import TheClients from './TheClients/TheClients';
 import TheDishes from './TheDishes/TheDishes';
