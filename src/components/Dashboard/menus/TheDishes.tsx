@@ -1,26 +1,31 @@
 import SvgImageGallery from '@/components/svgs/imageGallery';
 import SvgLaCarte from '@/components/svgs/laCarte';
 import SvgLesMenus from '@/components/svgs/lesMenus';
+import { Dispatch, SetStateAction, SyntheticEvent } from 'react';
 import styled from 'styled-components';
-import DashboardLink from './DashboardLink';
+import DashboardButton from './DashboardButton';
 
-const TheDishes = () => {
+const TheDishes = ({
+  setOpenedConfigPanel,
+}: {
+  setOpenedConfigPanel: Dispatch<SetStateAction<string>>;
+}) => {
   return (
     <MenuContainer className="dashboardMenuOpening" id="menuLinksContainer">
-      <DashboardLink
+      <DashboardButton
         title="Galerie d'images"
         svg={<SvgImageGallery />}
-        url="/dashboard/galerie-images"
+        setOpenedConfigPanel={setOpenedConfigPanel}
       />
-      <DashboardLink
+      <DashboardButton
         title="La Carte"
         svg={<SvgLaCarte />}
-        url="/dashboard/la-carte"
+        setOpenedConfigPanel={setOpenedConfigPanel}
       />
-      <DashboardLink
+      <DashboardButton
         title="Les Menus"
         svg={<SvgLesMenus />}
-        url="/dashboard/les-menus"
+        setOpenedConfigPanel={setOpenedConfigPanel}
       />
     </MenuContainer>
   );

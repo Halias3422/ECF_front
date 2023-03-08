@@ -1,11 +1,15 @@
 import colorscheme from '@/styles/colorscheme';
-import { SyntheticEvent, useState } from 'react';
+import { Dispatch, SetStateAction, SyntheticEvent, useState } from 'react';
 import styled from 'styled-components';
 import TheClients from './menus/TheClients';
 import TheDishes from './menus/TheDishes';
 import TheRestaurant from './menus/TheRestaurant';
 
-const DashboardMenuLink = () => {
+const DashboardMenuLink = ({
+  setOpenedConfigPanel,
+}: {
+  setOpenedConfigPanel: Dispatch<SetStateAction<string>>;
+}) => {
   const [openedMenu, setOpenedMenu] = useState<string>('');
 
   const handleMenuClick = (event: SyntheticEvent) => {
@@ -26,11 +30,11 @@ const DashboardMenuLink = () => {
   const displayOpenedMenu = () => {
     switch (openedMenu) {
       case 'theDishes':
-        return <TheDishes />;
+        return <TheDishes setOpenedConfigPanel={setOpenedConfigPanel} />;
       case 'theClients':
-        return <TheClients />;
+        return <TheClients setOpenedConfigPanel={setOpenedConfigPanel} />;
       case 'theRestaurant':
-        return <TheRestaurant />;
+        return <TheRestaurant setOpenedConfigPanel={setOpenedConfigPanel} />;
       case 'myAccount':
         return <></>;
       default:

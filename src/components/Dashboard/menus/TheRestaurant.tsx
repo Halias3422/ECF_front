@@ -1,20 +1,25 @@
 import SvgLesHoraires from '@/components/svgs/lesHoraires';
 import SvgNumberClients from '@/components/svgs/numberClients';
+import { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
-import DashboardLink from './DashboardLink';
+import DashboardButton from './DashboardButton';
 
-const TheRestaurant = () => {
+const TheRestaurant = ({
+  setOpenedConfigPanel,
+}: {
+  setOpenedConfigPanel: Dispatch<SetStateAction<string>>;
+}) => {
   return (
     <MenuContainer className="dashboardMenuOpening" id="menuLinksContainer">
-      <DashboardLink
+      <DashboardButton
         title="Les Horaires"
         svg={<SvgLesHoraires />}
-        url="/dashboard/les-horaires"
+        setOpenedConfigPanel={setOpenedConfigPanel}
       />
-      <DashboardLink
+      <DashboardButton
         title="Capacité d'accueil"
         svg={<SvgNumberClients />}
-        url="/dashboard/capacite-d-accueil"
+        setOpenedConfigPanel={setOpenedConfigPanel}
       />
     </MenuContainer>
   );

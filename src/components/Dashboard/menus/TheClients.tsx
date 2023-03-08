@@ -1,14 +1,19 @@
 import SvgReservations from '@/components/svgs/reservations';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
-import DashboardLink from './DashboardLink';
+import DashboardButton from './DashboardButton';
 
-const TheClients = () => {
+const TheClients = ({
+  setOpenedConfigPanel,
+}: {
+  setOpenedConfigPanel: Dispatch<SetStateAction<string>>;
+}) => {
   return (
     <MenuContainer className="dashboardMenuOpening" id="menuLinksContainer">
-      <DashboardLink
+      <DashboardButton
         title="Réservations"
         svg={<SvgReservations />}
-        url="/dashboard/reservations"
+        setOpenedConfigPanel={setOpenedConfigPanel}
       />
     </MenuContainer>
   );

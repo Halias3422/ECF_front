@@ -1,23 +1,15 @@
+import colorscheme from '@/styles/colorscheme';
 import * as React from 'react';
 
-const SvgReservations = (props: any) => (
+const SvgReservations = () => (
   <svg
-    width={48}
     height={48}
-    viewBox="0 0 24 24"
-    fill="none"
+    width={48}
+    viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
+    fill={`${colorscheme.darkGrey}`}
   >
-    <path
-      d="M20 10V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3m16 0v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9m16 0H4m4-7v4m8-4v4"
-      stroke="#000"
-      strokeWidth={2}
-      strokeLinecap="round"
-    />
-    <rect x={6} y={12} width={3} height={3} rx={0.5} fill="#000" />
-    <rect x={10.5} y={12} width={3} height={3} rx={0.5} fill="#000" />
-    <rect x={15} y={12} width={3} height={3} rx={0.5} fill="#000" />
+    <path d="M128 384v512h768V192H768v32a32 32 0 1 1-64 0v-32H320v32a32 32 0 0 1-64 0v-32H128v128h768v64H128zm192-256h384V96a32 32 0 1 1 64 0v32h160a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h160V96a32 32 0 0 1 64 0v32zm-32 384h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm192-192h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm192-192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64z" />
   </svg>
 );
 
