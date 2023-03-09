@@ -24,17 +24,17 @@ export interface GalleryDishDashboard {
   confirm: boolean;
 }
 
-export interface GalleryDishModifyDashboard {
-  context: GalleryDishDashboard;
-  attributes: GalleryDishData;
-}
-
 export interface GalleryDishFormData {
   title: string;
   image: {
     file: Blob | null;
     name: string;
   };
+}
+
+export interface GalleryDishModifyDashboard {
+  context: GalleryDishDashboard;
+  attributes: GalleryDishData;
 }
 
 export interface GalleryDishCreateDashboard {

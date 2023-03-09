@@ -35,10 +35,15 @@ export const postProtectedDataToAPI = async (
   }
 };
 
-export const getDataFromAPI = async (endpointUrl: string) => {
+export const getDataFromAPI = async (endpointUrl: string, params?: any) => {
   try {
     const response = await axios.get(
-      process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl
+      process.env.NEXT_PUBLIC_BACK_END_URL + endpointUrl,
+      {
+        params: {
+          params,
+        },
+      }
     );
     return response.data;
   } catch (error) {
