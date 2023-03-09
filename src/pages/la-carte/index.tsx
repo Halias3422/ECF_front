@@ -26,7 +26,7 @@ const CartePage = ({
           childComponents={[
             <ChefsQuote quote="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta." />,
           ]}
-          image={'images/table-full-meals.jpg'}
+          image="table-full-meals.jpg"
           imageAlt={'Assortiment de plats concoctés par le Chef'}
           $isOdd
           $textIsLeft={false}

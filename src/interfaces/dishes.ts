@@ -14,6 +14,7 @@ export interface DishCarteData {
 }
 
 export interface GalleryDishData {
+  id?: string;
   image: string;
   title: string;
 }

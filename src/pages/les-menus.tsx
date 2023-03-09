@@ -22,7 +22,7 @@ const MenusPage = ({
           paragraphs={[
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta.',
           ]}
-          image="images/menu.jpg"
+          image="menu.jpg"
           imageAlt="Un bon en-cas le temps de lire le menu"
           $isOdd
           $textIsLeft

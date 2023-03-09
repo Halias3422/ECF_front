@@ -18,7 +18,7 @@ const CarteDishItem = ({
       >
         <DishImage
           id={`image${dish.image}`}
-          src={`dishes/${dish.image}`}
+          src={`${process.env.NEXT_PUBLIC_BACK_END_URL}/dishes/${dish.image}`}
           alt={dish.title}
         />
         <DishTextContainer>

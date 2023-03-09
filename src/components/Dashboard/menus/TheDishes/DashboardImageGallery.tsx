@@ -54,6 +54,7 @@ const DashboardImageGallery = ({}: {}) => {
   const { userContext } = useContext(UserContext);
 
   const handleDeleteDishGalleryItem = async (dish: GalleryDishData) => {
+    console.log('dish = ' + JSON.stringify(dish));
     const response = await postProtectedDataToAPI(
       API_ROUTES.dishesGallery.deleteDishGalleryItem,
       dish,
