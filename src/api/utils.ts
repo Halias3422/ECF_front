@@ -15,7 +15,8 @@ export const postDataToAPI = async (endpointUrl: string, data: any) => {
 export const postProtectedDataToAPI = async (
   endpointUrl: string,
   data: any,
-  headers: string
+  headers: string,
+  contentType?: string
 ) => {
   try {
     const res = await axios.post(
@@ -24,6 +25,7 @@ export const postProtectedDataToAPI = async (
       {
         headers: {
           Authorization: headers,
+          ...(contentType ? { 'Content-Type': contentType } : {}),
         },
       }
     );

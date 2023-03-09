@@ -18,9 +18,15 @@ const CreateItemPopUp = ({
     key: string
   ) => {
     const newValues = { ...createItem };
-    newValues.attributes[key] = event.target.value;
-    if (key === 'image') {
-      newValues.attributes[key] = event.target.files?.[0];
+    if (key === 'image' && event.target.files) {
+      const imageUrl = event.target.value.split('\\');
+      const imageSrc = imageUrl[imageUrl.length - 1];
+      newValues.attributes[key] = {
+        file: event.target.files[0],
+        name: imageSrc,
+      };
+    } else {
+      newValues.attributes[key] = event.target.value;
     }
     setCreateItem(newValues);
   };
@@ -29,9 +35,9 @@ const CreateItemPopUp = ({
       const form = document.getElementById('createForm');
       form?.getElementsByTagName('img')?.[0]?.remove();
       const input = document.getElementById('imageInput') as HTMLInputElement;
-      if (input) {
+      if (input && input.files) {
         const image = document.createElement('img');
-        image.src = URL.createObjectURL(createItem.attributes.image);
+        image.src = URL.createObjectURL(input.files[0]);
         image.style.width = form?.offsetWidth + 'px';
         image.style.maxWidth = 'unset';
         image.style.marginTop = '15px';
@@ -45,7 +51,11 @@ const CreateItemPopUp = ({
     return (
       <BackgroundPopUp id="createPopUpBackground">
         <label>Créer un nouvel Élément</label>
-        <CreateForm id="createForm" onSubmit={(e) => e.preventDefault()}>
+        <CreateForm
+          id="createForm"
+          onSubmit={(e) => e.preventDefault()}
+          encType="multipart/form-data"
+        >
           {Object.keys(createItem.attributes).map(
             (attribute: string, index: number) => {
               return (
@@ -58,6 +68,9 @@ const CreateItemPopUp = ({
                         : attribute === 'number'
                         ? 'number'
                         : 'text'
+                    }
+                    name={
+                      attribute === 'image' ? 'uploaded_image' : `${attribute}`
                     }
                     id={attribute + 'Input'}
                     required

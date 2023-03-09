@@ -1,6 +1,8 @@
 import {
+  GalleryDishCreateDashboard,
   GalleryDishDashboard,
   GalleryDishData,
+  GalleryDishFormData,
   GalleryDishModifyDashboard,
 } from '@/interfaces/dishes';
 import { API_ROUTES } from '@/api/routes';
@@ -35,14 +37,17 @@ const DashboardImageGallery = ({}: {}) => {
       title: '',
     },
   });
-  const [createItem, setCreateItem] = useState<GalleryDishModifyDashboard>({
+  const [createItem, setCreateItem] = useState<GalleryDishCreateDashboard>({
     context: {
       title: '',
       click: false,
       confirm: false,
     },
     attributes: {
-      image: '',
+      image: {
+        file: null,
+        name: '',
+      },
       title: '',
     },
   });
@@ -61,14 +66,28 @@ const DashboardImageGallery = ({}: {}) => {
 
   const handleModifyDishGalleryItem = async (dishTitle: string) => {};
 
-  const handleCreateDishGalleryItem = async (dish: GalleryDishData) => {
-    const response = await postProtectedDataToAPI(
-      API_ROUTES.dishesGallery.createNewDishGalleryItem,
-      dish,
-      userContext.userSession
+  const handleCreateDishGalleryItem = async (dish: GalleryDishFormData) => {
+    const formData = new FormData();
+    formData.append(
+      'form_image',
+      createItem.attributes.image.file as File,
+      createItem.attributes.image.name
     );
-    if (response?.status === 201) {
-      retreiveGalleryDishes();
+    const saveImage = await postProtectedDataToAPI(
+      API_ROUTES.dishesGallery.saveDishGalleryImage,
+      formData,
+      userContext.userSession,
+      'multipart/form-data'
+    );
+    if (saveImage && saveImage.status === 201) {
+      const newItem = await postProtectedDataToAPI(
+        API_ROUTES.dishesGallery.createNewDishGalleryItem,
+        createItem.attributes,
+        userContext.userSession
+      );
+      if (newItem && newItem.status === 201) {
+        retreiveGalleryDishes();
+      }
     }
   };
 
@@ -112,10 +131,14 @@ const DashboardImageGallery = ({}: {}) => {
           confirm: false,
         },
         attributes: {
+          image: {
+            file: null,
+            name: '',
+          },
           title: '',
-          image: '',
         },
       });
+      handleCreateDishGalleryItem(dish);
     }
   });
 
