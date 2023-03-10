@@ -1,6 +1,7 @@
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { ChangeEvent } from 'react';
 import styled from 'styled-components';
+import HandleAttributeInputType from './HandleAttributeInputType';
 
 const ItemAttributesList = ({
   modifyItem,
@@ -39,14 +40,10 @@ const ItemAttributesList = ({
             return (
               <Attribute key={index} className="itemAttribute">
                 <label htmlFor={attribute}>{attribute}:</label>
-                <input
-                  type={type}
-                  id={attribute + 'Input'}
-                  defaultValue={
-                    type === 'file' ? '' : modifyItem.attributes[attribute]
-                  }
-                  onChange={(e) => changeItemAttribute(e, attribute)}
-                  required={type === 'file' ? false : true}
+                <HandleAttributeInputType
+                  attribute={attribute}
+                  item={modifyItem}
+                  changeItemAttribute={changeItemAttribute}
                 />
                 {attribute === 'image' && (
                   <img
@@ -74,7 +71,6 @@ const Attribute = styled.div`
   width: 450px;
   input {
     width: 80%;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;

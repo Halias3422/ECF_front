@@ -148,9 +148,22 @@ max-width: 1200px;
 	}
 }
 
-.dashboardConfigPanelOpening {
-	animation: panel-opening linear 0.5s;
-	@keyframes panel-opening {
+.dashboardConfigPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  border: 3px solid ${colorscheme.darkBlue};
+  border-top: none;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  overflow: hidden;
+  padding: 60px 5%;
+}
+
+.dishesGalleryConfigPanelOpening {
+	animation: dishes-gallery-panel-opening linear 0.5s;
+	@keyframes dishes-gallery-panel-opening {
 		from {
 			max-height: 0px;
 		} to {
@@ -159,8 +172,23 @@ max-width: 1200px;
 	}
 }
 
+.carteDishesConfigPanelOpening {
+	animation: carte-dishes-panel-opening linear 0.5s;
+	@keyframes carte-dishes-panel-opening {
+		from {
+		max-height: 0px;
+		min-width: 0px;
+width: 0%;
+		} to {
+		max-height: 10000px;
+		width: 100%;
+		min-width: 1200px;
+		}
+	}
+}
+
 .dashboardGalleryImageOpening {
-	animation: image-opening ease-out 0.3s;
+	animation: image-opening linear 0.3s;
 	@keyframes image-opening {
 		from {
 			max-height: 0px;
@@ -170,6 +198,19 @@ max-width: 1200px;
 			max-width: 250px;
 		}
 	}
+}
+
+.carteDishItemOpening {
+	animation dish-item-opening ease-out 0.3s;
+	@keyframes dish-item-opening {
+		from {
+			max-height: 0px;
+			max-width: 0px;
+		} to {
+			max-height: 1000px;
+			max-width: 100%;
+}
+}
 }
 
 @media screen and (min-width: 481px) {

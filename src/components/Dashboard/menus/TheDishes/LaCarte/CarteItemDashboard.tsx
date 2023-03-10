@@ -1,25 +1,31 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
-import GalleryDishItem from '@/components/Sections/GalleryDishes/GalleryDishItem';
+import CarteDishItem from '@/components/Sections/Carte/CarteDishItem';
 import UserContext from '@/context/UserContext';
+import { CarteCategoryData } from '@/interfaces/carte';
 import {
   DashboardImageData,
   DashboardItemContext,
   ModifyDashboardItem,
 } from '@/interfaces/dashboard';
-import { GalleryDishData } from '@/interfaces/galleryDishes';
+import { DishCarteData, DishFormData } from '@/interfaces/dishes';
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DeleteItemButton from '../../ItemActions/DeleteItemButton';
 import ModifyItemButton from '../../ItemActions/ModifyItemButton';
 
-const DishGalleryItemDashboard = ({
+const CarteItemDashboard = ({
   dish,
-  retreiveGalleryDishes,
+  category,
+  $isOdd,
+  retreiveDishes,
 }: {
-  dish: GalleryDishData;
-  retreiveGalleryDishes: any;
+  dish: DishCarteData;
+  category: CarteCategoryData;
+  $isOdd: boolean;
+  retreiveDishes: any;
 }) => {
+  const { userContext } = useContext(UserContext);
   const originalItem = {
     context: {
       id: dish.id as string,
@@ -28,10 +34,13 @@ const DishGalleryItemDashboard = ({
     },
     attributes: {
       title: dish.title,
+      description: dish.description,
       image: {
         file: dish.image,
         name: dish.image,
       },
+      price: dish.price,
+      category: category.category.name,
     },
     previousImage: dish.image,
   };
@@ -43,14 +52,13 @@ const DishGalleryItemDashboard = ({
     confirm: false,
     error: '',
   });
-  const { userContext } = useContext(UserContext);
 
   const saveImageOnAPI = async (
-    dish: GalleryDishData,
+    dish: DishFormData,
     image: DashboardImageData
   ) => {
     const isDuplicate = await getDataFromAPI(
-      API_ROUTES.dishesGallery.verifyIfDuplicateTitleOrImage,
+      API_ROUTES.dishes.verifyIfDuplicateTitleOrImage,
       { id: dish.id, title: dish.title, image: image.name }
     );
     if (isDuplicate.status !== 200) {
@@ -59,7 +67,7 @@ const DishGalleryItemDashboard = ({
     const formData = new FormData();
     formData.append('form_image', image.file as File, image.name);
     const saveImage = await postProtectedDataToAPI(
-      API_ROUTES.dishesGallery.saveDishGalleryImage,
+      API_ROUTES.dishes.saveDishImage,
       formData,
       userContext.userSession,
       'multipart/form-data'
@@ -71,35 +79,35 @@ const DishGalleryItemDashboard = ({
     const imageSplit = imagePath.split('/');
     const imageName = imageSplit?.[imageSplit.length - 1];
     const deleteImage = await postProtectedDataToAPI(
-      API_ROUTES.dishesGallery.deleteImage,
+      API_ROUTES.dishes.deleteImage,
       { image: imageName },
       userContext.userSession
     );
     return deleteImage;
   };
 
-  const handleDeleteDishGalleryItem = async (dish: GalleryDishData) => {
+  const handleDeleteDishItem = async (dish: DishCarteData) => {
     const response = await postProtectedDataToAPI(
-      API_ROUTES.dishesGallery.deleteDishGalleryItem,
+      API_ROUTES.dishes.deleteDishItem,
       dish,
       userContext.userSession
     );
     if (response && response.status === 200) {
-      const deleteImage = await deleteImageOnAPI(dish.image);
+      const deleteImage = await deleteImageOnAPI(dish.image as string);
       if (deleteImage && deleteImage.status === 200) {
-        retreiveGalleryDishes();
+        retreiveDishes();
       }
     }
   };
 
-  const handleModifyDishGalleryItem = async (
-    modifiedDish: GalleryDishData,
+  const handleModifyDishItem = async (
+    modifiedDish: DishFormData,
     image: DashboardImageData
   ) => {
     const saveImage = await saveImageOnAPI(modifiedDish, image);
     if (saveImage && saveImage.status === 201) {
       const modifiedItem = await postProtectedDataToAPI(
-        API_ROUTES.dishesGallery.modifyDishGalleryItem,
+        API_ROUTES.dishes.modifyDishItem,
         modifiedDish,
         userContext.userSession
       );
@@ -108,7 +116,7 @@ const DishGalleryItemDashboard = ({
           modifyItem.previousImage as string
         );
         if (deleteImage && deleteImage.status === 200) {
-          retreiveGalleryDishes();
+          retreiveDishes();
           return '';
         }
         return "impossible de supprimer l'image d'origine";
@@ -127,13 +135,18 @@ const DishGalleryItemDashboard = ({
         id: modifyItem.context.id,
         title: modifyItem.attributes.title,
         image: modifyItem.attributes.image.name,
+        description: modifyItem.attributes.description,
+        price: modifyItem.attributes.price,
+        category: modifyItem.attributes.category,
       };
-      const response = await handleModifyDishGalleryItem(modifiedDish, image);
+      const response = await handleModifyDishItem(modifiedDish, image);
       if (response.length === 0) {
         dish = {
           id: dish.id,
           title: modifyItem.attributes.title,
           image: modifyItem.attributes.image.name,
+          description: modifyItem.attributes.description,
+          price: modifyItem.attributes.price,
         };
       } else {
         setModifyItem({
@@ -153,7 +166,7 @@ const DishGalleryItemDashboard = ({
 
   useEffect(() => {
     const triggerItemDeletion = async () => {
-      await handleDeleteDishGalleryItem(dish);
+      await handleDeleteDishItem(dish);
     };
     if (deleteItem.confirm) {
       triggerItemDeletion();
@@ -161,10 +174,8 @@ const DishGalleryItemDashboard = ({
   }, [deleteItem.confirm]);
 
   return (
-    <ItemContainer className="dashboardGalleryImageOpening">
-      <GalleryDishItem dish={dish} />
-      <h3>{dish.title}</h3>
-      <ButtonsContainer className="dashboardGalleryImageOpening">
+    <CarteItemContainer $isOdd={$isOdd} className="carteDishItemOpening">
+      <ConfigButtonsContainer $isOdd={$isOdd} className="carteDishItemOpening">
         <DeleteItemButton
           deleteItem={deleteItem}
           setDeleteItem={setDeleteItem}
@@ -174,49 +185,38 @@ const DishGalleryItemDashboard = ({
           modifyItem={modifyItem}
           setModifyItem={setModifyItem}
         />
-      </ButtonsContainer>
-    </ItemContainer>
+      </ConfigButtonsContainer>
+      <CarteDishItem dish={dish} $isOdd={$isOdd} />
+    </CarteItemContainer>
   );
 };
 
-const ItemContainer = styled.div`
-  border: ${(props) => `3px solid ${props.theme.darkGrey}`};
-  border-radius: 10px;
-  padding: 2px 2px;
-  background-color: ${(props) => props.theme.darkGreen};
-  article {
-    width: 250px;
-    height: 250px;
-    max-width: unset;
-  }
-  h3 {
-    margin-top: -30px;
-    margin-bottom: 10px;
-    text-align: center;
-    color: ${(props) => props.theme.snow};
-  }
-  margin-bottom: 40px;
-  overflow: hidden;
-`;
-
-const ButtonsContainer = styled.div`
+const CarteItemContainer = styled.div<{ $isOdd: boolean }>`
+  width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 4%;
-  width: fit-content;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  padding: 5px 5px;
-  background-color: ${(props) => props.theme.lightGreen};
-  border-radius: 12px;
-  button {
-    width: 62px;
-    height: 50px;
-    cursor: pointer;
-    border: ${(props) => `2px solid ${props.theme.darkGrey}`};
-    background-color: ${(props) => props.theme.snow};
-    border-radius: 8px;
+  align-items: center;
+  flex-direction: ${(props) => (props.$isOdd ? 'row-reverse' : 'row')};
+  .dishCardContainer {
+    min-height: 300px;
+  }
+  img {
+    min-width: 295px;
+    min-height: 295px;
+    right: 0.2vw;
   }
 `;
 
-export default DishGalleryItemDashboard;
+const ConfigButtonsContainer = styled.div<{ $isOdd: boolean }>`
+  height: 50%;
+  width: 10%;
+  margin-bottom: 42px;
+  border-radius: ${(props) =>
+    props.$isOdd ? '0px 24px 24px 0px' : '24px 0px 0px 24px'};
+  display: flex;
+  background-color: ${(props) => props.theme.darkBlue};
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+`;
+export default CarteItemDashboard;

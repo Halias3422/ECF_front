@@ -13,12 +13,14 @@ const CarteDishItem = ({
     <DishItemContainer $isOdd={$isOdd} className="cardDishItem">
       <PriceTag price={dish.price.toString().slice(0, 5)} $isOdd={$isOdd} />
       <DishCardContainer
-        className={$isOdd ? 'themeDarkGreen' : 'themeLightGreen'}
+        className={
+          'dishCardContainer ' + ($isOdd ? 'themeDarkGreen' : 'themeLightGreen')
+        }
         $isOdd={$isOdd}
       >
         <DishImage
           id={`image${dish.image}`}
-          src={`${process.env.NEXT_PUBLIC_BACK_END_URL}/dishes/${dish.image}`}
+          src={dish.image}
           alt={dish.title}
         />
         <DishTextContainer>
