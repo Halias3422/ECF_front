@@ -1,4 +1,3 @@
-import colorscheme from '@/styles/colorscheme';
 import * as React from 'react';
 
 const SvgPencil = () => (
@@ -7,8 +6,8 @@ const SvgPencil = () => (
     width={24}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"
-    fill={`${colorscheme.darkGrey}`}
-    stroke={`${colorscheme.darkGrey}`}
+    fill="#000"
+    stroke="#000"
     strokeWidth="5"
     xmlSpace="preserve"
   >

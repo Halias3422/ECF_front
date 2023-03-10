@@ -9,6 +9,10 @@ export const API_ROUTES = {
     deleteDishGalleryItem: '/api/delete-dish-gallery-item',
     createNewDishGalleryItem: '/api/create-new-dish-gallery-item',
     saveDishGalleryImage: '/api/save-dish-gallery-image',
+    modifyDishGalleryItem: '/api/modify-dish-gallery-item',
+    deleteImage: '/api/delete-dish-gallery-image',
+    verifyIfDuplicateTitleOrImage:
+      '/api/dish-gallery-verify-duplicate-title-or-image',
   },
   schedule: {
     getWeekSchedule: '/api/get-week-schedule',

@@ -1,9 +1,13 @@
 import DashboardMenuLink from '@/components/Dashboard/menus/DashboardMenuLink';
+import UserContext from '@/context/UserContext';
 import { merriweatherSans } from '@/styles/fonts';
 import Head from 'next/head';
+import { useContext } from 'react';
 import styled from 'styled-components';
 
 const DashboardAccueilPage = () => {
+  const { userContext } = useContext(UserContext);
+
   return (
     <>
       <Head>

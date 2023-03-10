@@ -4,7 +4,7 @@ import SvgLesMenus from '@/components/svgs/lesMenus';
 import { useState } from 'react';
 import styled from 'styled-components';
 import DashboardButton from '../DashboardButton';
-import DashboardImageGallery from './DashboardImageGallery';
+import DishesGalleryDashboard from './DishesGallery/DishesGalleryDashboard';
 
 const TheDishes = ({}: {}) => {
   const [openedConfigPanel, setOpenedConfigPanel] = useState<string>('');
@@ -12,7 +12,8 @@ const TheDishes = ({}: {}) => {
   const displayOpenedConfigPanel = () => {
     switch (openedConfigPanel) {
       case "Galerie d'images":
-        return <DashboardImageGallery />;
+        // return <DashboardImageGallery />;
+        return <DishesGalleryDashboard />;
       case 'La Carte':
         return <></>;
       case 'Les Menus':

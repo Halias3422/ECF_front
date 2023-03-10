@@ -127,7 +127,7 @@ max-width: 1200px;
 }
 
 .dashboardMenuOpening {
-	animation: menu-opening ease-out 1s;
+	animation: menu-opening ease-out 0.7s;
 	@keyframes menu-opening {
 		from {
 			max-height: 0px;
@@ -138,7 +138,7 @@ max-width: 1200px;
 }
 
 .dashboardMenuLinkOpening {
-	animation: link-opening ease-out 0.5s;
+	animation: link-opening ease-out 0.3s;
 	@keyframes link-opening {
 		from {
 			max-height: 0px;
@@ -149,18 +149,18 @@ max-width: 1200px;
 }
 
 .dashboardConfigPanelOpening {
-	animation: panel-opening linear 1.5s;
+	animation: panel-opening linear 0.5s;
 	@keyframes panel-opening {
 		from {
 			max-height: 0px;
 		} to {
-			max-height: 1000px;
+			max-height: 10000px;
 		}
 	}
 }
 
 .dashboardGalleryImageOpening {
-	animation: image-opening ease-out 0.5s;
+	animation: image-opening ease-out 0.3s;
 	@keyframes image-opening {
 		from {
 			max-height: 0px;

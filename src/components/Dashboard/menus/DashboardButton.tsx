@@ -1,5 +1,5 @@
 import colorscheme from '@/styles/colorscheme';
-import { Dispatch, SetStateAction, SyntheticEvent } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 
 const DashboardButton = ({
