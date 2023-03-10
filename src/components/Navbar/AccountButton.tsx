@@ -10,10 +10,12 @@ const AccountButton = ({
   textContent,
   theme,
   openedTheme,
+  userRole,
 }: {
   textContent: string;
   theme: string;
   openedTheme: string;
+  userRole: boolean;
 }) => {
   const [myAccountSubMenu, setMyAccountSubMenu] = useState<boolean>(false);
   const buttonValue: string =
@@ -37,11 +39,19 @@ const AccountButton = ({
       </MyAccount>
       {myAccountSubMenu && (
         <SubMenuContainer className={openedTheme}>
-          <NavbarLink
-            textContent="Mes infos"
-            url="/mon-compte"
-            theme={openedTheme}
-          />
+          {userRole ? (
+            <NavbarLink
+              textContent="Admin"
+              url="/dashboard/accueil"
+              theme={openedTheme}
+            />
+          ) : (
+            <NavbarLink
+              textContent="Mes infos"
+              url="/mon-compte"
+              theme={openedTheme}
+            />
+          )}
           <MyAccount
             theme={theme}
             $myAccountSubMenu={false}

@@ -124,7 +124,52 @@ max-width: 1200px;
       transform: rotate(0deg);
     }
   }
+}
 
+.dashboardMenuOpening {
+	animation: menu-opening ease-out 0.7s;
+	@keyframes menu-opening {
+		from {
+			max-height: 0px;
+		} to {
+			max-height: 1000px;
+		}
+	}
+}
+
+.dashboardMenuLinkOpening {
+	animation: link-opening ease-out 0.3s;
+	@keyframes link-opening {
+		from {
+			max-height: 0px;
+		} to {
+			max-height: 150px;
+		}
+	}
+}
+
+.dashboardConfigPanelOpening {
+	animation: panel-opening linear 0.5s;
+	@keyframes panel-opening {
+		from {
+			max-height: 0px;
+		} to {
+			max-height: 10000px;
+		}
+	}
+}
+
+.dashboardGalleryImageOpening {
+	animation: image-opening ease-out 0.3s;
+	@keyframes image-opening {
+		from {
+			max-height: 0px;
+			max-width: 0px;
+		} to {
+			max-height: 250px;
+			max-width: 250px;
+		}
+	}
 }
 
 @media screen and (min-width: 481px) {

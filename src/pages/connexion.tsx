@@ -15,7 +15,7 @@ const ConnexionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
         <Hero
           header="Contents de vous revoir !"
           paragraphs={[]}
-          image="images/waiter-smiling.jpg"
+          image="waiter-smiling.jpg"
           imageAlt="Notre serveuse Magalie vous attend"
           childComponents={[<SignInForm />]}
           $textIsLeft={false}
@@ -29,7 +29,7 @@ const ConnexionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
             'consectetur adipiscing elit. Morbi at ante pharetra consectetur adipiscing.',
           ]}
-          image="images/table-clients.jpg"
+          image="table-clients.jpg"
           imageAlt="Pas de tracas, place au plaisir !"
           childComponents={[
             <MainCTA

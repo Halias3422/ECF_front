@@ -40,7 +40,13 @@ const Section = ({
             return <React.Fragment key={index}>{child}</React.Fragment>;
           })}
         </TextContainer>
-        {image && <Image src={image} alt={imageAlt} title={imageAlt} />}
+        {image && (
+          <Image
+            src={`${process.env.NEXT_PUBLIC_BACK_END_URL}/images/` + image}
+            alt={imageAlt}
+            title={imageAlt}
+          />
+        )}
       </SectionContainer>
     </section>
   );

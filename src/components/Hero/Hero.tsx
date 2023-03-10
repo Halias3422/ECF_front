@@ -43,7 +43,11 @@ const Hero = ({
             return <React.Fragment key={index}>{child}</React.Fragment>;
           })}
         </TextContainer>
-        <img src={image} alt={imageAlt} title={imageAlt} />
+        <img
+          src={`${process.env.NEXT_PUBLIC_BACK_END_URL}/images/` + image}
+          alt={imageAlt}
+          title={imageAlt}
+        />
       </HeroContainer>
     </section>
   );

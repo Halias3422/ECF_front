@@ -30,7 +30,7 @@ const InscriptionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
               : 'Impatients de vous rencontrer !'
           }
           paragraphs={['']}
-          image="images/cheers.jpg"
+          image="cheers.jpg"
           imageAlt="Venez vivre des moments inoubliables"
           childComponents={[
             <SignUpForm
@@ -56,7 +56,7 @@ const InscriptionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
             'consectetur adipiscing elit. Morbi at ante pharetra consectetur adipiscing.',
           ]}
-          image="images/table-clients.jpg"
+          image="table-clients.jpg"
           imageAlt="Pas de tracas, place au plaisir !"
           childComponents={[
             <MainCTA

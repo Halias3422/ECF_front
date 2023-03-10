@@ -81,11 +81,7 @@ const GalleryDishItem = ({ dish }: { dish: GalleryDishData }) => {
   }, []);
   return (
     <GalleryDishItemContainer className="galleryDishItemContainer">
-      <DishImage
-        src={`dishes/${dish.image}`}
-        alt={dish.title}
-        title={dish.title}
-      />
+      <DishImage src={dish.image} alt={dish.title} title={dish.title} />
     </GalleryDishItemContainer>
   );
 };
