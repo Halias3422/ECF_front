@@ -5,6 +5,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import DashboardButton from '../DashboardButton';
 import DishesGalleryDashboard from './DishesGallery/DishesGalleryDashboard';
+import LaCarteDashboard from './LaCarte/LaCarteDashboard';
 
 const TheDishes = ({}: {}) => {
   const [openedConfigPanel, setOpenedConfigPanel] = useState<string>('');
@@ -12,10 +13,9 @@ const TheDishes = ({}: {}) => {
   const displayOpenedConfigPanel = () => {
     switch (openedConfigPanel) {
       case "Galerie d'images":
-        // return <DashboardImageGallery />;
         return <DishesGalleryDashboard />;
       case 'La Carte':
-        return <></>;
+        return <LaCarteDashboard />;
       case 'Les Menus':
         return <></>;
       default:

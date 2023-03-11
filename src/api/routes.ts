@@ -2,6 +2,11 @@ export const API_ROUTES = {
   dishes: {
     createNewDish: '/api/create-new-dish',
     getAllDishesByCategories: '/api/get-all-dishes-by-categories',
+    deleteDishItem: '/api/delete-dish',
+    deleteImage: '/api/delete-dish-image',
+    verifyIfDuplicateTitleOrImage: '/api/dish-verify-duplicate-title-or-image',
+    saveDishImage: '/api/save-dish-image',
+    modifyDishItem: '/api/modify-dish-item',
   },
   dishesGallery: {
     getAllDishes: '/api/get-all-dishes-gallery',
@@ -26,5 +31,9 @@ export const API_ROUTES = {
     updateOptionalInfo: '/api/user-update-optional-info',
     getOptionalInfo: '/api/user-get-optional-info',
     getUserRole: '/api/user-get-role',
+  },
+  categories: {
+    getAllCategories: '/api/get-all-categories',
+    createNewCategory: '/api/create-new-category',
   },
 };

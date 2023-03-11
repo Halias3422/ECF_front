@@ -20,7 +20,6 @@ const PriceTagContainer = styled.div<{ $isOdd: boolean }>`
   align-items: ${(props) => (props.$isOdd ? 'flex-end' : 'flex-start')};
   @media screen and (min-width: 1025px) {
     width: fit-content;
-    height: 100%;
   }
 `;
 

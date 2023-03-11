@@ -1,5 +1,6 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
+import SvgAddDishGallery from '@/components/svgs/addDishGallery';
 import UserContext from '@/context/UserContext';
 import {
   DashboardImageData,
@@ -111,14 +112,13 @@ const DishesGalleryDashboard = () => {
         });
       }
     };
-    console.log('ici newItem = ' + JSON.stringify(newItem));
     if (newItem.context.confirm) {
       triggerItemCreation();
     }
   }, [newItem.context.confirm]);
 
   return (
-    <DashboardContainer className="dashboardConfigPanelOpening">
+    <div className="dashboardConfigPanel dishesGalleryConfigPanelOpening">
       <DishesGalleryContainer>
         {galleryDishes &&
           galleryDishes.length > 0 &&
@@ -138,23 +138,12 @@ const DishesGalleryDashboard = () => {
         setNewItem={setNewItem}
         createItem={createItem}
         setCreateItem={setCreateItem}
+        icon={<SvgAddDishGallery />}
+        title="Créer une nouvelle image"
       />
-    </DashboardContainer>
+    </div>
   );
 };
-
-const DashboardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 60px;
-  border: ${(props) => `3px solid ${props.theme.darkBlue}`};
-  border-top: none;
-  border-bottom-left-radius: 24px;
-  border-bottom-right-radius: 24px;
-  overflow: hidden;
-  padding: 60px 5%;
-`;
 
 const DishesGalleryContainer = styled.div`
   display: flex;

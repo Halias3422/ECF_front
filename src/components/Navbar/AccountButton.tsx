@@ -92,6 +92,7 @@ const SubMenuContainer = styled.div`
   justify-content: center;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  overflow: hidden;
   button {
     width: 135px;
   }

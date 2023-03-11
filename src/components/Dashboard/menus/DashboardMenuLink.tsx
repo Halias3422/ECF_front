@@ -39,7 +39,7 @@ const DashboardMenuLink = ({}: {}) => {
   };
 
   return (
-    <div>
+    <DashboardContainer>
       <MenuLinkContainer>
         <MenuButtonItem
           id="theDishes"
@@ -71,9 +71,11 @@ const DashboardMenuLink = ({}: {}) => {
         </MenuButtonItem>
       </MenuLinkContainer>
       {displayOpenedMenu()}
-    </div>
+    </DashboardContainer>
   );
 };
+
+const DashboardContainer = styled.div``;
 
 const MenuLinkContainer = styled.div`
   display: flex;
