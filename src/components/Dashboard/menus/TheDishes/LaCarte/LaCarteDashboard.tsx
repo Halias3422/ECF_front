@@ -1,7 +1,6 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
 import SvgAddDishGallery from '@/components/svgs/addDishGallery';
-import SvgNewCategory from '@/components/svgs/newCategory';
 import UserContext from '@/context/UserContext';
 import { CarteCategoryData } from '@/interfaces/carte';
 import {
@@ -9,11 +8,11 @@ import {
   ModifyDashboardItem,
 } from '@/interfaces/dashboard';
 import { DishCarteData, DishFormData } from '@/interfaces/dishes';
-import colorscheme from '@/styles/colorscheme';
 import React, { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CreateItemButton from '../../ItemActions/CreateItemButton';
+import CarteCategoryItem from './CarteCategoryItem';
 import CarteItemDashboard from './CarteItemDashboard';
 
 const LaCarteDashboard = () => {
@@ -46,7 +45,23 @@ const LaCarteDashboard = () => {
     const carteDishesResponse = await getDataFromAPI(
       API_ROUTES.dishes.getAllDishesByCategories
     );
-    const carteDishes = carteDishesResponse?.data;
+    let carteDishes = carteDishesResponse?.data;
+    const retreivedCategories = [];
+    for (const dishCategory of carteDishes) {
+      retreivedCategories.push(dishCategory.category.name);
+    }
+    const allCategoriesResponse = await getDataFromAPI(
+      API_ROUTES.categories.getAllCategories
+    );
+    const allCategories = allCategoriesResponse.data;
+    for (const category of allCategories) {
+      if (!retreivedCategories.includes(category.name)) {
+        carteDishes = [
+          ...carteDishes,
+          { category: { ...category }, dishes: [] },
+        ];
+      }
+    }
     setCarteDishes(carteDishes);
   };
 
@@ -134,9 +149,10 @@ const LaCarteDashboard = () => {
         {carteDishes?.map((category: CarteCategoryData, index: number) => {
           return (
             <React.Fragment key={index}>
-              <CategoryHeader className="themeDarkBlue carteDishItemOpening">
-                {category.category.name}
-              </CategoryHeader>
+              <CarteCategoryItem
+                category={category}
+                retreiveDishes={() => retreiveDishes()}
+              />
               {category.dishes.map((dish: DishCarteData, index: number) => {
                 totalCardIndex += 1;
                 return (
@@ -205,10 +221,4 @@ const CreateContainer = styled.div`
   gap: 20%;
 `;
 
-const CategoryHeader = styled.h2`
-  width: 90%;
-  text-align: center;
-  padding: 15px 0px;
-  border-radius: 48px;
-`;
 export default LaCarteDashboard;
