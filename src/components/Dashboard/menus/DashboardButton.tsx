@@ -42,7 +42,7 @@ const DashboardButton = ({
 const ButtonContainer = styled.button`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   cursor: pointer;
   border: ${(props) => `2px solid ${props.theme.darkGrey}`};

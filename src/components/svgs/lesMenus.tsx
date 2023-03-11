@@ -2,8 +2,6 @@ import * as React from 'react';
 
 const SvgLesMenus = () => (
   <svg
-    height={48}
-    width={48}
     id="_x32_"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"
