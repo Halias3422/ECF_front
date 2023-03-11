@@ -1,5 +1,6 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
+import SvgAddDishGallery from '@/components/svgs/addDishGallery';
 import UserContext from '@/context/UserContext';
 import {
   DashboardImageData,
@@ -137,6 +138,8 @@ const DishesGalleryDashboard = () => {
         setNewItem={setNewItem}
         createItem={createItem}
         setCreateItem={setCreateItem}
+        icon={<SvgAddDishGallery />}
+        title="Créer une nouvelle image"
       />
     </div>
   );

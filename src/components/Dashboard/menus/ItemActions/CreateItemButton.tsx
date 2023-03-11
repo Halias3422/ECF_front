@@ -2,7 +2,7 @@ import SvgAddDishGallery from '@/components/svgs/addDishGallery';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import BackgroundPopUp from './BackgroundPopUp';
+import BackgroundPopUp, { resizePopUpHeight } from './BackgroundPopUp';
 import FormSubmitButtons from './FormSubmitButtons';
 import ItemAttributesList from './ItemAttributesList';
 
@@ -11,11 +11,15 @@ const CreateItemButton = ({
   setNewItem,
   createItem,
   setCreateItem,
+  icon,
+  title,
 }: {
   newItem: ModifyDashboardItem;
   setNewItem: Dispatch<SetStateAction<ModifyDashboardItem>>;
   createItem: boolean;
   setCreateItem: Dispatch<SetStateAction<boolean>>;
+  icon: JSX.Element;
+  title: string;
 }) => {
   const [confirm, setConfirm] = useState<boolean>(false);
   const [cancel, setCancel] = useState<boolean>(false);
@@ -45,6 +49,7 @@ const CreateItemButton = ({
 
   useEffect(() => {
     changeErrorDisplay('block');
+    resizePopUpHeight();
   }, [newItem.context.error]);
 
   useEffect(() => {
@@ -63,8 +68,12 @@ const CreateItemButton = ({
   return (
     <>
       <Container id="createItemButton">
-        <Button onClick={() => setCreateItem(true)}>
-          <SvgAddDishGallery />
+        <Button
+          title={title}
+          className="themeLightGreen"
+          onClick={() => setCreateItem(true)}
+        >
+          {icon}
         </Button>
       </Container>
       {createItem && (
@@ -72,10 +81,10 @@ const CreateItemButton = ({
           <CreateForm id="popUpForm" onSubmit={(e) => e.preventDefault()}>
             <h2>Créer un nouvel élément</h2>
             <ItemAttributesList modifyItem={newItem} />
-            <FormSubmitButtons setConfirm={setConfirm} setCancel={setCancel} />
             <Error id={'error' + newItem.attributes.title}>
               {newItem.context.error}
             </Error>
+            <FormSubmitButtons setConfirm={setConfirm} setCancel={setCancel} />
           </CreateForm>
         </BackgroundPopUp>
       )}
@@ -107,7 +116,6 @@ const Button = styled.button`
   width: 175px;
   height: 175px;
   cursor: pointer;
-  background-color: ${(props) => props.theme.lightGreen};
   border: ${(props) => `4px solid ${props.theme.darkGrey}`};
   margin-bottom: 30px;
 `;
@@ -115,7 +123,10 @@ const Button = styled.button`
 const Error = styled.p`
   display: none;
   margin-top: -20px;
+  margin-bottom: -20px;
   color: darkRed;
+  max-width: 400px;
+  overflow-wrap: anywhere;
 `;
 
 export default CreateItemButton;

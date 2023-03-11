@@ -15,7 +15,7 @@ const FormSubmitButtons = ({
         value="Confirmer"
         onClick={() => setConfirm(true)}
       />
-      <Cancel type="submit" value="Annuler" onClick={() => setCancel(true)} />
+      <Cancel type="button" value="Annuler" onClick={() => setCancel(true)} />
     </SubmitContainer>
   );
 };

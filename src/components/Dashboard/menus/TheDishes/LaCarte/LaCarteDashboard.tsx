@@ -1,5 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
+import SvgAddDishGallery from '@/components/svgs/addDishGallery';
+import SvgNewCategory from '@/components/svgs/newCategory';
 import UserContext from '@/context/UserContext';
 import { CarteCategoryData } from '@/interfaces/carte';
 import {
@@ -7,6 +9,7 @@ import {
   ModifyDashboardItem,
 } from '@/interfaces/dashboard';
 import { DishCarteData, DishFormData } from '@/interfaces/dishes';
+import colorscheme from '@/styles/colorscheme';
 import React, { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -80,7 +83,7 @@ const LaCarteDashboard = () => {
     const saveImage = await saveImageOnAPI(dish, image);
     if (saveImage && saveImage.status === 201) {
       const newItem = await postProtectedDataToAPI(
-        API_ROUTES.dishesGallery.createNewDishGalleryItem,
+        API_ROUTES.dishes.createNewDish,
         dish,
         userContext.userSession
       );
@@ -88,9 +91,9 @@ const LaCarteDashboard = () => {
         retreiveDishes();
         return '';
       }
-      return 'Impossible de créer le nouvel élément';
+      return 'Impossible de créer le nouvel élément (' + newItem?.data + ')';
     }
-    return "l'image existe déjà";
+    return "l'image ou le titre existe déjà (" + saveImage.data + ')';
   };
 
   useEffect(() => {
@@ -136,7 +139,6 @@ const LaCarteDashboard = () => {
               </CategoryHeader>
               {category.dishes.map((dish: DishCarteData, index: number) => {
                 totalCardIndex += 1;
-                console.log('totalCardIndex = ' + totalCardIndex);
                 return (
                   <DishContainer key={index} $isOdd={totalCardIndex % 2 !== 0}>
                     <CarteItemDashboard
@@ -152,12 +154,16 @@ const LaCarteDashboard = () => {
           );
         })}
       </CarteDishesContainer>
-      <CreateItemButton
-        newItem={newItem}
-        setNewItem={setNewItem}
-        createItem={createItem}
-        setCreateItem={setCreateItem}
-      />
+      <CreateContainer>
+        <CreateItemButton
+          newItem={newItem}
+          setNewItem={setNewItem}
+          createItem={createItem}
+          setCreateItem={setCreateItem}
+          icon={<SvgAddDishGallery />}
+          title="Créer un nouveau plat"
+        />
+      </CreateContainer>
     </DashboardContainer>
   );
 };
@@ -191,6 +197,12 @@ const DishContainer = styled.div<{ $isOdd: boolean }>`
     height: 295px;
     right: 0.2vw;
   }
+`;
+
+const CreateContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20%;
 `;
 
 const CategoryHeader = styled.h2`

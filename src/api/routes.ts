@@ -32,4 +32,8 @@ export const API_ROUTES = {
     getOptionalInfo: '/api/user-get-optional-info',
     getUserRole: '/api/user-get-role',
   },
+  categories: {
+    getAllCategories: '/api/get-all-categories',
+    createNewCategory: '/api/create-new-category',
+  },
 };

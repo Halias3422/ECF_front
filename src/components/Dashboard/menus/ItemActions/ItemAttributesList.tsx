@@ -1,7 +1,8 @@
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { ChangeEvent } from 'react';
 import styled from 'styled-components';
-import HandleAttributeInputType from './HandleAttributeInputType';
+import { resizePopUpHeight } from './BackgroundPopUp';
+import HandleAttributeInputType from './InputFields/HandleAttributeInputType';
 
 const ItemAttributesList = ({
   modifyItem,
@@ -12,17 +13,20 @@ const ItemAttributesList = ({
     event: ChangeEvent<HTMLInputElement>,
     attribute: string
   ) => {
-    if (attribute === 'image' && event.target.files) {
-      (document.querySelector('.previewImage') as HTMLImageElement).src =
-        URL.createObjectURL(event.target.files[0]);
-      const imageUrl = event.target.value.split('\\');
-      const imageName = imageUrl[imageUrl.length - 1];
-      modifyItem.attributes[attribute] = {
-        file: event.target.files[0],
-        name: imageName,
-      };
-    } else {
-      modifyItem.attributes[attribute] = event.target.value;
+    resizePopUpHeight();
+    if (attribute !== 'price') {
+      if (attribute === 'image' && event.target.files) {
+        (document.querySelector('.previewImage') as HTMLImageElement).src =
+          URL.createObjectURL(event.target.files[0]);
+        const imageUrl = event.target.value.split('\\');
+        const imageName = imageUrl[imageUrl.length - 1];
+        modifyItem.attributes[attribute] = {
+          file: event.target.files[0],
+          name: imageName,
+        };
+      } else {
+        modifyItem.attributes[attribute] = event.target.value;
+      }
     }
   };
 
@@ -30,12 +34,6 @@ const ItemAttributesList = ({
     <>
       {Object.keys(modifyItem.attributes).map(
         (attribute: string, index: number) => {
-          const type =
-            attribute === 'image'
-              ? 'file'
-              : attribute === 'number'
-              ? 'number'
-              : 'text';
           if (attribute !== 'id') {
             return (
               <Attribute key={index} className="itemAttribute">
