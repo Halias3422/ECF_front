@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import FormSubmitButtons from './FormSubmitButtons';
 import ItemAttributesList from './ItemAttributesList';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
-import BackgroundPopUp from './BackgroundPopUp';
+import BackgroundPopUp, { resizePopUpHeight } from './BackgroundPopUp';
 
 const ModifyItemButton = ({
   originalItem,
@@ -22,6 +22,22 @@ const ModifyItemButton = ({
   const handleModifyItemClick = () => {
     setOpenPopUp(!openPopUp);
   };
+
+  const changeErrorDisplay = (display: string) => {
+    if (modifyItem.context.error.length > 0) {
+      const error = document.getElementById(
+        'error' + modifyItem.attributes.title
+      );
+      if (error) {
+        error.style.display = display;
+      }
+    }
+  };
+
+  useEffect(() => {
+    changeErrorDisplay('block');
+    resizePopUpHeight();
+  }, [modifyItem.context.error]);
 
   useEffect(() => {
     if (cancel) {
@@ -48,7 +64,7 @@ const ModifyItemButton = ({
         (document.querySelector('.previewImage') as HTMLImageElement).src =
           originalItem.previousImage as string;
       }
-      setOpenPopUp(false);
+      // setOpenPopUp(false);
       setConfirm(false);
     }
   }, [confirm]);
@@ -63,6 +79,9 @@ const ModifyItemButton = ({
           <ModifyForm id="popUpForm" onSubmit={(e) => e.preventDefault()}>
             <h2>Modifier l'élément</h2>
             <ItemAttributesList modifyItem={modifyItem} />
+            <Error id={'error' + modifyItem.attributes.title}>
+              {modifyItem.context.error}
+            </Error>
             <FormSubmitButtons setConfirm={setConfirm} setCancel={setCancel} />
           </ModifyForm>
         </BackgroundPopUp>
@@ -79,6 +98,7 @@ const ModifyForm = styled.form`
   h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: ${(props) => props.theme.darkGrey};
   }
   label {
     font-size: 20px;
@@ -92,6 +112,15 @@ const Button = styled.button`
   border: ${(props) => `2px solid ${props.theme.darkGrey}`};
   background-color: ${(props) => props.theme.snow};
   border-radius: 8px;
+`;
+
+const Error = styled.p`
+  display: none;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  color: darkRed;
+  max-width: 400px;
+  overflow-wrap: anywhere;
 `;
 
 export default ModifyItemButton;

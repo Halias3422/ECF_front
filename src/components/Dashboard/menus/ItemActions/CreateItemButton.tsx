@@ -1,4 +1,3 @@
-import SvgAddDishGallery from '@/components/svgs/addDishGallery';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -11,6 +10,7 @@ const CreateItemButton = ({
   setNewItem,
   createItem,
   setCreateItem,
+  retreiveDishes,
   icon,
   title,
 }: {
@@ -18,6 +18,7 @@ const CreateItemButton = ({
   setNewItem: Dispatch<SetStateAction<ModifyDashboardItem>>;
   createItem: boolean;
   setCreateItem: Dispatch<SetStateAction<boolean>>;
+  retreiveDishes: any;
   icon: JSX.Element;
   title: string;
 }) => {
@@ -55,6 +56,8 @@ const CreateItemButton = ({
   useEffect(() => {
     if (cancel) {
       setCreateItem(false);
+      setCancel(false);
+      retreiveDishes();
     }
   }, [cancel]);
 

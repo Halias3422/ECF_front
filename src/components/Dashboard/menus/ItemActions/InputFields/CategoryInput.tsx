@@ -1,7 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
 import UserContext from '@/context/UserContext';
-import { CategoryData } from '@/interfaces/categories';
+import { CategoriesData } from '@/interfaces/categories';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -12,7 +12,7 @@ const CategoryInput = ({
   attribute: string;
   changeItemAttribute: any;
 }) => {
-  const [categories, setCategories] = useState<CategoryData[]>();
+  const [categories, setCategories] = useState<CategoriesData[]>();
   const [createCategory, setCreateCategory] = useState<boolean>(false);
   const [newCategory, setNewCategory] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -34,7 +34,7 @@ const CategoryInput = ({
       { name: newCategory },
       userContext.userSession
     );
-    if (!response || response.status !== 200) {
+    if (!response || response.status !== 201) {
       setError('Erreur: ' + response?.data);
       const errorField = document.getElementById('categoryError');
       if (errorField) {

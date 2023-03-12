@@ -76,11 +76,16 @@ const CarteCategoryItem = ({
       modifyItem.attributes,
       userContext.userSession
     );
-    if (error && modifiedCategory?.status !== 200) {
-      error.textContent =
-        'Erreur lors de la modification de la catégorie (' +
-        modifiedCategory?.data.response +
-        ')';
+    if (modifiedCategory?.status !== 200) {
+      setModifyItem({
+        ...modifyItem,
+        context: {
+          ...modifyItem.context,
+          confirm: false,
+          error:
+            'Erreur lors de la modification (' + modifiedCategory?.data + ')',
+        },
+      });
       return;
     }
     category.category = {
