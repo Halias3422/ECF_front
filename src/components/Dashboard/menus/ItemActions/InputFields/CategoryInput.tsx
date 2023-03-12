@@ -1,7 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
 import UserContext from '@/context/UserContext';
-import { CategoryData } from '@/interfaces/categories';
+import { CategoriesData } from '@/interfaces/categories';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -12,7 +12,7 @@ const CategoryInput = ({
   attribute: string;
   changeItemAttribute: any;
 }) => {
-  const [categories, setCategories] = useState<CategoryData[]>();
+  const [categories, setCategories] = useState<CategoriesData[]>();
   const [createCategory, setCreateCategory] = useState<boolean>(false);
   const [newCategory, setNewCategory] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -29,14 +29,14 @@ const CategoryInput = ({
   }, []);
 
   const handleCreateNewCategory = async () => {
+    const errorField = document.getElementById('categoryError');
     const response = await postProtectedDataToAPI(
       API_ROUTES.categories.createNewCategory,
       { name: newCategory },
       userContext.userSession
     );
-    if (!response || response.status !== 200) {
+    if (!response || response.status !== 201) {
       setError('Erreur: ' + response?.data);
-      const errorField = document.getElementById('categoryError');
       if (errorField) {
         errorField.style.display = 'block';
       }
@@ -44,11 +44,12 @@ const CategoryInput = ({
       setCreateCategory(false);
       setError('');
       await getAllCategories();
-      const errorField = document.getElementById('categoryError');
       if (errorField) {
         errorField.style.display = 'none';
       }
       setNewCategory('');
+      (document.getElementById('categorySelect') as HTMLSelectElement).value =
+        'default';
     }
   };
 
@@ -66,9 +67,9 @@ const CategoryInput = ({
         name="category"
         id="categorySelect"
         onChange={(e) => handleSelectedOption(e)}
-        defaultValue=""
+        defaultValue="default"
       >
-        <option id="optionLegend" disabled value="">
+        <option id="optionLegend" disabled value="default">
           -- Choisir une catégorie --
         </option>
         {categories?.map((category) => {

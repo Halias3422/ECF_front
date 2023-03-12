@@ -148,7 +148,7 @@ const LaCarteDashboard = () => {
       <CarteDishesContainer className="carteDishesConfigPanelOpening">
         {carteDishes?.map((category: CarteCategoryData, index: number) => {
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={index + category.category.name}>
               <CarteCategoryItem
                 category={category}
                 retreiveDishes={() => retreiveDishes()}
@@ -176,6 +176,7 @@ const LaCarteDashboard = () => {
           setNewItem={setNewItem}
           createItem={createItem}
           setCreateItem={setCreateItem}
+          retreiveDishes={() => retreiveDishes()}
           icon={<SvgAddDishGallery />}
           title="Créer un nouveau plat"
         />
