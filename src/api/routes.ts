@@ -35,5 +35,7 @@ export const API_ROUTES = {
   categories: {
     getAllCategories: '/api/get-all-categories',
     createNewCategory: '/api/create-new-category',
+    deleteCategory: '/api/delete-category',
+    modifyCategory: '/api/modify-category',
   },
 };

@@ -36,7 +36,7 @@ const PriceInput = ({
         id="priceCentimes"
         min="0"
         max="99"
-        defaultValue={item.attributes[attribute].split('.')[1]}
+        defaultValue={item.attributes[attribute].split('.')[1] || '99'}
         onChange={(e) => changeItemAttribute(e, attribute)}
         required
       />
