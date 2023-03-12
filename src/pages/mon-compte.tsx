@@ -11,7 +11,6 @@ import styled from 'styled-components';
 
 const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   const { userContext } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userInfo, setUserInfo] = useState<UserOptionalInfo>({
     email: '',
     defaultGuestNumber: 1,
@@ -22,23 +21,22 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   // TODO add password change
 
   useEffect(() => {
-    if (userContext.loggedIn) {
+    if (userContext.contextLoaded) {
       if (!userContext.userSession) {
         window.location.href = '/connexion';
       }
-      setIsLoading(false);
       const getUserInfo = async () => {
-        setUserInfo(
-          await getProtectedDataFromAPI(
-            API_ROUTES.users.getOptionalInfo,
-            userContext.userSession
-          )
+        const response = await getProtectedDataFromAPI(
+          API_ROUTES.users.getOptionalInfo,
+          userContext.userSession
         );
+        setUserInfo(response?.data);
       };
       getUserInfo();
     }
-  }, [userContext.loggedIn]);
-  if (isLoading === false) {
+  }, [userContext.contextLoaded]);
+
+  if (userContext.contextLoaded) {
     return (
       <>
         <main>

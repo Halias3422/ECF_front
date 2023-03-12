@@ -13,6 +13,7 @@ export interface UserOptionalInfo {
 }
 
 export interface UserLoginState {
+  contextLoaded: boolean;
   loggedIn: boolean;
   userSession: string;
 }

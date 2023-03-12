@@ -68,7 +68,7 @@ export const getProtectedDataFromAPI = async (
         },
       }
     );
-    return response.data.data.role;
+    return response;
   } catch (error) {
     return (error as AxiosError)?.response;
   }

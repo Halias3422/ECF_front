@@ -10,6 +10,7 @@ import { ThemeProvider } from 'styled-components';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [userContext, setUserContext] = useState<UserLoginState>({
+    contextLoaded: false,
     loggedIn: false,
     userSession: '',
   });
@@ -18,8 +19,14 @@ export default function App({ Component, pageProps }: AppProps) {
     const localSession = localStorage.getItem('lqa_user_session');
     if (localSession) {
       setUserContext({
+        contextLoaded: true,
         loggedIn: true,
         userSession: localSession,
+      });
+    } else {
+      setUserContext({
+        ...userContext,
+        contextLoaded: true,
       });
     }
   }, []);
