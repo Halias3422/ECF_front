@@ -68,9 +68,6 @@ const CarteCategoryItem = ({
   };
 
   const handleModifyCategory = async () => {
-    const error = document.getElementById(
-      'deletionError'
-    ) as HTMLParagraphElement;
     const modifiedCategory = await postProtectedDataToAPI(
       API_ROUTES.categories.modifyCategory,
       modifyItem.attributes,
