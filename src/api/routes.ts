@@ -25,6 +25,9 @@ export const API_ROUTES = {
   menus: {
     getAllMenus: '/api/get-all-menus',
   },
+  formulas: {
+    deleteFormula: '/api/delete-formula',
+  },
   users: {
     login: '/api/user-login',
     signup: '/api/user-signup',

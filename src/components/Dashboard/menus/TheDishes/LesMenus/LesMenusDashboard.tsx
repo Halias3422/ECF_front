@@ -1,10 +1,10 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI } from '@/api/utils';
-import MenuItem from '@/components/Sections/Menus/MenuItem';
 import { Menu } from '@/interfaces/menus';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import MenuItemDashboard from './MenuItemDashboard';
 
 const LesMenusDashboard = () => {
   const [menus, setMenus] = useState<Menu[]>();
@@ -25,7 +25,7 @@ const LesMenusDashboard = () => {
           {menus?.map((menu: Menu, index: number) => {
             return (
               <React.Fragment key={index + menu.title}>
-                <MenuItem menu={menu} index={index} />
+                <MenuItemDashboard menu={menu} index={index} />
               </React.Fragment>
             );
           })}
@@ -52,7 +52,6 @@ const MenusBackground = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-top: 100px;
   border-radius: 48px;
   background-color: ${(props) => props.theme.lightBlue};

@@ -176,7 +176,7 @@ const LaCarteDashboard = () => {
           setNewItem={setNewItem}
           createItem={createItem}
           setCreateItem={setCreateItem}
-          retreiveDishes={() => retreiveDishes()}
+          retreiveItems={() => retreiveDishes()}
           icon={<SvgAddDishGallery />}
           title="Créer un nouveau plat"
         />

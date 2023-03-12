@@ -10,7 +10,7 @@ const CreateItemButton = ({
   setNewItem,
   createItem,
   setCreateItem,
-  retreiveDishes,
+  retreiveItems,
   icon,
   title,
 }: {
@@ -18,7 +18,7 @@ const CreateItemButton = ({
   setNewItem: Dispatch<SetStateAction<ModifyDashboardItem>>;
   createItem: boolean;
   setCreateItem: Dispatch<SetStateAction<boolean>>;
-  retreiveDishes: any;
+  retreiveItems: any;
   icon: JSX.Element;
   title: string;
 }) => {
@@ -57,7 +57,7 @@ const CreateItemButton = ({
     if (cancel) {
       setCreateItem(false);
       setCancel(false);
-      retreiveDishes();
+      retreiveItems();
     }
   }, [cancel]);
 

@@ -1,5 +1,6 @@
 export interface Formula {
+  id?: string;
   title: string;
   description: string;
-  price: number;
+  price: string;
 }

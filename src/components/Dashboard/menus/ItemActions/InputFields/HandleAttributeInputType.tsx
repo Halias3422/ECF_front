@@ -1,5 +1,6 @@
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import CategoryInput from './CategoryInput';
+import FormulasInput from './FormulasInput';
 import ImageInput from './ImageInput';
 import PriceInput from './PriceInput';
 import TextAreaInput from './TextAreaInput';
@@ -30,13 +31,7 @@ const HandleAttributeInputType = ({
         />
       );
     case 'price':
-      return (
-        <PriceInput
-          attribute={attribute}
-          item={item}
-          changeItemAttribute={changeItemAttribute}
-        />
-      );
+      return <PriceInput attribute={attribute} item={item} />;
     case 'category':
       return (
         <CategoryInput
@@ -44,6 +39,8 @@ const HandleAttributeInputType = ({
           changeItemAttribute={changeItemAttribute}
         />
       );
+    case 'formulas':
+      return <FormulasInput attribute={attribute} item={item} />;
     default:
       return (
         <input

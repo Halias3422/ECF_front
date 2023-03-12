@@ -140,6 +140,7 @@ const DishesGalleryDashboard = () => {
         setCreateItem={setCreateItem}
         icon={<SvgAddDishGallery />}
         title="Créer une nouvelle image"
+        retreiveItems={() => {}}
       />
     </div>
   );

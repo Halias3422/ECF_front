@@ -4,7 +4,7 @@ import DashboardMenuLink from '@/components/Dashboard/menus/DashboardMenuLink';
 import UserContext from '@/context/UserContext';
 import { merriweatherSans } from '@/styles/fonts';
 import Head from 'next/head';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 
 const DashboardAccueilPage = () => {
@@ -28,25 +28,24 @@ const DashboardAccueilPage = () => {
     }
   };
 
-  useEffect(() => {
-    const menuContainer = document.getElementById(
-      'dashboardMenuContainer'
-    ) as HTMLDivElement;
-    const headerContainer = document.getElementById(
-      'dashboardHeaderContainer'
-    ) as HTMLDivElement;
-    if (menuContainer && headerContainer) {
-      menuContainer.style.minHeight =
-        document.documentElement.offsetHeight -
-        200 -
-        headerContainer.offsetHeight +
-        'px';
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (userContext.contextLoaded) {
       checkUserAuthorization();
+      const menuContainer = document.getElementById(
+        'dashboardMenuContainer'
+      ) as HTMLDivElement;
+      const headerContainer = document.getElementById(
+        'dashboardHeaderContainer'
+      ) as HTMLDivElement;
+      if (menuContainer && headerContainer) {
+        menuContainer.style.minHeight =
+          document.documentElement.offsetHeight -
+          200 -
+          headerContainer.offsetHeight +
+          'px';
+      }
     }
   }, [userContext.contextLoaded]);
 

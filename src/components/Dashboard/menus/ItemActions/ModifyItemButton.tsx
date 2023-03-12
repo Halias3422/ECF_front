@@ -64,7 +64,6 @@ const ModifyItemButton = ({
         (document.querySelector('.previewImage') as HTMLImageElement).src =
           originalItem.previousImage as string;
       }
-      // setOpenPopUp(false);
       setConfirm(false);
     }
   }, [confirm]);

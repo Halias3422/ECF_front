@@ -4,11 +4,9 @@ import styled from 'styled-components';
 const PriceInput = ({
   attribute,
   item,
-  changeItemAttribute,
 }: {
   attribute: string;
   item: ModifyDashboardItem;
-  changeItemAttribute: any;
 }) => {
   const formatPriceChange = () => {
     const priceEuros = document.getElementById(
@@ -37,7 +35,7 @@ const PriceInput = ({
         min="0"
         max="99"
         defaultValue={item.attributes[attribute].split('.')[1] || '99'}
-        onChange={(e) => changeItemAttribute(e, attribute)}
+        onChange={() => formatPriceChange()}
         required
       />
       <label htmlFor="priceCentimes">centimes</label>
