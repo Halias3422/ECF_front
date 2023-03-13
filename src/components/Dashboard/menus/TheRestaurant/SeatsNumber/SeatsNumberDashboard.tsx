@@ -56,7 +56,10 @@ const SeatsNumberDashboard = () => {
   return (
     <DashboardContainer className="dashboardConfigPanel">
       <SeatsCapacityContainer className="carteDishesConfigPanelOpening">
-        <SeatsForm onSubmit={(e) => e.preventDefault()}>
+        <SeatsForm
+          onSubmit={(e) => e.preventDefault()}
+          className="dashboardGalleryImageOpening"
+        >
           <label htmlFor="seatsCapacity">
             Définir le nombre de couverts disponibles:{' '}
           </label>
@@ -103,6 +106,7 @@ const SeatsForm = styled.form`
   padding: 40px 20px;
   border: ${(props) => `3px solid ${props.theme.darkBlue}`};
   border-radius: 24px;
+  overflow: hidden;
   label {
     font-size: 24px;
   }

@@ -3,6 +3,7 @@ import SvgNumberClients from '@/components/svgs/numberClients';
 import { useState } from 'react';
 import styled from 'styled-components';
 import DashboardButton from '../DashboardButton';
+import ScheduleDashboard from './Schedule/ScheduleDashboard';
 import SeatsNumberDashboard from './SeatsNumber/SeatsNumberDashboard';
 
 const TheRestaurant = ({}: {}) => {
@@ -11,7 +12,7 @@ const TheRestaurant = ({}: {}) => {
   const displayOpenedConfigPanel = () => {
     switch (openedConfigPanel) {
       case 'Les Horaires':
-        return <></>;
+        return <ScheduleDashboard />;
       case "Capacité d'accueil":
         return <SeatsNumberDashboard />;
       default:

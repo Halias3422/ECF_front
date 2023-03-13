@@ -1,4 +1,3 @@
-import { DashboardImageData } from '@/interfaces/dashboard';
 import axios, { AxiosError } from 'axios';
 
 export const postDataToAPI = async (endpointUrl: string, data: any) => {

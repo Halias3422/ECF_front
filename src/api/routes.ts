@@ -21,6 +21,7 @@ export const API_ROUTES = {
   },
   schedule: {
     getWeekSchedule: '/api/get-week-schedule',
+    modifyWeekSchedule: '/api/modify-week-schedule',
   },
   menus: {
     getAllMenus: '/api/get-all-menus',
