@@ -117,6 +117,12 @@ const DishesGalleryDashboard = () => {
     }
   }, [newItem.context.confirm]);
 
+  useEffect(() => {
+    if (!createItem) {
+      setNewItem(JSON.parse(JSON.stringify(defaultNewItem)));
+    }
+  }, [createItem]);
+
   return (
     <div className="dashboardConfigPanel dishesGalleryConfigPanelOpening">
       <DishesGalleryContainer>
@@ -140,6 +146,7 @@ const DishesGalleryDashboard = () => {
         setCreateItem={setCreateItem}
         icon={<SvgAddDishGallery />}
         title="Créer une nouvelle image"
+        retreiveItems={() => {}}
       />
     </div>
   );

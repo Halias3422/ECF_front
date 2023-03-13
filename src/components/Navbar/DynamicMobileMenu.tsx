@@ -1,5 +1,7 @@
+import { API_ROUTES } from '@/api/routes';
+import { getProtectedDataFromAPI } from '@/api/utils';
 import { UserLoginState } from '@/interfaces/users';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AccountButton from './AccountButton';
 import NavbarLink from './NavbarLink';
@@ -13,6 +15,7 @@ const DynamicMobileMenu = ({
   setHamburgerOpen: Dispatch<SetStateAction<boolean>>;
   userContext: UserLoginState;
 }) => {
+  const [userRole, setUserRole] = useState<boolean>(false);
   useEffect(() => {
     window.addEventListener('click', (event) => {
       const dynamicMenu = document.querySelector('#dynamicMenuPopUp');
@@ -30,6 +33,26 @@ const DynamicMobileMenu = ({
       }
     });
   }, []);
+
+  const getUserRole = async () => {
+    if (userContext.loggedIn && userContext.userSession) {
+      const response = await getProtectedDataFromAPI(
+        API_ROUTES.users.getUserRole,
+        userContext.userSession
+      );
+      const userRole = response?.data.data.role;
+      if (userRole) {
+        setUserRole(!!userRole);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (userContext.contextLoaded) {
+      getUserRole();
+    }
+  }, [userContext.contextLoaded]);
+
   return (
     <DynamicMenuPopUp
       id="dynamicMenuPopUp"
@@ -51,7 +74,7 @@ const DynamicMobileMenu = ({
           url="/contact"
           theme="themeDarkGreen"
         />
-        {!userContext.userSession ? (
+        {!userContext.loggedIn ? (
           <NavbarLink
             textContent="Connexion"
             url="/connexion"
@@ -62,6 +85,7 @@ const DynamicMobileMenu = ({
             textContent="Mon compte"
             theme="themeSnow"
             openedTheme="themeLightBlue"
+            userRole={userRole}
           />
         )}
         <NavbarLink

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import DashboardButton from '../DashboardButton';
 import DishesGalleryDashboard from './DishesGallery/DishesGalleryDashboard';
 import LaCarteDashboard from './LaCarte/LaCarteDashboard';
+import LesMenusDashboard from './LesMenus/LesMenusDashboard';
 
 const TheDishes = ({}: {}) => {
   const [openedConfigPanel, setOpenedConfigPanel] = useState<string>('');
@@ -17,7 +18,7 @@ const TheDishes = ({}: {}) => {
       case 'La Carte':
         return <LaCarteDashboard />;
       case 'Les Menus':
-        return <></>;
+        return <LesMenusDashboard />;
       default:
         return <></>;
     }

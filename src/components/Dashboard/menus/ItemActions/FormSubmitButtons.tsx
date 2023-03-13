@@ -8,12 +8,26 @@ const FormSubmitButtons = ({
   setConfirm: Dispatch<SetStateAction<boolean>>;
   setCancel: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const checkRequiredFields = () => {
+    const form = document.getElementById('popUpForm') as HTMLFormElement;
+    if (form) {
+      const inputs = form.getElementsByTagName('input');
+      for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute('required')) {
+          if (inputs[i].value.length === 0) {
+            return;
+          }
+        }
+      }
+    }
+    setConfirm(true);
+  };
   return (
     <SubmitContainer>
       <Confirm
         type="submit"
         value="Confirmer"
-        onClick={() => setConfirm(true)}
+        onClick={() => checkRequiredFields()}
       />
       <Cancel type="button" value="Annuler" onClick={() => setCancel(true)} />
     </SubmitContainer>

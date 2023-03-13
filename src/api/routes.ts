@@ -24,6 +24,12 @@ export const API_ROUTES = {
   },
   menus: {
     getAllMenus: '/api/get-all-menus',
+    modifyMenu: '/api/modify-menu',
+    deleteMenu: '/api/delete-menu',
+    createNewMenu: '/api/create-new-menu',
+  },
+  formulas: {
+    deleteFormula: '/api/delete-formula',
   },
   users: {
     login: '/api/user-login',

@@ -9,20 +9,24 @@ import NavbarLink from './NavbarLink';
 const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
   const [userRole, setUserRole] = useState<boolean>(false);
 
-  useEffect(() => {
-    const getUserRole = async () => {
-      if (userContext.userSession) {
-        const userRole = await getProtectedDataFromAPI(
-          API_ROUTES.users.getUserRole,
-          userContext.userSession
-        );
-        if (userRole) {
-          setUserRole(userRole);
-        }
+  const getUserRole = async () => {
+    if (userContext.loggedIn && userContext.userSession) {
+      const response = await getProtectedDataFromAPI(
+        API_ROUTES.users.getUserRole,
+        userContext.userSession
+      );
+      const userRole = response?.data.data.role;
+      if (userRole) {
+        setUserRole(userRole);
       }
-    };
-    getUserRole();
-  }, [userContext]);
+    }
+  };
+
+  useEffect(() => {
+    if (userContext.contextLoaded) {
+      getUserRole();
+    }
+  }, [userContext.contextLoaded]);
   return (
     <DesktopMenuContainer id="desktopMenu">
       <GreenLinksContainer>
