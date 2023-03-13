@@ -5,30 +5,30 @@ const FooterSchedule = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   const formatDayScheduleHours = (daySchedule: DaySchedule) => {
     let dayHours = '';
     if (
-      !daySchedule.morning_opening &&
-      !daySchedule.morning_closing &&
-      !daySchedule.afternoon_opening &&
-      !daySchedule.afternoon_closing
+      !daySchedule.morningOpening &&
+      !daySchedule.morningClosing &&
+      !daySchedule.afternoonOpening &&
+      !daySchedule.afternoonClosing
     ) {
       return 'fermé';
     }
-    if (daySchedule.morning_opening) {
-      dayHours += daySchedule.morning_opening.slice(0, 5);
+    if (daySchedule.morningOpening) {
+      dayHours += daySchedule.morningOpening.slice(0, 5);
     }
-    if (daySchedule.morning_closing) {
+    if (daySchedule.morningClosing) {
       dayHours.length > 0
-        ? (dayHours += ' - ' + daySchedule.morning_closing.slice(0, 5))
-        : (dayHours = daySchedule.morning_closing.slice(0, 5));
+        ? (dayHours += ' - ' + daySchedule.morningClosing.slice(0, 5))
+        : (dayHours = daySchedule.morningClosing.slice(0, 5));
     }
-    if (daySchedule.afternoon_opening) {
+    if (daySchedule.afternoonOpening) {
       dayHours.length > 0
-        ? (dayHours += '\n' + daySchedule.afternoon_opening.slice(0, 5))
-        : (dayHours = daySchedule.afternoon_opening.slice(0, 5));
+        ? (dayHours += '\n' + daySchedule.afternoonOpening.slice(0, 5))
+        : (dayHours = daySchedule.afternoonOpening.slice(0, 5));
     }
-    if (daySchedule.afternoon_closing) {
-      daySchedule.afternoon_opening
-        ? (dayHours += ' - ' + daySchedule.afternoon_closing.slice(0, 5))
-        : (dayHours += daySchedule.afternoon_closing.slice(0, 5));
+    if (daySchedule.afternoonClosing) {
+      daySchedule.afternoonOpening
+        ? (dayHours += ' - ' + daySchedule.afternoonClosing.slice(0, 5))
+        : (dayHours += daySchedule.afternoonClosing.slice(0, 5));
     }
     return dayHours;
   };
@@ -40,7 +40,7 @@ const FooterSchedule = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
         return (
           <DayScheduleContainer key={`dayScheduleContainer${index}`}>
             <DayOfWeek>
-              <b>{day.day_of_week}:</b>
+              <b>{day.dayOfWeek}:</b>
             </DayOfWeek>
             <DayScheduleHours>{formatDayScheduleHours(day)}</DayScheduleHours>
           </DayScheduleContainer>

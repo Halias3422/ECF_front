@@ -21,6 +21,7 @@ export const API_ROUTES = {
   },
   schedule: {
     getWeekSchedule: '/api/get-week-schedule',
+    modifyWeekSchedule: '/api/modify-week-schedule',
   },
   menus: {
     getAllMenus: '/api/get-all-menus',
@@ -43,5 +44,9 @@ export const API_ROUTES = {
     createNewCategory: '/api/create-new-category',
     deleteCategory: '/api/delete-category',
     modifyCategory: '/api/modify-category',
+  },
+  restaurant: {
+    getSeatsCapacity: '/api/get-seats-capacity',
+    modifySeatsCapacity: '/api/modify-seats-capacity',
   },
 };
