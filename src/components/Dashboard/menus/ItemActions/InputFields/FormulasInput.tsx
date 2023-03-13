@@ -27,7 +27,6 @@ const FormulasInput = ({
   ) => {
     item.attributes[attribute][index][formulaAttribute] = e.target.value;
     setMenuFormulas([...item.attributes[attribute]]);
-    console.log('menuFormula = ' + JSON.stringify(menuFormulas));
   };
 
   const handleDeleteFormula = (index: number) => {

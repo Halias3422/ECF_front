@@ -44,4 +44,8 @@ export const API_ROUTES = {
     deleteCategory: '/api/delete-category',
     modifyCategory: '/api/modify-category',
   },
+  restaurant: {
+    getSeatsCapacity: '/api/get-seats-capacity',
+    modifySeatsCapacity: '/api/modify-seats-capacity',
+  },
 };
