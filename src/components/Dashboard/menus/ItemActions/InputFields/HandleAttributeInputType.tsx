@@ -31,7 +31,13 @@ const HandleAttributeInputType = ({
         />
       );
     case 'price':
-      return <PriceInput attribute={attribute} item={item} />;
+      return (
+        <PriceInput
+          attribute={attribute}
+          item={item}
+          changeItemAttribute={changeItemAttribute}
+        />
+      );
     case 'category':
       return (
         <CategoryInput

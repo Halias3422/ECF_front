@@ -1,21 +1,30 @@
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
+import { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
 const PriceInput = ({
   attribute,
   item,
+  changeItemAttribute,
 }: {
   attribute: string;
   item: ModifyDashboardItem;
+  changeItemAttribute: any;
 }) => {
-  const formatPriceChange = () => {
-    const priceEuros = document.getElementById(
-      'priceEuros'
-    ) as HTMLInputElement;
-    const priceCentimes = document.getElementById(
-      'priceCentimes'
-    ) as HTMLInputElement;
-    item.attributes[attribute] = priceEuros.value + '.' + priceCentimes.value;
+  const formatPriceChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (item.attributes[attribute].length === 0) {
+      item.attributes[attribute] = '10.99';
+    }
+    const newPrice = item.attributes[attribute].split('.');
+    if (e.target.id === 'priceEuros') {
+      newPrice[0] = e.target.value;
+    } else if (e.target.id === 'priceCentimes') {
+      newPrice[1] = e.target.value;
+    }
+    changeItemAttribute(
+      { target: { value: newPrice[0] + '.' + newPrice[1] } },
+      attribute
+    );
   };
 
   return (
@@ -24,8 +33,8 @@ const PriceInput = ({
         type="number"
         id="priceEuros"
         min="0"
-        defaultValue={item.attributes[attribute].split('.')[0]}
-        onChange={() => formatPriceChange()}
+        defaultValue={item.attributes[attribute].split('.')[0] || '10'}
+        onChange={(e) => formatPriceChange(e)}
         required
       />
       <label htmlFor="priceEuro">euros</label>
@@ -35,7 +44,7 @@ const PriceInput = ({
         min="0"
         max="99"
         defaultValue={item.attributes[attribute].split('.')[1] || '99'}
-        onChange={() => formatPriceChange()}
+        onChange={(e) => formatPriceChange(e)}
         required
       />
       <label htmlFor="priceCentimes">centimes</label>

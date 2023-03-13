@@ -6,6 +6,7 @@ import { Formula } from '@/interfaces/formulas';
 import React, { useState } from 'react';
 import { ChangeEvent } from 'react';
 import styled from 'styled-components';
+import { resizePopUpHeight } from '../BackgroundPopUp';
 import HandleAttributeInputType from './HandleAttributeInputType';
 
 const FormulasInput = ({
@@ -25,7 +26,8 @@ const FormulasInput = ({
     index: number
   ) => {
     item.attributes[attribute][index][formulaAttribute] = e.target.value;
-    setMenuFormulas(item.attributes[attribute]);
+    setMenuFormulas([...item.attributes[attribute]]);
+    console.log('menuFormula = ' + JSON.stringify(menuFormulas));
   };
 
   const handleDeleteFormula = (index: number) => {
@@ -35,13 +37,26 @@ const FormulasInput = ({
     item.attributes[attribute] = item.attributes[attribute].filter(
       (formula: Formula) => formula !== item.attributes[attribute][index]
     );
+    resizePopUpHeight();
+  };
+
+  const handleCreateNewFormula = () => {
+    const newFormula = {
+      id: '',
+      title: '',
+      description: '',
+      price: '',
+    };
+    item.attributes[attribute].push(newFormula);
+    setMenuFormulas([...item.attributes[attribute]]);
+    resizePopUpHeight();
   };
 
   return (
     <>
       {menuFormulas.map((formula: Formula, index: number) => {
         return (
-          <FormulaContainer key={formula.title + index}>
+          <FormulaContainer key={index}>
             <TitleContainer>
               <h3>Formule {index + 1}</h3>
               <DeleteButton
@@ -89,12 +104,7 @@ const FormulasInput = ({
       <Button
         title="Ajouter une nouvelle formule"
         className="themeLightGreen"
-        onClick={() =>
-          setMenuFormulas([
-            ...menuFormulas,
-            { id: '', title: '', description: '', price: '' },
-          ])
-        }
+        onClick={() => handleCreateNewFormula()}
       >
         <SvgAddFormula />
       </Button>

@@ -30,6 +30,7 @@ const MenuItemDashboard = ({
       error: '',
     },
     attributes: {
+      id: menu.id,
       title: menu.title,
       formulas: menu.formulas,
     },

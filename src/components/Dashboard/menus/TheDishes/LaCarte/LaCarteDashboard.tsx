@@ -132,7 +132,7 @@ const LaCarteDashboard = () => {
           ...newItem,
           context: {
             ...newItem.context,
-            error: 'Erreur: ' + response,
+            error: 'Erreur lors de la création (' + response + ')',
             confirm: false,
           },
         });
@@ -142,6 +142,12 @@ const LaCarteDashboard = () => {
       triggerItemCreation();
     }
   }, [newItem.context.confirm]);
+
+  useEffect(() => {
+    if (!createItem) {
+      setNewItem(JSON.parse(JSON.stringify(defaultNewItem)));
+    }
+  }, [createItem]);
 
   return (
     <DashboardContainer className="dashboardConfigPanel">
