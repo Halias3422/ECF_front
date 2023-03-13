@@ -1,3 +1,5 @@
+import SvgAddFormula from '@/components/svgs/addFormula';
+import SvgAddMenu from '@/components/svgs/addMenu';
 import SvgDelete from '@/components/svgs/delete';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { Formula } from '@/interfaces/formulas';
@@ -84,6 +86,18 @@ const FormulasInput = ({
           </FormulaContainer>
         );
       })}
+      <Button
+        title="Ajouter une nouvelle formule"
+        className="themeLightGreen"
+        onClick={() =>
+          setMenuFormulas([
+            ...menuFormulas,
+            { id: '', title: '', description: '', price: '' },
+          ])
+        }
+      >
+        <SvgAddFormula />
+      </Button>
     </>
   );
 };
@@ -117,9 +131,14 @@ const DeleteButton = styled.button`
   cursor: pointer;
 `;
 
-const Warning = styled.h2`
-  color: ${(props) => props.theme.darkGrey};
-  font-size: 22px;
+const Button = styled.button`
+  margin-top: 60px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border: ${(props) => `2px solid ${props.theme.darkGrey}`};
+  margin-bottom: 30px;
 `;
 
 export default FormulasInput;

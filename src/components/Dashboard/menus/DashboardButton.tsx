@@ -47,7 +47,7 @@ const ButtonContainer = styled.button`
   cursor: pointer;
   border: ${(props) => `2px solid ${props.theme.darkGrey}`};
   border-radius: 12px;
-  padding: 10px 5%;
+  padding: 10px 10%;
   width: 150px;
   height: 150px;
   overflow: hidden;

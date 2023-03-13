@@ -6,14 +6,21 @@ import {
   DashboardItemContext,
   ModifyDashboardItem,
 } from '@/interfaces/dashboard';
-import { Formula } from '@/interfaces/formulas';
 import { Menu } from '@/interfaces/menus';
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DeleteItemButton from '../../ItemActions/DeleteItemButton';
 import ModifyItemButton from '../../ItemActions/ModifyItemButton';
 
-const MenuItemDashboard = ({ menu, index }: { menu: Menu; index: number }) => {
+const MenuItemDashboard = ({
+  menu,
+  index,
+  retreiveMenus,
+}: {
+  menu: Menu;
+  index: number;
+  retreiveMenus: any;
+}) => {
   const { userContext } = useContext(UserContext);
 
   const originalItem = {
@@ -36,25 +43,40 @@ const MenuItemDashboard = ({ menu, index }: { menu: Menu; index: number }) => {
     error: '',
   });
 
-  const handleModifiedMenuFormulas = async (formulas: Formula[]) => {
-    const deletedFormulas = originalItem.attributes.formulas.filter(
-      (originalFormula) => {
-        return !formulas.some((newFormula) => {
-          return originalFormula.id === newFormula.id;
-        });
-      }
+  const handleModifyMenuItem = async (modifiedMenu: Menu) => {
+    const response = await postProtectedDataToAPI(
+      API_ROUTES.menus.modifyMenu,
+      modifiedMenu,
+      userContext.userSession
     );
-    for (const formula of deletedFormulas) {
-      const deleteFormula = await postProtectedDataToAPI(
-        API_ROUTES.formulas.deleteFormula,
-        formula,
-        userContext.userSession
-      );
+    if (response?.status !== 200) {
+      setModifyItem({
+        ...modifyItem,
+        context: {
+          ...modifyItem.context,
+          confirm: false,
+          error: 'Erreur lors de la modification (' + response?.data + ')',
+        },
+      });
+    } else {
+      menu = {
+        id: menu.id,
+        title: modifyItem.attributes.title,
+        formulas: modifyItem.attributes.formulas,
+      };
+      retreiveMenus();
     }
   };
 
-  const handleModifyMenuItem = async (modifiedMenu: Menu) => {
-    await handleModifiedMenuFormulas(modifiedMenu.formulas);
+  const handleItemDeletion = async () => {
+    const response = await postProtectedDataToAPI(
+      API_ROUTES.menus.deleteMenu,
+      menu,
+      userContext.userSession
+    );
+    if (response && response.status === 200) {
+      retreiveMenus();
+    }
   };
 
   useEffect(() => {
@@ -63,6 +85,7 @@ const MenuItemDashboard = ({ menu, index }: { menu: Menu; index: number }) => {
       for (const formula of modifyItem.attributes.formulas) {
         modifiedFormulas.push({
           id: formula.id,
+          menuId: formula.menuId,
           title: formula.title,
           description: formula.description,
           price: formula.price,
@@ -73,7 +96,7 @@ const MenuItemDashboard = ({ menu, index }: { menu: Menu; index: number }) => {
         title: modifyItem.attributes.title,
         formulas: modifiedFormulas,
       };
-      const response = await handleModifyMenuItem(modifiedMenu);
+      await handleModifyMenuItem(modifiedMenu);
     };
     if (modifyItem.context.confirm) {
       triggerItemModification();
@@ -82,7 +105,7 @@ const MenuItemDashboard = ({ menu, index }: { menu: Menu; index: number }) => {
 
   useEffect(() => {
     if (deleteItem.confirm) {
-      console.log('deleteConfirm');
+      handleItemDeletion();
     }
   }, [deleteItem.confirm]);
   return (
