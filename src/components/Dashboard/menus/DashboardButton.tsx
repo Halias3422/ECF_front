@@ -48,8 +48,8 @@ const ButtonContainer = styled.button`
   border: ${(props) => `2px solid ${props.theme.darkGrey}`};
   border-radius: 12px;
   padding: 10px 10%;
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   overflow: hidden;
   h3 {
     text-align: center;
