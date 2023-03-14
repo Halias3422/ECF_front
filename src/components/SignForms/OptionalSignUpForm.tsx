@@ -1,11 +1,12 @@
 import { roboto } from '@/styles/fonts';
 import styled from 'styled-components';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import FormSubmit from '../FormSubmit/FormSubmit';
 import { UserOptionalInfo } from '../../interfaces/users';
-import { postDataToAPI } from '@/api/utils';
+import { postProtectedDataToAPI } from '@/api/utils';
 import { API_ROUTES } from '@/api/routes';
 import React from 'react';
+import UserContext from '@/context/UserContext';
 
 const OptionalSignUpForm = ({
   $mail,
@@ -14,6 +15,7 @@ const OptionalSignUpForm = ({
   $mail: string;
   filledMandatoryInfo: boolean;
 }) => {
+  const { userContext } = useContext(UserContext);
   const [optionalInfo, setOptionalInfo] = useState<UserOptionalInfo>({
     email: '',
     defaultGuestNumber: 1,
@@ -31,15 +33,20 @@ const OptionalSignUpForm = ({
 
   const handleOptionalInfoSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const res = await postDataToAPI(API_ROUTES.users.updateOptionalInfo, {
-      ...optionalInfo,
-      email: $mail,
-    });
+    const res = await postProtectedDataToAPI(
+      API_ROUTES.users.updateOptionalInfo,
+      {
+        ...optionalInfo,
+        email: $mail,
+      },
+      userContext.userSession
+    );
     if (res === undefined || res.status !== 200) {
       setFormWarning('Erreur interne. Veuillez réessayer plus tard');
       triggerErrorAnimation();
     } else {
       setFormWarning('');
+      window.location.href = '/';
     }
   };
 
