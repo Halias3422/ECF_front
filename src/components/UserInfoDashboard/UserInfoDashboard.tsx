@@ -1,5 +1,5 @@
 import { UserLoginState, UserOptionalInfo } from '@/interfaces/users';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import DashboardButton from '../Dashboard/menus/DashboardButton';
 import SvgAccountInfo from '../svgs/accountInfo';
@@ -10,9 +10,13 @@ import UserReservationsDashboard from './UserReservationsDashboard';
 const UserInfoDashboard = ({
   userInfo,
   userContext,
+  setUserContext,
+  getUserInfo,
 }: {
   userInfo: UserOptionalInfo | undefined;
   userContext: UserLoginState;
+  setUserContext: Dispatch<SetStateAction<UserLoginState>>;
+  getUserInfo: any;
 }) => {
   const [openedConfigPanel, setOpenedConfigPanel] = useState<string>('');
 
@@ -25,6 +29,8 @@ const UserInfoDashboard = ({
           <UserAccountInfoDashboard
             userInfo={userInfo}
             userContext={userContext}
+            setUserContext={setUserContext}
+            getUserInfo={getUserInfo}
           />
         );
       default:

@@ -55,6 +55,7 @@ const SignInForm = () => {
         setUserContext({
           loggedIn: true,
           userSession: res.data.session,
+          contextLoaded: true,
         });
         window.location.href = '/';
       }

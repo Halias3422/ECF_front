@@ -10,7 +10,7 @@ import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
-  const { userContext } = useContext(UserContext);
+  const { userContext, setUserContext } = useContext(UserContext);
   const [userInfo, setUserInfo] = useState<UserOptionalInfo>();
 
   // TODO add reservations view + cancel
@@ -29,13 +29,14 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   };
 
   useEffect(() => {
+    setUserContext(userContext);
     if (userContext.contextLoaded) {
       if (!userContext.userSession) {
         window.location.href = '/connexion';
       }
       getUserInfo();
     }
-  }, [userContext.contextLoaded]);
+  }, [userContext]);
 
   if (userContext.contextLoaded) {
     return (
@@ -47,6 +48,8 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
               <UserInfoDashboard
                 userInfo={userInfo}
                 userContext={userContext}
+                setUserContext={setUserContext}
+                getUserInfo={() => getUserInfo()}
               />
             </AccountInfoContainer>
           </section>
