@@ -199,11 +199,6 @@ const CarteItemContainer = styled.div<{ $isOdd: boolean }>`
   .dishCardContainer {
     min-height: 300px;
   }
-  img {
-    min-width: 295px;
-    min-height: 295px;
-    right: 0.2vw;
-  }
 `;
 
 const ConfigButtonsContainer = styled.div<{ $isOdd: boolean }>`
