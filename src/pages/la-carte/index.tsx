@@ -21,10 +21,10 @@ const CartePage = ({
         <Hero
           header="Découvrez <b>la Carte</b> du Quai Antique"
           paragraphs={[
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
+            "Chacun de nos plats est le résultat du fruit de trente années d'expérimentation culinaire. La cuisine d'hier n'a jamais été meilleure qu'aujourd'hui !",
           ]}
           childComponents={[
-            <ChefsQuote quote="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta." />,
+            <ChefsQuote quote="Mon ambition est de faire découvrir à toutes et tous les richesses du terroir savoyard en les mettant en valeur par l'innovation, tout en respectant le savoir transmis par nos anciens." />,
           ]}
           image="table-full-meals.jpg"
           imageAlt={'Assortiment de plats concoctés par le Chef'}
