@@ -164,7 +164,7 @@ const ReservationForm = ({
                   type="date"
                   id="date"
                   className={`flexInput ${roboto.className}`}
-                  onFocus={(e) => showDatePicker(e)}
+                  onClick={(e) => showDatePicker(e)}
                   onKeyDown={(e) => e.preventDefault()}
                   min={minReservationDate}
                   max={maxReservationDate}

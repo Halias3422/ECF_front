@@ -50,7 +50,8 @@ export const API_ROUTES = {
   reservations: {
     getAllPartialReservationsByDate:
       '/api/get-all-partial-reservations-by-date',
-    getAllReservations: '/api/get-all-reservations',
+    getAllReservationsWithAssociatedMail:
+      '/api/get-all-reservations-with-associated-mail',
     createReservation: '/api/create-reservation',
     getUserReservations: '/api/get-user-reservations',
   },
