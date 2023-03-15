@@ -20,7 +20,7 @@ const MenusPage = ({
         <Hero
           header="Le <b>Quai Antique</b> est fier de vous présenter ses menus"
           paragraphs={[
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta.',
+            "Nos menus sont pensés de la première à la dernière bouchée pour vous offrir une expérience cohérente, telle que le Chef Arnaud Michant l'a imaginé. Plusieurs formules au choix permettent à tous de personnaliser leur repas selon leurs envies.",
           ]}
           image="menu.jpg"
           imageAlt="Un bon en-cas le temps de lire le menu"
