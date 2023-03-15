@@ -35,7 +35,7 @@ const AvailableHoursList = ({
     }
   };
   return (
-    <>
+    <HoursListContainer>
       <ServiceHeader>Service du midi:</ServiceHeader>
       {availableReservations.morningAvailableSeats -
         parseInt(reservationData.guestNumber) >=
@@ -106,31 +106,47 @@ const AvailableHoursList = ({
       ) : (
         <p>Restaurant fermé</p>
       )}
-    </>
+    </HoursListContainer>
   );
 };
 
+const HoursListContainer = styled.div`
+  text-align: center;
+  p {
+    text-align: center;
+  }
+`;
+
 const ServiceHeader = styled.h3`
   font-size: 32px;
-  margin-top: 40px;
+  @media screen and (min-width: 769px) {
+    margin-top: 40px;
+  }
 `;
 
 const HoursContainer = styled.div`
   margin: 0 auto;
   width: 90%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 20px 2%;
   flex-wrap: wrap;
+  @media screen and (min-width: 769px) {
+    justify-content: flex-start;
+    margin-bottom: 40px;
+  }
 `;
 const HourButton = styled.button`
   border-radius: 12px;
   border: ${(props) => `3px solid ${props.theme.darkGreen}`};
-  font-size: 24px;
   min-width: fit-content;
   width: 100px;
   padding: 10px 2%;
   cursor: pointer;
+  font-size: 18px;
+  @media screen and (min-width: 769px) {
+    font-size: 24px;
+  }
 `;
 
 export default AvailableHoursList;

@@ -261,13 +261,16 @@ const FormItem = styled.div`
   align-items: center;
   width: 100%;
   gap: 5px;
-  margin-bottom: 60px;
+  margin-bottom: 32px;
   input {
     width: 100%;
   }
   ,
   p {
     font-size: 24px;
+  }
+  @media screen and (min-width: 769px) {
+    margin-bottom: 40px;
   }
 `;
 
