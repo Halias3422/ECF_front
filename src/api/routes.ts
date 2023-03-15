@@ -47,6 +47,12 @@ export const API_ROUTES = {
     deleteCategory: '/api/delete-category',
     modifyCategory: '/api/modify-category',
   },
+  reservations: {
+    getAllPartialReservationsByDate:
+      '/api/get-all-partial-reservations-by-date',
+    getAllReservations: '/api/get-all-reservations',
+    createReservation: '/api/create-reservation',
+  },
   restaurant: {
     getSeatsCapacity: '/api/get-seats-capacity',
     modifySeatsCapacity: '/api/modify-seats-capacity',

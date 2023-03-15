@@ -44,7 +44,6 @@ const ConnexionInfosForm = ({
       {selectedButton === 'password' && (
         <BackgroundPopUp>
           <ModifyPasswordPopUp
-            userInfo={userInfo}
             userContext={userContext}
             setSelectedButton={setSelectedButton}
           />
