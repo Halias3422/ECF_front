@@ -40,6 +40,8 @@ export const API_ROUTES = {
     getUserRole: '/api/user-get-role',
     updateMail: '/api/user-update-mail',
     updatePassword: '/api/user-update-password',
+    getAuthenticatedProtectedUserFromSession:
+      '/api/get-authenticated-protected-user-from-session',
   },
   categories: {
     getAllCategories: '/api/get-all-categories',

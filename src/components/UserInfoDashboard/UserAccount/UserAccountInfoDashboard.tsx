@@ -1,7 +1,7 @@
 import SvgTriangleDown from '@/components/svgs/triangleDown';
 import SvgTriangleLeft from '@/components/svgs/triangleLeft';
 import { UserLoginState, UserOptionalInfo } from '@/interfaces/users';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import ConnexionInfosForm from './ConnexionInfosForm';
 import OptionalInfosForm from './OptionalInfosForm';
@@ -9,9 +9,13 @@ import OptionalInfosForm from './OptionalInfosForm';
 const UserAccountInfoDashboard = ({
   userInfo,
   userContext,
+  setUserContext,
+  getUserInfo,
 }: {
   userInfo: UserOptionalInfo | undefined;
   userContext: UserLoginState;
+  setUserContext: Dispatch<SetStateAction<UserLoginState>>;
+  getUserInfo: any;
 }) => {
   const [optionalMenuOpen, setOptionalMenuOpen] = useState<boolean>(false);
   const [connexionMenuOpen, setConnexionMenuOpen] = useState<boolean>(false);
@@ -41,7 +45,12 @@ const UserAccountInfoDashboard = ({
           {connexionMenuOpen ? <SvgTriangleDown /> : <SvgTriangleLeft />}
         </HeaderContainer>
         {connexionMenuOpen && (
-          <ConnexionInfosForm userInfo={userInfo} userContext={userContext} />
+          <ConnexionInfosForm
+            userInfo={userInfo}
+            userContext={userContext}
+            setUserContext={setUserContext}
+            getUserOptionalInfo={getUserInfo}
+          />
         )}
       </UserSubMenuContainer>
     </>

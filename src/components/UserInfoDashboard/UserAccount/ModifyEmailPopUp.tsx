@@ -8,10 +8,12 @@ import styled from 'styled-components';
 const ModifyEmailPopUp = ({
   userInfo,
   userContext,
+  setUserContext,
   setSelectedButton,
 }: {
   userInfo: UserOptionalInfo;
   userContext: UserLoginState;
+  setUserContext: Dispatch<SetStateAction<UserLoginState>>;
   setSelectedButton: Dispatch<SetStateAction<string>>;
 }) => {
   const [confirm, setConfirm] = useState<boolean>(false);
@@ -30,6 +32,12 @@ const ModifyEmailPopUp = ({
     );
     setConfirm(false);
     if (response && response.status === 200) {
+      localStorage.setItem('lqa_user_session', response.data.session);
+      setUserContext({
+        loggedIn: true,
+        userSession: response.data.session,
+        contextLoaded: true,
+      });
       setSelectedButton('success');
     } else {
       setErrorMessage('Erreur: ' + response?.data.response);
@@ -47,6 +55,7 @@ const ModifyEmailPopUp = ({
     setConfirm(false);
     if (cancel) {
       setCancel(false);
+      setFormValues({ email: '', password: '' });
       setSelectedButton('');
     }
   }, [confirm, cancel]);

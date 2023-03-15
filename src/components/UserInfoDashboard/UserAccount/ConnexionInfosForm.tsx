@@ -1,7 +1,6 @@
-import DashboardButton from '@/components/Dashboard/menus/DashboardButton';
 import BackgroundPopUp from '@/components/Dashboard/menus/ItemActions/BackgroundPopUp';
 import { UserLoginState, UserOptionalInfo } from '@/interfaces/users';
-import { FormEvent, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import ModifyEmailPopUp from './ModifyEmailPopUp';
 import ModifyPasswordPopUp from './ModifyPasswordPopUp';
@@ -9,9 +8,11 @@ import ModifyPasswordPopUp from './ModifyPasswordPopUp';
 const ConnexionInfosForm = ({
   userInfo,
   userContext,
+  setUserContext,
 }: {
   userInfo: UserOptionalInfo;
   userContext: UserLoginState;
+  setUserContext: Dispatch<SetStateAction<UserLoginState>>;
 }) => {
   const [selectedButton, setSelectedButton] = useState<string>('');
 
@@ -37,6 +38,7 @@ const ConnexionInfosForm = ({
           <ModifyEmailPopUp
             userInfo={userInfo}
             userContext={userContext}
+            setUserContext={setUserContext}
             setSelectedButton={setSelectedButton}
           />
         </BackgroundPopUp>

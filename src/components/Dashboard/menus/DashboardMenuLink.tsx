@@ -1,6 +1,7 @@
 import colorscheme from '@/styles/colorscheme';
 import { SyntheticEvent, useState } from 'react';
 import styled from 'styled-components';
+import MyAccountDashboard from './MyAccount/MyAccount';
 import TheClients from './TheClients/TheClients';
 import TheDishes from './TheDishes/TheDishes';
 import TheRestaurant from './TheRestaurant/TheRestaurant';
@@ -32,7 +33,7 @@ const DashboardMenuLink = ({}: {}) => {
       case 'theRestaurant':
         return <TheRestaurant />;
       case 'myAccount':
-        return <></>;
+        return <MyAccountDashboard />;
       default:
         return <></>;
     }
