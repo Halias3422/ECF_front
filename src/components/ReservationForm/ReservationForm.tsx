@@ -123,7 +123,11 @@ const ReservationForm = ({
         submitElement.style.color = 'darkRed';
       } else {
         setSubmitStatus(
-          'Réservation enregistrée. Vous pouvez la consulter à partir de l\'onglet "Mes infos"'
+          `Réservation enregistrée. ${
+            userContext.loggedIn
+              ? 'Vous pouvez la consulter à partir de l\'onglet "Mes infos"'
+              : 'Inscrivez-vous pour plus de facilité pour vos prochaines réservations !'
+          }`
         );
         submitElement.style.color = colorscheme.darkGreen;
       }

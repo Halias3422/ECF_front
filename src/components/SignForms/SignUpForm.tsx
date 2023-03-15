@@ -86,6 +86,7 @@ const SignUpForm = ({
         setUserContext({
           loggedIn: true,
           userSession: res.data.session,
+          contextLoaded: true,
         });
       }
     } else {
@@ -113,7 +114,11 @@ const SignUpForm = ({
             {emailWarning.length > 0 && <Warning>{emailWarning}</Warning>}
           </SignUpInfoItem>
           <SignUpInfoItem>
-            <label htmlFor="passwordInput">Mot de passe:</label>
+            <label htmlFor="passwordInput">
+              Mot de passe:
+              <br /> (8 caractères minimum, incluant un caractère spécial et un
+              chiffre)
+            </label>
             <FormInput
               type="password"
               id="passwordInput"
@@ -171,6 +176,9 @@ const SignUpInfoItem = styled.div`
   align-items: center;
   width: 100%;
   gap: 10px;
+  label {
+    text-align: center;
+  }
 `;
 
 const Warning = styled.p`

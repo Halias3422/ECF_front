@@ -42,7 +42,7 @@ const AccountButton = ({
           {userRole ? (
             <NavbarLink
               textContent="Admin"
-              url="/dashboard/accueil"
+              url="/dashboard"
               theme={openedTheme}
             />
           ) : (

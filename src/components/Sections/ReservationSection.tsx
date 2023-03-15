@@ -15,8 +15,9 @@ const ReservationSection = ({
     >
       <ReservationSectionContainer className="container">
         <CenteredHeader>
-          consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit.
-          consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit.
+          L'équipe du Quai Antique est prête à vous reçevoir pour vous faire
+          vivre une expérience inoubliable et vous faire découvrir les trésors
+          culinaires de la Savoie. Convaincu ? Alors n'hésitez plus !
         </CenteredHeader>
         <MainCTA textContent="Réservation" url="/reserver" theme={theme} />
       </ReservationSectionContainer>

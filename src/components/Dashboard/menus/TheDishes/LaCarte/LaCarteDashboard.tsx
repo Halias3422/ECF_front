@@ -215,11 +215,6 @@ const DishContainer = styled.div<{ $isOdd: boolean }>`
   .dishCardContainer {
     min-height: 300px;
   }
-  img {
-    width: 295px;
-    height: 295px;
-    right: 0.2vw;
-  }
 `;
 
 const CreateContainer = styled.div`

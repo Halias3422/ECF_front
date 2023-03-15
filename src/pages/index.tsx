@@ -19,8 +19,8 @@ export default function Home({
         <Hero
           header={'Le <b>Quai Antique</b>'}
           paragraphs={[
-            '<i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta.</i>',
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante ',
+            "<i>Découvrez l'univers culinaire du Chef Arnaud Michant. Une réinvention élégante et sans artifices de la cuisine traditionnelle savoyarde.</i>",
+            'Notre équipe passionnée et expérimentée vous attend avec impatience pour vous faire vivre une expérience gastronomique inoubliable dans un cadre chaleureux. Venez découvrir le savoir-faire unique du Quai Antique en plein centre de Chambéry.',
           ]}
           image="le-quai-antique-exterieur.jpg"
           imageAlt="Photo du restaurant."
@@ -31,7 +31,7 @@ export default function Home({
           id="strongPointsSection"
           header={'Nos points forts'}
           paragraphs={[
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
+            "Le Quai Antique est bien plus qu'un simple restaurant. Laissez-nous vous démontrer pourquoi. Vous n'aurez plus qu'à venir nous rendre visite pour vérifier par vous-mêmes !",
           ]}
           image="chef-cuisinant.jpg"
           imageAlt="Le Chef au travail."
@@ -52,8 +52,8 @@ export default function Home({
           id="subscribeSection"
           header="C'est tellement plus simple !"
           paragraphs={[
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis dis parturient montes.',
-            'consectetur adipiscing elit. Morbi at ante pharetra consectetur adipiscing.',
+            'Créez votre compte personnel et gagnez du temps ! Posséder un compte vous permettra de renseigner vos informations et requêtes par défaut lors de vos futures réservations.',
+            'Vous pourrez également avoir accès à la liste de vos réservations.',
           ]}
           image="table-clients.jpg"
           imageAlt="clients attablés"

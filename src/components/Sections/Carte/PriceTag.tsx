@@ -20,6 +20,7 @@ const PriceTagContainer = styled.div<{ $isOdd: boolean }>`
   align-items: ${(props) => (props.$isOdd ? 'flex-end' : 'flex-start')};
   @media screen and (min-width: 1025px) {
     width: fit-content;
+    height: fit-content;
   }
 `;
 
@@ -42,7 +43,7 @@ const PriceHolder = styled.p`
   margin: 0;
   @media screen and (min-width: 1025px) {
     padding: 20px 20px;
-    font-size: 46px;
+    font-size: 34px;
   }
 `;
 

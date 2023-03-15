@@ -21,13 +21,13 @@ const GalleryDishes = ({
       <GalleryDishesContainer id="galleryDishesContainer" className="container">
         <h2 className={merriweatherSans.className}>Les bons plats du Chef</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ante
-          pharetra nisl suscipit porta. Orci varius natoque penatibus et magnis
-          dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit
-          amet, consectetur
+          Découvrez les plats phares du restaurant, élaborés avec soin par le
+          Chef et son équipe. Toutes nos recettes sont préparées sur place au
+          moment de la commande. Fraîcheur garantie !
         </p>
         <p>
-          consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit{' '}
+          Nos recettes s'accordent aux saisons et récoltes, voici la sélection
+          du moment :
         </p>
         <ImagesContainer>
           {galleryDishes?.map((dish: GalleryDishData, index: number) => {
@@ -39,8 +39,9 @@ const GalleryDishes = ({
           })}
         </ImagesContainer>
         <ForMoreDishes>
-          consectetur adipiscing elit. Morbi at ante pharetra nisl suscipit
-          adipiscing elit. Morbi at ante pharetra nisl
+          Consultez notre carte pour découvrir d'autres surprises tout aussi
+          alléchantes ! <br />
+          Nous proposons également des menus soigneusement conçus.
         </ForMoreDishes>
         <MoreDishesCTAContainer>
           <MainCTA
