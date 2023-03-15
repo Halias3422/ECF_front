@@ -10,27 +10,29 @@ const CarteDishItem = ({
   $isOdd: boolean;
 }) => {
   return (
-    <DishItemContainer $isOdd={$isOdd} className="cardDishItem">
+    <DishItemContainer $isOdd={$isOdd}>
       <PriceTag price={dish.price.toString().slice(0, 5)} $isOdd={$isOdd} />
       <DishCardContainer
+        $isOdd={$isOdd}
         className={
           'dishCardContainer ' + ($isOdd ? 'themeDarkGreen' : 'themeLightGreen')
         }
-        $isOdd={$isOdd}
       >
-        <DishImage
-          id={`image${dish.image}`}
-          src={dish.image}
-          alt={dish.title}
-        />
-        <DishTextContainer>
+        <TextContainer>
           <HeaderContainer
+            $isOdd={$isOdd}
             className={$isOdd ? 'themeLightGreen' : 'themeDarkGreen'}
           >
             <h3 className="dishTitle">{dish.title}</h3>
           </HeaderContainer>
           <p className="dishDescription">{dish.description}</p>
-        </DishTextContainer>
+        </TextContainer>
+        <DishImage
+          $isOdd={$isOdd}
+          id={`image${dish.image}`}
+          src={dish.image}
+          alt={dish.title}
+        />
       </DishCardContainer>
     </DishItemContainer>
   );
@@ -43,71 +45,67 @@ const DishItemContainer = styled.article<{ $isOdd: boolean }>`
   margin-bottom: 42px;
   @media screen and (min-width: 1025px) {
     width: 100%;
+    display: flex;
     flex-direction: ${(props) => (props.$isOdd ? 'row' : 'row-reverse')};
-    justify-content: ${(props) => (props.$isOdd ? 'flex-end' : 'flex-start')};
     align-items: flex-start;
+    margin-bottom: 60px;
   }
 `;
 
 const DishCardContainer = styled.div<{ $isOdd: boolean }>`
   border-radius: 8px;
-  border: ${(props) => `3px solid ${props.theme.darkBlue}`};
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   @media screen and (min-width: 481px) {
     width: 65%;
   }
   @media screen and (min-width: 1025px) {
-    width: 80%;
-    position: relative;
-    display: flex;
-    background-position: 25% 25%;
-    flex-direction: ${(props) => (props.$isOdd ? 'row-reverse' : 'row')};
-    min-height: 420px;
-    border-radius: 12px;
+    background: ${(props) =>
+      props.$isOdd
+        ? `linear-gradient(${props.theme.lightGreen} 0 20%, ${props.theme.darkGreen} 20% 100%)`
+        : `linear-gradient(${props.theme.darkGreen} 0 20%, ${props.theme.lightGreen} 20% 100%)`};
+    border-radius: 8px;
+    width: 90%;
+    flex-direction: ${(props) => (props.$isOdd ? 'row' : 'row-reverse')};
+    justify-content: space-between;
+    align-items: flex-start;
   }
 `;
 
-//vertical-align to get rid of space between h3 and img
-const DishImage = styled.img`
-  vertical-align: bottom;
-  border-radius: 0px;
-  @media screen and (min-width: 1025px) {
-    position: absolute;
-    right: 1vw;
-    top: 50%;
-    transform: translate(0, -50%);
-    width: 400px;
-    height: 400px;
-    max-width: none;
-  }
-`;
-
-const DishTextContainer = styled.div`
-  h3,
+const TextContainer = styled.div`
+  width: 100%;
+  text-align: center;
   p {
-    text-align: center;
-  }
-  h3 {
-    padding: 18px 5px;
+    margin: 30px 10%;
   }
   @media screen and (min-width: 1025px) {
-    width: 100%;
-    p {
-      padding: 50px 2vw;
-    }
-    p,
-    h3 {
-      margin: 0px;
-      width: 35%;
-      text-align: left;
-    }
+    width: 50%;
+    text-align: justify;
   }
 `;
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.div<{ $isOdd: boolean }>`
+  padding: 10%;
+  h3 {
+    margin: 0px;
+  }
   @media screen and (min-width: 1025px) {
-    padding: 20px 2vw;
     width: 100%;
+  }
+`;
+
+const DishImage = styled.img<{ $isOdd: boolean }>`
+  width: 95%;
+  margin-bottom: 2%;
+  @media screen and (min-width: 1025px) {
+    ${(props) => (props.$isOdd ? `float: right;` : `float: left;`)};
+    width: 50%;
+    object-fit: contain;
+    height: auto;
+    margin: ${(props) => (props.$isOdd ? '0.4vw' : '0.4vw 0px 0.4vw 0.4vw')};
+    z-index: 1;
   }
 `;
 
