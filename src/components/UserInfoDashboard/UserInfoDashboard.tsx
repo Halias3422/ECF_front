@@ -19,7 +19,7 @@ const UserInfoDashboard = ({
   const displayOpenedConfigPanel = () => {
     switch (openedConfigPanel) {
       case 'Mes réservations':
-        return <UserReservationsDashboard />;
+        return <UserReservationsDashboard userContext={userContext} />;
       case 'Mes informations':
         return (
           <UserAccountInfoDashboard
@@ -36,7 +36,6 @@ const UserInfoDashboard = ({
       <UserDashboardContainer
         className="dashboardMenuOpening"
         id="userAccountConfigPanelContainer"
-        $openedConfigPanel={openedConfigPanel}
       >
         <MenuContainer>
           <DashboardButton
@@ -62,7 +61,7 @@ const MenuContainer = styled.div`
   gap: 3%;
 `;
 
-const UserDashboardContainer = styled.div<{ $openedConfigPanel: string }>`
+const UserDashboardContainer = styled.div`
   margin-top: -25px;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;

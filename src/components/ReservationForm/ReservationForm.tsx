@@ -96,6 +96,7 @@ const ReservationForm = ({
         restaurantSeatsCapacity
       );
     }
+    setSubmitStatus('');
   }, [reservationData.date]);
 
   const showDatePicker = (e: SyntheticEvent) => {

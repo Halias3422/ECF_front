@@ -48,29 +48,6 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
                 userInfo={userInfo}
                 userContext={userContext}
               />
-              {/*<AccountInfoForm>
-								<label htmlFor="defaultGuestNumber">
-                  Nombre de couverts par défaut:
-                </label>
-                <input
-                  type="number"
-                  id="defaultGuestNumber"
-                  name="defaultGuestNumber"
-                  defaultValue={userInfo.defaultGuestNumber}
-                  min="1"
-                  max="45"
-                />
-                <label htmlFor="defaultAllergies">
-                  Allergies ou autres demandes:
-                </label>
-                <DefaultAllergies
-                  className={roboto.className}
-                  id="defaultAllergies"
-                  name="defaultAllergies"
-                  defaultValue={userInfo.defaultAllergies}
-                />
-              </AccountInfoForm>
-              <FormSubmit textContent="Modifier" theme="themeDarkGreen" />*/}
             </AccountInfoContainer>
           </section>
         </main>
@@ -86,30 +63,6 @@ const AccountInfoContainer = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const AccountInfoForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  input,
-  textarea {
-    margin-top: 10px;
-    margin-bottom: 40px;
-  }
-  input {
-    max-width: 100%;
-  }
-`;
-
-const DefaultAllergies = styled.textarea`
-  height: 200px;
-  min-height: fit-content;
-  width: 100%;
-  @media screen and (min-width: 769px) {
-    width: 80%;
-  }
 `;
 
 export const getStaticProps = async () => {

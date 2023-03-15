@@ -20,7 +20,7 @@ const UserAccountInfoDashboard = ({
   }
   return (
     <>
-      <UserSubMenuContainer>
+      <UserSubMenuContainer className="dashboardMenuOpening">
         <HeaderContainer
           onClick={() => setOptionalMenuOpen(!optionalMenuOpen)}
           className={optionalMenuOpen ? 'themeDarkBlue' : 'themeSnow'}
@@ -32,7 +32,7 @@ const UserAccountInfoDashboard = ({
           <OptionalInfosForm userInfo={userInfo} userContext={userContext} />
         )}
       </UserSubMenuContainer>
-      <UserSubMenuContainer>
+      <UserSubMenuContainer className="dashboardMenuOpening">
         <HeaderContainer
           onClick={() => setConnexionMenuOpen(!connexionMenuOpen)}
           className={connexionMenuOpen ? 'themeDarkBlue' : 'themeSnow'}

@@ -52,6 +52,7 @@ export const API_ROUTES = {
       '/api/get-all-partial-reservations-by-date',
     getAllReservations: '/api/get-all-reservations',
     createReservation: '/api/create-reservation',
+    getUserReservations: '/api/get-user-reservations',
   },
   restaurant: {
     getSeatsCapacity: '/api/get-seats-capacity',
