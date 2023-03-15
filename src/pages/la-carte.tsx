@@ -1,12 +1,12 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI } from '@/api/utils';
+import ChefsQuote from '@/components/ChefsQuote/ChefsQuote';
 import Hero from '@/components/Hero/Hero';
 import CarteCategory from '@/components/Sections/Carte/CarteCategory';
 import Footer from '@/components/Sections/Footer/Footer';
 import { CarteCategoryData } from '@/interfaces/carte';
 import { DaySchedule } from '@/interfaces/schedule';
 import React from 'react';
-import ChefsQuote from './ChefsQuote';
 
 const CartePage = ({
   carteDishes,
