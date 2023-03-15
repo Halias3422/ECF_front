@@ -69,11 +69,6 @@ const DynamicMobileMenu = ({
           url="/la-carte"
           theme="themeDarkGreen"
         />
-        <NavbarLink
-          textContent="Contact"
-          url="/contact"
-          theme="themeDarkGreen"
-        />
         {!userContext.loggedIn ? (
           <NavbarLink
             textContent="Connexion"

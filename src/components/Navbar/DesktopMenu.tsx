@@ -43,11 +43,6 @@ const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
           />
         </MenuLinkSeparator>
         <MenuLinkSeparator>
-          <NavbarLink
-            textContent="Contact"
-            url="/contact"
-            theme="themeLightGreen"
-          />
           {!userContext.userSession ? (
             <NavbarLink
               textContent="Connexion"
