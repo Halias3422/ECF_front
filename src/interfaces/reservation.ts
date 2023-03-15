@@ -1,6 +1,16 @@
-export interface ReservationFormData {
+export interface PartialReservationData {
   guestNumber: string;
   date: string;
-  time: string;
+  hour: string;
+}
+export interface ReservationFormData extends PartialReservationData {
   allergies: string;
+  service: string;
+}
+
+export interface AvailableReservationHours {
+  morning: string[];
+  afternoon: string[];
+  morningAvailableSeats: number;
+  afternoonAvailableSeats: number;
 }

@@ -38,12 +38,21 @@ export const API_ROUTES = {
     updateOptionalInfo: '/api/user-update-optional-info',
     getOptionalInfo: '/api/user-get-optional-info',
     getUserRole: '/api/user-get-role',
+    updateMail: '/api/user-update-mail',
+    updatePassword: '/api/user-update-password',
   },
   categories: {
     getAllCategories: '/api/get-all-categories',
     createNewCategory: '/api/create-new-category',
     deleteCategory: '/api/delete-category',
     modifyCategory: '/api/modify-category',
+  },
+  reservations: {
+    getAllPartialReservationsByDate:
+      '/api/get-all-partial-reservations-by-date',
+    getAllReservations: '/api/get-all-reservations',
+    createReservation: '/api/create-reservation',
+    getUserReservations: '/api/get-user-reservations',
   },
   restaurant: {
     getSeatsCapacity: '/api/get-seats-capacity',
