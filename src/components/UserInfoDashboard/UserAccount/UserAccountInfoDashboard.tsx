@@ -10,12 +10,10 @@ const UserAccountInfoDashboard = ({
   userInfo,
   userContext,
   setUserContext,
-  getUserInfo,
 }: {
   userInfo: UserOptionalInfo | undefined;
   userContext: UserLoginState;
   setUserContext: Dispatch<SetStateAction<UserLoginState>>;
-  getUserInfo: any;
 }) => {
   const [optionalMenuOpen, setOptionalMenuOpen] = useState<boolean>(false);
   const [connexionMenuOpen, setConnexionMenuOpen] = useState<boolean>(false);
@@ -49,7 +47,6 @@ const UserAccountInfoDashboard = ({
             userInfo={userInfo}
             userContext={userContext}
             setUserContext={setUserContext}
-            getUserOptionalInfo={getUserInfo}
           />
         )}
       </UserSubMenuContainer>

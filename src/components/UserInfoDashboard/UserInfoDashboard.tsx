@@ -11,12 +11,10 @@ const UserInfoDashboard = ({
   userInfo,
   userContext,
   setUserContext,
-  getUserInfo,
 }: {
   userInfo: UserOptionalInfo | undefined;
   userContext: UserLoginState;
   setUserContext: Dispatch<SetStateAction<UserLoginState>>;
-  getUserInfo: any;
 }) => {
   const [openedConfigPanel, setOpenedConfigPanel] = useState<string>('');
 
@@ -30,7 +28,6 @@ const UserInfoDashboard = ({
             userInfo={userInfo}
             userContext={userContext}
             setUserContext={setUserContext}
-            getUserInfo={getUserInfo}
           />
         );
       default:

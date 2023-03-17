@@ -1,6 +1,5 @@
 import MainCTA from '@/components/MainCTA/MainCTA';
-import { GalleryDishData } from '@/interfaces/dishes';
-import colorscheme from '@/styles/colorscheme';
+import { GalleryDishData } from '@/interfaces/galleryDishes';
 import { merriweatherSans } from '@/styles/fonts';
 import React from 'react';
 import styled from 'styled-components';

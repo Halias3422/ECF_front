@@ -13,9 +13,6 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   const { userContext, setUserContext } = useContext(UserContext);
   const [userInfo, setUserInfo] = useState<UserOptionalInfo>();
 
-  // TODO add reservations view + cancel
-  // TODO add password change
-
   const getUserInfo = async () => {
     const response = await getProtectedDataFromAPI(
       API_ROUTES.users.getOptionalInfo,
@@ -49,7 +46,6 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
                 userInfo={userInfo}
                 userContext={userContext}
                 setUserContext={setUserContext}
-                getUserInfo={() => getUserInfo()}
               />
             </AccountInfoContainer>
           </section>

@@ -1,4 +1,4 @@
-import { GalleryDishData } from '@/interfaces/dishes';
+import { GalleryDishData } from '@/interfaces/galleryDishes';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
