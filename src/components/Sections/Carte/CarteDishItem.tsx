@@ -9,6 +9,7 @@ const CarteDishItem = ({
   dish: DishCarteData;
   $isOdd: boolean;
 }) => {
+  console.log('dishImage = ' + JSON.stringify(dish.image));
   return (
     <DishItemContainer $isOdd={$isOdd}>
       <PriceTag price={dish.price.toString().slice(0, 5)} $isOdd={$isOdd} />
