@@ -28,6 +28,7 @@ const CarteDishItem = ({
           <p className="dishDescription">{dish.description}</p>
         </TextContainer>
         <DishImage
+          loading="lazy"
           $isOdd={$isOdd}
           id={`image${dish.image}`}
           src={`${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_` + dish.image}

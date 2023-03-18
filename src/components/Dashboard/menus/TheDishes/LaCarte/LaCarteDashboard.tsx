@@ -1,6 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
 import SvgAddDishGallery from '@/components/svgs/addDishGallery';
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import UserContext from '@/context/UserContext';
 import { CarteCategoryData } from '@/interfaces/carte';
 import {
@@ -152,29 +153,37 @@ const LaCarteDashboard = () => {
   return (
     <DashboardContainer className="dashboardConfigPanel">
       <CarteDishesContainer className="carteDishesConfigPanelOpening">
-        {carteDishes?.map((category: CarteCategoryData, index: number) => {
-          return (
-            <React.Fragment key={index + category.category.name}>
-              <CarteCategoryItem
-                category={category}
-                retreiveDishes={() => retreiveDishes()}
-              />
-              {category.dishes.map((dish: DishCarteData, index: number) => {
-                totalCardIndex += 1;
-                return (
-                  <DishContainer key={index} $isOdd={totalCardIndex % 2 !== 0}>
-                    <CarteItemDashboard
-                      dish={dish}
-                      category={category}
+        {!carteDishes ? (
+          <LoadingAnim />
+        ) : (
+          carteDishes.length > 0 &&
+          carteDishes.map((category: CarteCategoryData, index: number) => {
+            return (
+              <React.Fragment key={index + category.category.name}>
+                <CarteCategoryItem
+                  category={category}
+                  retreiveDishes={() => retreiveDishes()}
+                />
+                {category.dishes.map((dish: DishCarteData, index: number) => {
+                  totalCardIndex += 1;
+                  return (
+                    <DishContainer
+                      key={index}
                       $isOdd={totalCardIndex % 2 !== 0}
-                      retreiveDishes={retreiveDishes}
-                    />
-                  </DishContainer>
-                );
-              })}
-            </React.Fragment>
-          );
-        })}
+                    >
+                      <CarteItemDashboard
+                        dish={dish}
+                        category={category}
+                        $isOdd={totalCardIndex % 2 !== 0}
+                        retreiveDishes={retreiveDishes}
+                      />
+                    </DishContainer>
+                  );
+                })}
+              </React.Fragment>
+            );
+          })
+        )}
       </CarteDishesContainer>
       <CreateContainer>
         <CreateItemButton

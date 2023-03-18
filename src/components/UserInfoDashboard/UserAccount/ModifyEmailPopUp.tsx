@@ -1,6 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { postProtectedDataToAPI } from '@/api/utils';
 import FormSubmitButtons from '@/components/Dashboard/menus/ItemActions/FormSubmitButtons';
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import { UserLoginState, UserOptionalInfo } from '@/interfaces/users';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -83,6 +84,7 @@ const ModifyEmailPopUp = ({
           }
           required
         />
+        {confirm && <LoadingAnim />}
         <ErrorMessage id="submitError">{errorMessage}</ErrorMessage>
       </FormItem>
       <FormItem>

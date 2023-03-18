@@ -52,6 +52,7 @@ img {
 border-radius: 8px;
 max-width: 100%;
 max-height: 100%;
+background-image: url(https://www.tlbx.app/200.svg);
 }
 
 .themeLightGreen {

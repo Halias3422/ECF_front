@@ -1,6 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
 import SvgAddDishGallery from '@/components/svgs/addDishGallery';
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import UserContext from '@/context/UserContext';
 import {
   DashboardImageData,
@@ -127,7 +128,10 @@ const DishesGalleryDashboard = () => {
   return (
     <div className="dashboardConfigPanel dishesGalleryConfigPanelOpening">
       <DishesGalleryContainer>
-        {galleryDishes &&
+        {!galleryDishes ? (
+          <LoadingAnim />
+        ) : (
+          galleryDishes &&
           galleryDishes.length > 0 &&
           galleryDishes.map((dish: GalleryDishData) => {
             return (
@@ -138,7 +142,8 @@ const DishesGalleryDashboard = () => {
                 />
               </React.Fragment>
             );
-          })}
+          })
+        )}
       </DishesGalleryContainer>
       <CreateItemButton
         newItem={newItem}

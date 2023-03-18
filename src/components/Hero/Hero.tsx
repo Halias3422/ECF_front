@@ -44,6 +44,7 @@ const Hero = ({
           })}
         </TextContainer>
         <img
+          loading="lazy"
           src={`${process.env.NEXT_PUBLIC_AWS_URL}/images/IMAGES_` + image}
           alt={imageAlt}
           title={imageAlt}
