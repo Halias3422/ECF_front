@@ -65,6 +65,7 @@ const CarteCategoryItem = ({
       return;
     }
     retreiveDishes();
+    fetch('/api/revalidate-dishes');
   };
 
   const handleModifyCategory = async () => {
@@ -90,6 +91,7 @@ const CarteCategoryItem = ({
       name: modifyItem.attributes.name,
     };
     retreiveDishes();
+    fetch('/api/revalidate-dishes');
   };
 
   useEffect(() => {

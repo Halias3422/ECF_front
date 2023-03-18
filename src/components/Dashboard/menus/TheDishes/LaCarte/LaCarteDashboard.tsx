@@ -103,6 +103,7 @@ const LaCarteDashboard = () => {
       );
       if (newItem && newItem.status === 201) {
         retreiveDishes();
+        fetch('/api/revalidate-dishes');
         return '';
       }
       return 'Impossible de créer le nouvel élément (' + newItem?.data + ')';

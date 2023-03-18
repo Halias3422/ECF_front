@@ -81,6 +81,7 @@ const DishesGalleryDashboard = () => {
       );
       if (newItem && newItem.status === 201) {
         retreiveGalleryDishes();
+        fetch('api/revalidate-dish-gallery');
         return '';
       }
       return 'Impossible de créer le nouvel élément';

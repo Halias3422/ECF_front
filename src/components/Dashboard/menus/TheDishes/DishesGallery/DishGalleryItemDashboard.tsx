@@ -87,6 +87,7 @@ const DishGalleryItemDashboard = ({
     if (response && response.status === 200) {
       const deleteImage = await deleteImageOnAPI(dish.image);
       if (deleteImage && deleteImage.status === 200) {
+        fetch('/api/revalidate-dish-gallery');
         retreiveGalleryDishes();
       }
     }
@@ -108,6 +109,7 @@ const DishGalleryItemDashboard = ({
           modifyItem.previousImage as string
         );
         if (deleteImage && deleteImage.status === 200) {
+          fetch('/api/revalidate-dish-gallery');
           retreiveGalleryDishes();
           return '';
         }

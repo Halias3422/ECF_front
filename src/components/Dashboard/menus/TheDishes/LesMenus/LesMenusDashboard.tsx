@@ -38,6 +38,7 @@ const LesMenusDashboard = () => {
     );
     if (response && response.status === 201) {
       retreiveMenus();
+      fetch('/api/revalidate-menus');
       setNewItem(JSON.parse(JSON.stringify(defaultNewItem)));
       setCreateItem(false);
     } else {

@@ -4,11 +4,12 @@ import DashboardMenuLink from '@/components/Dashboard/menus/DashboardMenuLink';
 import UserContext from '@/context/UserContext';
 import { merriweatherSans } from '@/styles/fonts';
 import Head from 'next/head';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const DashboardAccueilPage = () => {
   const { userContext } = useContext(UserContext);
+  const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
 
   const checkUserAuthorization = async () => {
     if (userContext.loggedIn && userContext.userSession) {
@@ -23,6 +24,7 @@ const DashboardAccueilPage = () => {
       ) {
         window.location.href = '/';
       }
+      setIsAuthorized(true);
     } else {
       window.location.href = '/';
     }
@@ -49,7 +51,7 @@ const DashboardAccueilPage = () => {
     }
   }, [userContext.contextLoaded]);
 
-  if (userContext.contextLoaded) {
+  if (isAuthorized) {
     return (
       <>
         <Head>
