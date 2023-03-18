@@ -1,6 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
 import SvgAddMenu from '@/components/svgs/addMenu';
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import UserContext from '@/context/UserContext';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { Menu } from '@/interfaces/menus';
@@ -78,17 +79,22 @@ const LesMenusDashboard = () => {
     <DashboardContainer className="dashboardConfigPanel">
       <MenusContainer className="carteDishesConfigPanelOpening">
         <MenusBackground>
-          {menus?.map((menu: Menu, index: number) => {
-            return (
-              <React.Fragment key={index + menu.title}>
-                <MenuItemDashboard
-                  menu={menu}
-                  index={index}
-                  retreiveMenus={retreiveMenus}
-                />
-              </React.Fragment>
-            );
-          })}
+          {!menus ? (
+            <LoadingAnim />
+          ) : (
+            menus.length > 0 &&
+            menus.map((menu: Menu, index: number) => {
+              return (
+                <React.Fragment key={index + menu.title}>
+                  <MenuItemDashboard
+                    menu={menu}
+                    index={index}
+                    retreiveMenus={retreiveMenus}
+                  />
+                </React.Fragment>
+              );
+            })
+          )}
           <CreateItemButton
             newItem={newItem}
             setNewItem={setNewItem}

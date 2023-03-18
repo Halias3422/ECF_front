@@ -5,6 +5,7 @@ import FormSubmitButtons from './FormSubmitButtons';
 import ItemAttributesList from './ItemAttributesList';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import BackgroundPopUp, { resizePopUpHeight } from './BackgroundPopUp';
+import LoadingAnim from '@/components/svgs/loadingAnim';
 
 const ModifyItemButton = ({
   originalItem,
@@ -78,6 +79,7 @@ const ModifyItemButton = ({
           <ModifyForm id="popUpForm" onSubmit={(e) => e.preventDefault()}>
             <h2>Modifier l'élément</h2>
             <ItemAttributesList modifyItem={modifyItem} />
+            {modifyItem.context.confirm && <LoadingAnim />}
             <Error id={'error' + modifyItem.attributes.title}>
               {modifyItem.context.error}
             </Error>

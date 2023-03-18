@@ -1,5 +1,6 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import UserContext from '@/context/UserContext';
 import { DaySchedule } from '@/interfaces/schedule';
 import colorscheme from '@/styles/colorscheme';
@@ -59,57 +60,66 @@ const ScheduleDashboard = () => {
       <ScheduleContainer className="carteDishesConfigPanelOpening">
         <ScheduleForm onSubmit={(e) => e.preventDefault()}>
           <GridContainer>
-            {weekSchedule?.map((daySchedule: DaySchedule, index: number) => {
-              return (
-                <DayContainer
-                  key={index}
-                  $isOdd={index % 2 === 0}
-                  className="dashboardGalleryImageOpening"
-                >
-                  <DayHeader $isOdd={index % 2 === 0}>
-                    {daySchedule.dayOfWeek}
-                  </DayHeader>
-                  <h3>Horaires en journée</h3>
-                  <OpenCloseContainer>
-                    <ScheduleInput
-                      daySchedule={daySchedule}
-                      attribute="morningOpening"
-                      updateScheduleAttribute={(
-                        e: ChangeEvent<HTMLInputElement>
-                      ) => updateScheduleAttribute(e, 'morningOpening', index)}
-                    />
-                    <ScheduleInput
-                      daySchedule={daySchedule}
-                      attribute="morningClosing"
-                      updateScheduleAttribute={(
-                        e: ChangeEvent<HTMLInputElement>
-                      ) => updateScheduleAttribute(e, 'morningClosing', index)}
-                    />
-                  </OpenCloseContainer>
-                  <h3>Horaires en soirée</h3>
-                  <OpenCloseContainer>
-                    <ScheduleInput
-                      daySchedule={daySchedule}
-                      attribute="afternoonOpening"
-                      updateScheduleAttribute={(
-                        e: ChangeEvent<HTMLInputElement>
-                      ) =>
-                        updateScheduleAttribute(e, 'afternoonOpening', index)
-                      }
-                    />
-                    <ScheduleInput
-                      daySchedule={daySchedule}
-                      attribute="afternoonClosing"
-                      updateScheduleAttribute={(
-                        e: ChangeEvent<HTMLInputElement>
-                      ) =>
-                        updateScheduleAttribute(e, 'afternoonClosing', index)
-                      }
-                    />
-                  </OpenCloseContainer>
-                </DayContainer>
-              );
-            })}
+            {!weekSchedule ? (
+              <LoadingAnim />
+            ) : (
+              weekSchedule.length > 0 &&
+              weekSchedule.map((daySchedule: DaySchedule, index: number) => {
+                return (
+                  <DayContainer
+                    key={index}
+                    $isOdd={index % 2 === 0}
+                    className="dashboardGalleryImageOpening"
+                  >
+                    <DayHeader $isOdd={index % 2 === 0}>
+                      {daySchedule.dayOfWeek}
+                    </DayHeader>
+                    <h3>Horaires en journée</h3>
+                    <OpenCloseContainer>
+                      <ScheduleInput
+                        daySchedule={daySchedule}
+                        attribute="morningOpening"
+                        updateScheduleAttribute={(
+                          e: ChangeEvent<HTMLInputElement>
+                        ) =>
+                          updateScheduleAttribute(e, 'morningOpening', index)
+                        }
+                      />
+                      <ScheduleInput
+                        daySchedule={daySchedule}
+                        attribute="morningClosing"
+                        updateScheduleAttribute={(
+                          e: ChangeEvent<HTMLInputElement>
+                        ) =>
+                          updateScheduleAttribute(e, 'morningClosing', index)
+                        }
+                      />
+                    </OpenCloseContainer>
+                    <h3>Horaires en soirée</h3>
+                    <OpenCloseContainer>
+                      <ScheduleInput
+                        daySchedule={daySchedule}
+                        attribute="afternoonOpening"
+                        updateScheduleAttribute={(
+                          e: ChangeEvent<HTMLInputElement>
+                        ) =>
+                          updateScheduleAttribute(e, 'afternoonOpening', index)
+                        }
+                      />
+                      <ScheduleInput
+                        daySchedule={daySchedule}
+                        attribute="afternoonClosing"
+                        updateScheduleAttribute={(
+                          e: ChangeEvent<HTMLInputElement>
+                        ) =>
+                          updateScheduleAttribute(e, 'afternoonClosing', index)
+                        }
+                      />
+                    </OpenCloseContainer>
+                  </DayContainer>
+                );
+              })
+            )}
           </GridContainer>
           <SubmitStatusContainer>
             <Confirm

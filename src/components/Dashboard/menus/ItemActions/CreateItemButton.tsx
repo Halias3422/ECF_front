@@ -1,3 +1,4 @@
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -84,6 +85,7 @@ const CreateItemButton = ({
           <CreateForm id="popUpForm" onSubmit={(e) => e.preventDefault()}>
             <h2>Créer un nouvel élément</h2>
             <ItemAttributesList modifyItem={newItem} />
+            {newItem.context.confirm && <LoadingAnim />}
             <Error id={'error' + newItem.attributes.title}>
               {newItem.context.error}
             </Error>
