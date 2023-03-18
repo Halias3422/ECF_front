@@ -29,6 +29,7 @@ const ScheduleDashboard = () => {
     if (response && response.status === 200) {
       setStatusMessage('Changement enregistré');
       weekScheduleStatus.style.color = colorscheme.darkGreen;
+      fetch('/api/revalidate');
     } else {
       setStatusMessage(
         'Erreur lors de la demande de changement (' + response?.data + ')'

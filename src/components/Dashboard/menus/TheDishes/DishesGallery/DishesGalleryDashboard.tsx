@@ -58,7 +58,7 @@ const DishesGalleryDashboard = () => {
       return isDuplicate;
     }
     const formData = new FormData();
-    formData.append('form_image', image.file as File, image.name);
+    formData.append('image', image.file as File);
     const saveImage = await postProtectedDataToAPI(
       API_ROUTES.dishesGallery.saveDishGalleryImage,
       formData,

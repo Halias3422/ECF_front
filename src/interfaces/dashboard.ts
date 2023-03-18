@@ -11,6 +11,6 @@ export interface ModifyDashboardItem {
 }
 
 export interface DashboardImageData {
-  file: File;
+  file: Blob;
   name: string;
 }

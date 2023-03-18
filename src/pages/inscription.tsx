@@ -30,7 +30,7 @@ const InscriptionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
               : 'Impatients de vous rencontrer !'
           }
           paragraphs={['']}
-          image="cheers.jpg"
+          image="toast-repas.jpg"
           imageAlt="Venez vivre des moments inoubliables"
           childComponents={[
             <SignUpForm
