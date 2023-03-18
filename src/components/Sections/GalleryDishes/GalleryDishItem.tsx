@@ -81,7 +81,14 @@ const GalleryDishItem = ({ dish }: { dish: GalleryDishData }) => {
   }, []);
   return (
     <GalleryDishItemContainer className="galleryDishItemContainer">
-      <DishImage src={dish.image} alt={dish.title} title={dish.title} />
+      <DishImage
+        src={
+          `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_` +
+          dish.image
+        }
+        alt={dish.title}
+        title={dish.title}
+      />
     </GalleryDishItemContainer>
   );
 };

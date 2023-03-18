@@ -30,7 +30,7 @@ const CarteDishItem = ({
         <DishImage
           $isOdd={$isOdd}
           id={`image${dish.image}`}
-          src={dish.image}
+          src={`${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_` + dish.image}
           alt={dish.title}
         />
       </DishCardContainer>
