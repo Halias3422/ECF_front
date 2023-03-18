@@ -66,6 +66,7 @@ const MenuItemDashboard = ({
         formulas: modifyItem.attributes.formulas,
       };
       retreiveMenus();
+      fetch('/api/revalidate-menus');
     }
   };
 
@@ -77,6 +78,7 @@ const MenuItemDashboard = ({
     );
     if (response && response.status === 200) {
       retreiveMenus();
+      fetch('/api/revalidate-menus');
     }
   };
 
