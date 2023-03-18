@@ -44,7 +44,7 @@ const Hero = ({
           })}
         </TextContainer>
         <img
-          src={`${process.env.NEXT_PUBLIC_BACK_END_URL}/images/` + image}
+          src={`${process.env.NEXT_PUBLIC_AWS_URL}/images/IMAGES_` + image}
           alt={imageAlt}
           title={imageAlt}
         />
