@@ -9,7 +9,7 @@ const ItemAttributesList = ({
 }: {
   modifyItem: ModifyDashboardItem;
 }) => {
-  const changeItemAttribute = (
+  const changeItemAttribute = async (
     event: ChangeEvent<HTMLInputElement>,
     attribute: string
   ) => {
