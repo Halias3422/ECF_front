@@ -52,7 +52,9 @@ const HandleAttributeInputType = ({
         />
       );
     case 'formulas':
-      return <FormulasInput attribute={attribute} item={item} />;
+      return (
+        <FormulasInput attribute={attribute} item={item} isModify={isModify} />
+      );
     default:
       return (
         <input

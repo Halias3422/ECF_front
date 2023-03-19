@@ -1,5 +1,4 @@
 import SvgAddFormula from '@/components/svgs/addFormula';
-import SvgAddMenu from '@/components/svgs/addMenu';
 import SvgDelete from '@/components/svgs/delete';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { Formula } from '@/interfaces/formulas';
@@ -12,9 +11,11 @@ import HandleAttributeInputType from './HandleAttributeInputType';
 const FormulasInput = ({
   attribute,
   item,
+  isModify,
 }: {
   attribute: string;
   item: ModifyDashboardItem;
+  isModify: boolean;
 }) => {
   const [menuFormulas, setMenuFormulas] = useState<Formula[]>(
     item.attributes[attribute]
@@ -75,6 +76,7 @@ const FormulasInput = ({
                       </label>
                       <HandleAttributeInputType
                         attribute={formulaAttribute}
+                        isModify={isModify}
                         item={{
                           context: {
                             id: formula.id as string,
