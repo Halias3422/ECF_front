@@ -57,8 +57,10 @@ position: unset !important;
 .image {
 object-fit: contain;
 width: 100% !important;
+max-width: 100%;
 position: relative !important;
-height: unset !important;
+max-height: 100%;
+height: unset  !important;
 border-radius: 8px;
 background-image: url(https://www.tlbx.app/200.svg);
 }
@@ -113,7 +115,7 @@ color: ${colorscheme.snow}
 .container {
 width: 80%;
 margin: 0 auto;
-max-width: 1200px;
+max-width: 1400px;
 }
 
 .errorShake {
@@ -254,7 +256,8 @@ font-size: 36px;
 }
 
 .imageContainer {
-	width: 50%;
+	position: relative !important;
+	width: 45%;
 	max-height: 700px;
 }
 
