@@ -14,6 +14,7 @@ const FooterContact = () => {
       <ContactInfoItem label="Nous trouver" value="" />
       <OpenStreetMapFrame
         title="OpenStreetMap"
+        loading="lazy"
         src="//umap.openstreetmap.fr/en/map/untitled-map_875494?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"
       ></OpenStreetMapFrame>
       <a href="//umap.openstreetmap.fr/en/map/untitled-map_875494">
