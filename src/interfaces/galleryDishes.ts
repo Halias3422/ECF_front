@@ -7,6 +7,7 @@ export interface GalleryDishData {
 export interface GalleryDishDashboard {
   id: string;
   confirm: boolean;
+  modified: boolean;
   error: string;
 }
 

@@ -51,7 +51,7 @@ font-weight: bold;
 .imageContainer {
 	width: 100%;
 > div {
-position: unset !important;
+position: relative !important;
 }
 
 .image {

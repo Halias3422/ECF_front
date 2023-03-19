@@ -49,14 +49,10 @@ const ItemAttributesList = ({
                   <img
                     src={
                       modifyItem.hasOwnProperty('previousImage')
-                        ? `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_${modifyItem.attributes.image.name}`
+                        ? modifyItem.previousImage
                         : ''
                     }
                     className="previewImage"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_${modifyItem.attributes.image.name}`;
-                    }}
                   />
                 )}
               </Attribute>

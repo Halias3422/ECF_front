@@ -1,6 +1,7 @@
 export interface DashboardItemContext {
   id: string;
   confirm: boolean;
+  modified: boolean;
   error: string;
 }
 

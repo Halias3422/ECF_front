@@ -69,6 +69,12 @@ const ModifyItemButton = ({
     }
   }, [confirm]);
 
+  useEffect(() => {
+    if (modifyItem.context.modified) {
+      setOpenPopUp(false);
+    }
+  }, [modifyItem.context.modified]);
+
   return (
     <div>
       <Button
@@ -83,7 +89,7 @@ const ModifyItemButton = ({
           <ModifyForm id="popUpForm" onSubmit={(e) => e.preventDefault()}>
             <h2>Modifier l'élément</h2>
             <ItemAttributesList modifyItem={modifyItem} isModify />
-            {modifyItem.context.confirm && <LoadingAnim />}
+            {confirm && <LoadingAnim />}
             <Error id={'error' + modifyItem.attributes.title}>
               {modifyItem.context.error}
             </Error>

@@ -30,6 +30,7 @@ const CarteItemDashboard = ({
     context: {
       id: dish.id as string,
       confirm: false,
+      modified: false,
       error: '',
     },
     attributes: {
@@ -42,7 +43,7 @@ const CarteItemDashboard = ({
       price: dish.price,
       category: category.category.name,
     },
-    previousImage: dish.image,
+    previousImage: `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_${dish.image}`,
   };
   const [modifyItem, setModifyItem] = useState<ModifyDashboardItem>(
     JSON.parse(JSON.stringify(originalItem))
@@ -50,6 +51,7 @@ const CarteItemDashboard = ({
   const [deleteItem, setDeleteItem] = useState<DashboardItemContext>({
     id: dish.id as string,
     confirm: false,
+    modified: false,
     error: '',
   });
 
@@ -104,26 +106,35 @@ const CarteItemDashboard = ({
     modifiedDish: DishFormData,
     image: DashboardImageData
   ) => {
-    const saveImage = await saveImageOnAPI(modifiedDish, image);
-    if (saveImage && saveImage.status === 201) {
-      const modifiedItem = await postProtectedDataToAPI(
-        API_ROUTES.dishes.modifyDishItem,
-        modifiedDish,
-        userContext.userSession
-      );
-      if (modifiedItem && modifiedItem.status === 200) {
-        const deleteImage = await deleteImageOnAPI(
-          modifyItem.previousImage as string
-        );
-        if (deleteImage && deleteImage.status === 200) {
-          retreiveDishes();
-          return '';
-        }
-        return "impossible de supprimer l'image d'origine";
+    if (image.name !== originalItem.attributes.image.name) {
+      const saveImage = await saveImageOnAPI(modifiedDish, image);
+      if (saveImage && saveImage.status !== 201) {
+        return "l'image existe déjà";
       }
-      return "impossible de modifier l'élément";
     }
-    return "l'image existe déjà";
+    const modifiedItem = await postProtectedDataToAPI(
+      API_ROUTES.dishes.modifyDishItem,
+      modifiedDish,
+      userContext.userSession
+    );
+    if (modifiedItem && modifiedItem.status === 200) {
+      const deleteImage = await deleteImageOnAPI(
+        modifyItem.previousImage as string
+      );
+      if (deleteImage && deleteImage.status === 200) {
+        setModifyItem({
+          ...modifyItem,
+          context: {
+            ...modifyItem.context,
+            modified: true,
+          },
+        });
+        retreiveDishes();
+        return '';
+      }
+      return "impossible de supprimer l'image d'origine";
+    }
+    return "impossible de modifier l'élément";
   };
 
   useEffect(() => {

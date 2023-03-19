@@ -2,19 +2,25 @@ import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, postProtectedDataToAPI } from '@/api/utils';
 import UserContext from '@/context/UserContext';
 import { CategoriesData } from '@/interfaces/categories';
+import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const CategoryInput = ({
   attribute,
+  item,
   changeItemAttribute,
   isModify,
 }: {
   attribute: string;
+  item: ModifyDashboardItem;
   changeItemAttribute: any;
   isModify: boolean;
 }) => {
   const [categories, setCategories] = useState<CategoriesData[]>();
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    item.attributes[attribute]
+  );
   const [createCategory, setCreateCategory] = useState<boolean>(false);
   const [newCategory, setNewCategory] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -59,6 +65,8 @@ const CategoryInput = ({
     if (e.target.value === 'newCategory') {
       setCreateCategory(true);
     } else {
+      setSelectedCategory(e.target.value);
+      setCreateCategory(false);
       changeItemAttribute(e, attribute);
     }
   };
@@ -69,7 +77,7 @@ const CategoryInput = ({
         name="category"
         id="categorySelect"
         onChange={(e) => handleSelectedOption(e)}
-        defaultValue="default"
+        value={selectedCategory ? selectedCategory : ''}
       >
         <option id="optionLegend" disabled value="default">
           -- Choisir une catégorie --

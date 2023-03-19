@@ -47,6 +47,7 @@ const HandleAttributeInputType = ({
       return (
         <CategoryInput
           attribute={attribute}
+          item={item}
           changeItemAttribute={changeItemAttribute}
           isModify={isModify}
         />

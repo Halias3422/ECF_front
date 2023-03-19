@@ -60,7 +60,7 @@ const TagBorders = styled.div`
 const TagTriangle = styled.div<{ $isOdd: boolean }>`
   margin: 0 auto;
   width: 71%;
-  margin-top: 18px;
+  margin-top: 23px;
   padding-bottom: 71%;
   transform: rotate(45deg);
   background-color: ${(props) => props.theme.snow};

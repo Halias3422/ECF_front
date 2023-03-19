@@ -24,6 +24,7 @@ const DishGalleryItemDashboard = ({
     context: {
       id: dish.id as string,
       confirm: false,
+      modified: false,
       error: '',
     },
     attributes: {
@@ -33,7 +34,7 @@ const DishGalleryItemDashboard = ({
         name: dish.image,
       },
     },
-    previousImage: dish.image,
+    previousImage: `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_${dish.image}`,
   };
   const [modifyItem, setModifyItem] = useState<ModifyDashboardItem>(
     JSON.parse(JSON.stringify(originalItem))
@@ -41,6 +42,7 @@ const DishGalleryItemDashboard = ({
   const [deleteItem, setDeleteItem] = useState<DashboardItemContext>({
     id: dish.id as string,
     confirm: false,
+    modified: false,
     error: '',
   });
   const { userContext } = useContext(UserContext);
