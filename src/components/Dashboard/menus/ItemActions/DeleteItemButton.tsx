@@ -34,7 +34,11 @@ const DeleteItemButton = ({
   }, [confirm]);
   return (
     <>
-      <Button title="Supprimer élément" onClick={() => setConfirmPopUp(true)}>
+      <Button
+        title="Supprimer élément"
+        className="raiseOnHover"
+        onClick={() => setConfirmPopUp(true)}
+      >
         <SvgDelete />
       </Button>
       {confirmPopUp && (

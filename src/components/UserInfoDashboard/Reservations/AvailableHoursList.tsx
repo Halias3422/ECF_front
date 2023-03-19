@@ -55,7 +55,7 @@ const AvailableHoursList = ({
                   return (
                     <HourButton
                       type="button"
-                      className="themeDarkGreen"
+                      className="themeDarkGreen raiseOnHover"
                       key={index + hour}
                       onClick={(e) => handleSelectHour(e, 'morning')}
                     >
@@ -96,7 +96,7 @@ const AvailableHoursList = ({
                   return (
                     <HourButton
                       type="button"
-                      className="themeDarkGreen"
+                      className="themeDarkGreen raiseOnHover"
                       key={index + hour}
                       onClick={(e) => handleSelectHour(e, 'afternoon')}
                     >

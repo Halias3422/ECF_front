@@ -13,7 +13,7 @@ const NavbarLink = ({
   return (
     <Link
       role="button"
-      className={`${merriweatherSans.className} ${theme}`}
+      className={`${merriweatherSans.className} ${theme} raiseOnHover`}
       href={url}
     >
       {textContent}

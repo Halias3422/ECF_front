@@ -66,6 +66,12 @@ background-image: url(https://www.tlbx.app/200.svg);
 }
 }
 
+.raiseOnHover:hover,
+.raiseOnHover:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em ${colorscheme.darkGrey};
+  transform: translateY(-0.25em);
+
+}
 
 .themeLightGreen {
 background-color: ${colorscheme.lightGreen};

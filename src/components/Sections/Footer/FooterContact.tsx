@@ -18,7 +18,7 @@ const FooterContact = () => {
       {!openFrame ? (
         <MapPlaceholder>
           <MapOpenButton
-            className={roboto.className + ' themeLightGreen'}
+            className={roboto.className + ' themeLightGreen raiseOnHover'}
             type="button"
             id="showMap"
             name="showMap"
