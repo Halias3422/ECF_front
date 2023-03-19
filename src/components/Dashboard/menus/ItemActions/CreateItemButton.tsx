@@ -74,7 +74,7 @@ const CreateItemButton = ({
       <Container id="createItemButton">
         <Button
           title={title}
-          className="themeLightGreen"
+          className="themeLightGreen raiseOnHover"
           onClick={() => setCreateItem(true)}
         >
           {icon}

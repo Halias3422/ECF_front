@@ -1,9 +1,11 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI } from '@/api/utils';
 import ChefsQuote from '@/components/ChefsQuote/ChefsQuote';
+import Favicon from '@/components/Favicon/Favicon';
 import Hero from '@/components/Hero/Hero';
 import CarteCategory from '@/components/Sections/Carte/CarteCategory';
 import Footer from '@/components/Sections/Footer/Footer';
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import { CarteCategoryData } from '@/interfaces/carte';
 import { DaySchedule } from '@/interfaces/schedule';
 import Head from 'next/head';
@@ -19,6 +21,7 @@ const CartePage = ({
   return (
     <>
       <Head>
+        <Favicon />
         <title>La Carte du restaurant</title>
         <meta
           name="description"
@@ -39,21 +42,26 @@ const CartePage = ({
           $isOdd
           $textIsLeft={false}
         />
-        {carteDishes.map(
-          (categoryContent: CarteCategoryData, index: number) => {
-            let totalCardIndex = 0;
-            for (let i = 0; i < index; i++) {
-              totalCardIndex += carteDishes[i].dishes.length;
+        {!carteDishes ? (
+          <LoadingAnim />
+        ) : (
+          carteDishes.length > 0 &&
+          carteDishes.map(
+            (categoryContent: CarteCategoryData, index: number) => {
+              let totalCardIndex = 0;
+              for (let i = 0; i < index; i++) {
+                totalCardIndex += carteDishes[i].dishes.length;
+              }
+              return (
+                <React.Fragment key={index}>
+                  <CarteCategory
+                    categoryContent={categoryContent}
+                    startIndex={totalCardIndex}
+                  />
+                </React.Fragment>
+              );
             }
-            return (
-              <React.Fragment key={index}>
-                <CarteCategory
-                  categoryContent={categoryContent}
-                  startIndex={totalCardIndex}
-                />
-              </React.Fragment>
-            );
-          }
+          )
         )}
       </main>
       <Footer weekSchedule={weekSchedule} />

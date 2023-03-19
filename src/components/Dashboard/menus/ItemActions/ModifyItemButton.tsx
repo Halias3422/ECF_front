@@ -71,7 +71,11 @@ const ModifyItemButton = ({
 
   return (
     <div>
-      <Button title="Modifier élément" onClick={() => handleModifyItemClick()}>
+      <Button
+        title="Modifier élément"
+        className="raiseOnHover"
+        onClick={() => handleModifyItemClick()}
+      >
         <SvgPencil />
       </Button>
       {openPopUp && (

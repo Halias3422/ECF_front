@@ -82,7 +82,8 @@ const TextContainer = styled.div`
 const HeroImageContainer = styled.div`
   @media screen and (min-width: 1025px) {
     min-width: 55%;
-    max-height: 100%;
+    max-height: 800px;
+    overflow: hidden;
   }
 `;
 

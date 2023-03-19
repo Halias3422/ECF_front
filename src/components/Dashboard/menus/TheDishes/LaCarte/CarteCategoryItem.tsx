@@ -117,7 +117,10 @@ const CarteCategoryItem = ({
   return (
     <>
       <CategoryHeader className="themeDarkBlue carteDishItemOpening">
-        <DeleteButton onClick={() => setDeleteItem(true)}>
+        <DeleteButton
+          className="raiseOnHover"
+          onClick={() => setDeleteItem(true)}
+        >
           <SvgDelete />
         </DeleteButton>
 

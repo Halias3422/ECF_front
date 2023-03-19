@@ -1,5 +1,6 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI } from '@/api/utils';
+import Favicon from '@/components/Favicon/Favicon';
 import Hero from '@/components/Hero/Hero';
 import ReservationForm from '@/components/ReservationForm/ReservationForm';
 import Footer from '@/components/Sections/Footer/Footer';
@@ -11,6 +12,7 @@ const ReserverPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   return (
     <>
       <Head>
+        <Favicon />
         <title>Réserver au Restaurant le Quai Antique</title>
         <meta
           name="description"

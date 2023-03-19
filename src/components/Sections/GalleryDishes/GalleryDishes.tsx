@@ -1,4 +1,5 @@
 import MainCTA from '@/components/MainCTA/MainCTA';
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import { GalleryDishData } from '@/interfaces/galleryDishes';
 import { merriweatherSans } from '@/styles/fonts';
 import React from 'react';
@@ -29,13 +30,18 @@ const GalleryDishes = ({
           du moment :
         </p>
         <ImagesContainer>
-          {galleryDishes?.map((dish: GalleryDishData, index: number) => {
-            return (
-              <React.Fragment key={index}>
-                <GalleryDishItem dish={dish} />
-              </React.Fragment>
-            );
-          })}
+          {!galleryDishes ? (
+            <LoadingAnim />
+          ) : (
+            galleryDishes.length > 0 &&
+            galleryDishes?.map((dish: GalleryDishData, index: number) => {
+              return (
+                <React.Fragment key={index}>
+                  <GalleryDishItem dish={dish} />
+                </React.Fragment>
+              );
+            })
+          )}
         </ImagesContainer>
         <ForMoreDishes>
           Consultez notre carte pour découvrir d'autres surprises tout aussi

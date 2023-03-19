@@ -1,3 +1,4 @@
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import {
   AvailableReservationHours,
   ReservationFormData,
@@ -44,19 +45,25 @@ const AvailableHoursList = ({
           <HoursContainer
             id={reservationData.date + reservationData.guestNumber}
           >
-            {availableReservations.morning.map(
-              (hour: string, index: number) => {
-                return (
-                  <HourButton
-                    type="button"
-                    className="themeDarkGreen"
-                    key={index + hour}
-                    onClick={(e) => handleSelectHour(e, 'morning')}
-                  >
-                    {hour}
-                  </HourButton>
-                );
-              }
+            {!availableReservations ? (
+              <LoadingAnim />
+            ) : (
+              availableReservations.morning &&
+              availableReservations.morning.length > 0 &&
+              availableReservations.morning.map(
+                (hour: string, index: number) => {
+                  return (
+                    <HourButton
+                      type="button"
+                      className="themeDarkGreen raiseOnHover"
+                      key={index + hour}
+                      onClick={(e) => handleSelectHour(e, 'morning')}
+                    >
+                      {hour}
+                    </HourButton>
+                  );
+                }
+              )
             )}
           </HoursContainer>
           <p>
@@ -79,19 +86,25 @@ const AvailableHoursList = ({
           <HoursContainer
             id={reservationData.guestNumber + reservationData.date}
           >
-            {availableReservations.afternoon.map(
-              (hour: string, index: number) => {
-                return (
-                  <HourButton
-                    type="button"
-                    className="themeDarkGreen"
-                    key={index + hour}
-                    onClick={(e) => handleSelectHour(e, 'afternoon')}
-                  >
-                    {hour}
-                  </HourButton>
-                );
-              }
+            {!availableReservations ? (
+              <LoadingAnim />
+            ) : (
+              availableReservations.afternoon &&
+              availableReservations.afternoon.length > 0 &&
+              availableReservations.afternoon.map(
+                (hour: string, index: number) => {
+                  return (
+                    <HourButton
+                      type="button"
+                      className="themeDarkGreen raiseOnHover"
+                      key={index + hour}
+                      onClick={(e) => handleSelectHour(e, 'afternoon')}
+                    >
+                      {hour}
+                    </HourButton>
+                  );
+                }
+              )
             )}
           </HoursContainer>
           <p>

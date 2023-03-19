@@ -1,3 +1,4 @@
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import { Menu } from '@/interfaces/menus';
 import styled from 'styled-components';
 import MenuItem from './MenuItem';
@@ -12,9 +13,14 @@ const MenusSection = ({
   return (
     <section id="menusSection" className={`section ${$isOdd ? 'odd' : 'even'}`}>
       <MenusContainer className="container">
-        {menus.map((menu, index) => {
-          return <MenuItem menu={menu} index={index} key={index} />;
-        })}
+        {!menus ? (
+          <LoadingAnim />
+        ) : (
+          menus.length > 0 &&
+          menus.map((menu, index) => {
+            return <MenuItem menu={menu} index={index} key={index} />;
+          })
+        )}
       </MenusContainer>
     </section>
   );

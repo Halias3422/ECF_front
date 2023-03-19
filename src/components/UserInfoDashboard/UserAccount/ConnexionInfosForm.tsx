@@ -21,13 +21,13 @@ const ConnexionInfosForm = ({
       <h3>Modifier:</h3>
       <ButtonsContainer>
         <Button
-          className="themeSnow"
+          className="themeSnow raiseOnHover"
           onClick={() => setSelectedButton('email')}
         >
           <h3>Mon adresse mail</h3>
         </Button>
         <Button
-          className="themeSnow"
+          className="themeSnow raiseOnHover"
           onClick={() => setSelectedButton('password')}
         >
           <h3>Mon mot de passe</h3>

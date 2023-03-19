@@ -14,7 +14,7 @@ const MainCTA = ({
     <CTA
       role="button"
       href={url}
-      className={`${merriweatherSans.className} ${theme}`}
+      className={`${merriweatherSans.className} ${theme} raiseOnHover`}
     >
       {textContent}
     </CTA>

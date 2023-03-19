@@ -1,3 +1,4 @@
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import { DaySchedule } from '@/interfaces/schedule';
 import styled from 'styled-components';
 
@@ -36,16 +37,21 @@ const FooterSchedule = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   return (
     <FooterScheduleContainer>
       <h2>Nos horaires</h2>
-      {weekSchedule?.map((day: DaySchedule, index: number) => {
-        return (
-          <DayScheduleContainer key={`dayScheduleContainer${index}`}>
-            <DayOfWeek>
-              <b>{day.dayOfWeek}:</b>
-            </DayOfWeek>
-            <DayScheduleHours>{formatDayScheduleHours(day)}</DayScheduleHours>
-          </DayScheduleContainer>
-        );
-      })}
+      {!weekSchedule ? (
+        <LoadingAnim />
+      ) : (
+        weekSchedule.length > 0 &&
+        weekSchedule.map((day: DaySchedule, index: number) => {
+          return (
+            <DayScheduleContainer key={`dayScheduleContainer${index}`}>
+              <DayOfWeek>
+                <b>{day.dayOfWeek}:</b>
+              </DayOfWeek>
+              <DayScheduleHours>{formatDayScheduleHours(day)}</DayScheduleHours>
+            </DayScheduleContainer>
+          );
+        })
+      )}
     </FooterScheduleContainer>
   );
 };

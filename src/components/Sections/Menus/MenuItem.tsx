@@ -1,3 +1,4 @@
+import LoadingAnim from '@/components/svgs/loadingAnim';
 import { Menu } from '@/interfaces/menus';
 import { merriweatherSans } from '@/styles/fonts';
 import styled from 'styled-components';
@@ -17,15 +18,21 @@ const MenuItem = ({ menu, index }: { menu: Menu; index: number }) => {
         </MenuTitle>
       </TitleContainer>
       <FormulasContainer>
-        {menu.formulas.map((formula, formulaIndex) => {
-          return (
-            <FormulaItem
-              formula={formula}
-              key={formulaIndex}
-              id={`formula${formulaIndex}Menu${index}`}
-            />
-          );
-        })}
+        {!menu || !menu.formulas ? (
+          <LoadingAnim />
+        ) : (
+          menu.formulas &&
+          menu.formulas.length > 0 &&
+          menu.formulas.map((formula, formulaIndex) => {
+            return (
+              <FormulaItem
+                formula={formula}
+                key={formulaIndex}
+                id={`formula${formulaIndex}Menu${index}`}
+              />
+            );
+          })
+        )}
       </FormulasContainer>
     </MenuItemContainer>
   );

@@ -11,7 +11,7 @@ const FormSubmit = ({
   return (
     <Submit
       type="submit"
-      className={`${merriweatherSans.className} ${theme}`}
+      className={`${merriweatherSans.className} ${theme} raiseOnHover`}
       value={textContent}
     />
   );

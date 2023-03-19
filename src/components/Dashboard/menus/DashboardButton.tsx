@@ -29,7 +29,7 @@ const DashboardButton = ({
   };
   return (
     <ButtonContainer
-      className="subMenuButton themeSnow dashboardMenuLinkOpening"
+      className="subMenuButton themeSnow dashboardMenuLinkOpening raiseOnHover"
       id={title}
       onClick={() => handleButtonClick()}
     >
