@@ -9,6 +9,7 @@ import GalleryDishes from '@/components/Sections/GalleryDishes/GalleryDishes';
 import ReservationSection from '@/components/Sections/ReservationSection';
 import Footer from '@/components/Sections/Footer/Footer';
 import Head from 'next/head';
+import Favicon from '@/components/Favicon/Favicon';
 
 export default function Home({
   galleryDishes,
@@ -17,6 +18,7 @@ export default function Home({
   return (
     <>
       <Head>
+        <Favicon />
         <title>
           Restaurant Le Quai Antique - découvrez les saveurs de la Savoie.
         </title>

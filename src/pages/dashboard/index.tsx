@@ -1,6 +1,7 @@
 import { API_ROUTES } from '@/api/routes';
 import { getProtectedDataFromAPI } from '@/api/utils';
 import DashboardMenuLink from '@/components/Dashboard/menus/DashboardMenuLink';
+import Favicon from '@/components/Favicon/Favicon';
 import UserContext from '@/context/UserContext';
 import { merriweatherSans } from '@/styles/fonts';
 import Head from 'next/head';
@@ -55,6 +56,8 @@ const DashboardAccueilPage = () => {
     return (
       <>
         <Head>
+          <Favicon />
+          <title>Dashboard Administrateur</title>
           <meta name="robots" content="noindex,nofollow" />
         </Head>
         <header className="even">
