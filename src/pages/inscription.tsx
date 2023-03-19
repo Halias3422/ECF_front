@@ -9,6 +9,7 @@ import OptionalSignUpForm from '@/components/SignForms/OptionalSignUpForm';
 import SignUpForm from '@/components/SignForms/SignUpForm';
 import { DaySchedule } from '@/interfaces/schedule';
 import { UserSignUpInfo } from '@/interfaces/users';
+import Head from 'next/head';
 import { useState } from 'react';
 
 const InscriptionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
@@ -22,6 +23,13 @@ const InscriptionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
 
   return (
     <>
+      <Head>
+        <title>Inscription - Le Quai Antique</title>
+        <meta
+          name="description"
+          content="Créez votre compte pour profiter d'avantages exclusifs lors de vos prochaines réservations et visites au Quai Antique."
+        />
+      </Head>
       <main>
         <Hero
           header={

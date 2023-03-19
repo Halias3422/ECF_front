@@ -50,7 +50,10 @@ const Hero = ({
             alt={imageAlt}
             title={imageAlt}
             fill
+            loading="eager"
             className="image"
+            sizes="(max-width: 1024px) 100vw,
+										50vw"
           />
         </HeroImageContainer>
       </HeroContainer>
@@ -66,18 +69,20 @@ const HeroContainer = styled.article<{ $textIsLeft: boolean }>`
     justify-content: space-between;
     align-items: center;
     gap: 10%;
+    min-height: 600px;
   }
 `;
 
 const TextContainer = styled.div`
   @media screen and (min-width: 1025px) {
-    max-width: 50%;
+    max-width: 45%;
   }
 `;
 
 const HeroImageContainer = styled.div`
   @media screen and (min-width: 1025px) {
-    min-width: 50%;
+    min-width: 55%;
+    max-height: 100%;
   }
 `;
 

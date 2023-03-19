@@ -5,10 +5,18 @@ import ReservationForm from '@/components/ReservationForm/ReservationForm';
 import Footer from '@/components/Sections/Footer/Footer';
 import Section from '@/components/Sections/Section';
 import { DaySchedule } from '@/interfaces/schedule';
+import Head from 'next/head';
 
 const ReserverPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   return (
     <>
+      <Head>
+        <title>Réserver au Restaurant le Quai Antique</title>
+        <meta
+          name="description"
+          content="Il vous suffit de trouver le jour et l'heure qui vous conviennent et de remplir ce formulaire. Faites une réservation pour vivre un moment inoubliable, seul ou en groupe."
+        />
+      </Head>
       <main>
         <Hero
           header="À quelques clics d'une <b>expérience</b> unique !"

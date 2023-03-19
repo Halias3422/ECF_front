@@ -38,6 +38,8 @@ const CarteDishItem = ({
               `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_` + dish.image
             }
             alt={dish.title}
+            sizes="(max-width: 1024px) 100%,
+										50%"
           />
         </ImageContainer>
       </DishCardContainer>

@@ -70,7 +70,8 @@ const ImagesContainer = styled.div`
     margin: 70px 0 30px 0;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 2%;
+    justify-content: center;
   }
   @media screen and (min-width: 1025px) {
     margin: 90px 0 50px 0;

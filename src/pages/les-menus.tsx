@@ -6,6 +6,7 @@ import MenusSection from '@/components/Sections/Menus/MenusSection';
 import ReservationSection from '@/components/Sections/ReservationSection';
 import { Menu } from '@/interfaces/menus';
 import { DaySchedule } from '@/interfaces/schedule';
+import Head from 'next/head';
 
 const MenusPage = ({
   weekSchedule,
@@ -16,6 +17,13 @@ const MenusPage = ({
 }) => {
   return (
     <>
+      <Head>
+        <title>Les Menus - Le Quai Antique</title>
+        <meta
+          name="description"
+          content="Choisissez le menu qui vous convient. Chacun d'entre eux vous permet de choisir entre une à plusieurs formules pour encore plus de liberté."
+        />
+      </Head>
       <main>
         <Hero
           header="Le <b>Quai Antique</b> est fier de vous présenter ses menus"

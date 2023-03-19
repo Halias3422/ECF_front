@@ -10,7 +10,12 @@ const HamburgerMenu = ({
   hamburgerOpen: boolean;
   setHamburgerOpen: Dispatch<SetStateAction<boolean>>;
 }) => (
-  <IconContainer type="button" id="hamburgerMenu" name="hamburgerMenu">
+  <IconContainer
+    type="button"
+    id="hamburgerMenu"
+    name="hamburgerMenu"
+    aria-label="openMenu"
+  >
     <svg
       id="hamburgerMenuIcon"
       onClick={() => setHamburgerOpen(!hamburgerOpen)}

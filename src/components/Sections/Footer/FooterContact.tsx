@@ -12,7 +12,10 @@ const FooterContact = () => {
       <ContactInfoItem label="Téléphone" value="01.02.03.04.05" />
       <ContactInfoItem label="E-mail" value="lequaiantique@gmail.com" />
       <ContactInfoItem label="Nous trouver" value="" />
-      <OpenStreetMapFrame src="//umap.openstreetmap.fr/en/map/untitled-map_875494?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></OpenStreetMapFrame>
+      <OpenStreetMapFrame
+        title="OpenStreetMap"
+        src="//umap.openstreetmap.fr/en/map/untitled-map_875494?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"
+      ></OpenStreetMapFrame>
       <a href="//umap.openstreetmap.fr/en/map/untitled-map_875494">
         <u>Voir plein écran</u>
       </a>

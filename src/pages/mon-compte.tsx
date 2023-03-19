@@ -6,6 +6,7 @@ import UserContext from '@/context/UserContext';
 import { DaySchedule } from '@/interfaces/schedule';
 import { UserOptionalInfo } from '@/interfaces/users';
 import { merriweatherSans } from '@/styles/fonts';
+import Head from 'next/head';
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -35,9 +36,16 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
     }
   }, [userContext]);
 
-  if (userContext.contextLoaded) {
+  if (userInfo) {
     return (
       <>
+        <Head>
+          <title>Mon compte personnel</title>
+          <meta
+            name="description"
+            content="Gérez vos réservations et informations personnelles."
+          />
+        </Head>
         <main>
           <section className="section odd">
             <AccountInfoContainer className="container">
@@ -54,8 +62,8 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
       </>
     );
   } else {
+    return <p>Loading...</p>;
   }
-  return <p>Loading...</p>;
 };
 
 const AccountInfoContainer = styled.article`
