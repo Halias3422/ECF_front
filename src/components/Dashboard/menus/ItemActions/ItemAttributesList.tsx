@@ -1,4 +1,5 @@
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
+import axios from 'axios';
 import { ChangeEvent } from 'react';
 import styled from 'styled-components';
 import { resizePopUpHeight } from './BackgroundPopUp';
@@ -28,6 +29,24 @@ const ItemAttributesList = ({
     }
   };
 
+  const findRightUrl = (imageName: string) => {
+    return async (): Promise<string> => {
+      const isDish = await axios.get(
+        `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_${imageName}`
+      );
+      if (isDish.status !== 404) {
+        return `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_${imageName}`;
+      }
+      const isGalleryDish = await axios.get(
+        `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_${imageName}`
+      );
+      if (isGalleryDish.status !== 404) {
+        return `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_${imageName}`;
+      }
+      return '';
+    };
+  };
+
   return (
     <>
       {Object.keys(modifyItem.attributes).map(
@@ -45,10 +64,14 @@ const ItemAttributesList = ({
                   <img
                     src={
                       modifyItem.hasOwnProperty('previousImage')
-                        ? modifyItem.attributes.image.name
+                        ? `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_${modifyItem.attributes.image.name}`
                         : ''
                     }
                     className="previewImage"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_${modifyItem.attributes.image.name}`;
+                    }}
                   />
                 )}
               </Attribute>

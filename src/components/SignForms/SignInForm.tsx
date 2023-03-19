@@ -5,11 +5,13 @@ import { FormEvent, useContext, useState } from 'react';
 import styled from 'styled-components';
 import FormSubmit from '../FormSubmit/FormSubmit';
 import MainCTA from '../MainCTA/MainCTA';
+import LoadingAnim from '../svgs/loadingAnim';
 
 const SignInForm = () => {
   const [emailWarning, setEmailWarning] = useState<string>('');
   const [passwordWarning, setPasswordWarning] = useState<string>('');
   const [formWarning, setFormWarning] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
@@ -43,11 +45,13 @@ const SignInForm = () => {
   };
 
   const handleLoginSubmit = async (event: FormEvent) => {
+    setLoading(true);
     event.preventDefault();
     if (verifyLoginValues()) {
       const res = await postDataToAPI(API_ROUTES.users.login, loginInfo);
       if (res === undefined || res.status !== 200) {
         setFormWarning('Adresse mail ou mot de passe incorrect');
+        setLoading(false);
         triggerErrorAnimation();
       } else if (res.status === 200 && res.data.session) {
         setFormWarning('');
@@ -57,6 +61,7 @@ const SignInForm = () => {
           userSession: res.data.session,
           contextLoaded: true,
         });
+        setLoading(false);
         window.location.href = '/';
       }
     }
@@ -92,6 +97,7 @@ const SignInForm = () => {
       </InputContainer>
       <Separator />
       <FormSubmit textContent="Connexion" theme="themeDarkGrey" />
+      {loading && <LoadingAnim />}
       {formWarning.length > 0 && <Warning>{formWarning}</Warning>}
       <NoAccountParaph>Vous n'avez pas de compte ?</NoAccountParaph>
       <MainCTA
