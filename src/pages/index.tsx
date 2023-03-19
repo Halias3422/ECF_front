@@ -8,6 +8,7 @@ import Section from '@/components/Sections/Section';
 import GalleryDishes from '@/components/Sections/GalleryDishes/GalleryDishes';
 import ReservationSection from '@/components/Sections/ReservationSection';
 import Footer from '@/components/Sections/Footer/Footer';
+import Head from 'next/head';
 
 export default function Home({
   galleryDishes,
@@ -15,6 +16,15 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
+      <Head>
+        <title>
+          Restaurant Le Quai Antique - découvrez les saveurs de la Savoie.
+        </title>
+        <meta
+          name="description"
+          content="Découvrez le Quai Antique, restaurant du Chef Arnaud Michant. Situés en plein centre de Chambéry, nous vous proposons une expérience culinaire raffinée et accessible."
+        />
+      </Head>
       <main>
         <Hero
           header={'Le <b>Quai Antique</b>'}

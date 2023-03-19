@@ -6,6 +6,7 @@ import CarteCategory from '@/components/Sections/Carte/CarteCategory';
 import Footer from '@/components/Sections/Footer/Footer';
 import { CarteCategoryData } from '@/interfaces/carte';
 import { DaySchedule } from '@/interfaces/schedule';
+import Head from 'next/head';
 import React from 'react';
 
 const CartePage = ({
@@ -17,6 +18,13 @@ const CartePage = ({
 }) => {
   return (
     <>
+      <Head>
+        <title>La Carte du restaurant</title>
+        <meta
+          name="description"
+          content="Découvrez les plats concoctés avec soin et expérience par le Chef Arnaud Michant et son équipe."
+        />
+      </Head>
       <main>
         <Hero
           header="Découvrez <b>la Carte</b> du Quai Antique"

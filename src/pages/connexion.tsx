@@ -7,10 +7,18 @@ import ReservationSection from '@/components/Sections/ReservationSection';
 import Section from '@/components/Sections/Section';
 import SignInForm from '@/components/SignForms/SignInForm';
 import { DaySchedule } from '@/interfaces/schedule';
+import Head from 'next/head';
 
 const ConnexionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   return (
     <>
+      <Head>
+        <title>Connexion - Le Quai Antique</title>
+        <meta
+          name="description"
+          content="Connectez vous à votre compte client afin de faciliter la gestion de vos réservations."
+        />
+      </Head>
       <main>
         <Hero
           header="Impatients de vous revoir !"

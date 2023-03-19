@@ -50,6 +50,7 @@ const Hero = ({
             alt={imageAlt}
             title={imageAlt}
             fill
+            loading="eager"
             className="image"
             sizes="(max-width: 1024px) 100vw,
 										50vw"
