@@ -84,7 +84,7 @@ const CreateItemButton = ({
         <BackgroundPopUp id="createPopUpBackground">
           <CreateForm id="popUpForm" onSubmit={(e) => e.preventDefault()}>
             <h2>Créer un nouvel élément</h2>
-            <ItemAttributesList modifyItem={newItem} />
+            <ItemAttributesList modifyItem={newItem} isModify={false} />
             {newItem.context.confirm && <LoadingAnim />}
             <Error id={'error' + newItem.attributes.title}>
               {newItem.context.error}

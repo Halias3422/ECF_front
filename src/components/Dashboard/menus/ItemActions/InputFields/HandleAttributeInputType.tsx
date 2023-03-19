@@ -9,10 +9,12 @@ const HandleAttributeInputType = ({
   attribute,
   item,
   changeItemAttribute,
+  isModify,
 }: {
   attribute: string;
   item: ModifyDashboardItem;
   changeItemAttribute: any;
+  isModify: boolean;
 }) => {
   switch (attribute) {
     case 'image':
@@ -20,6 +22,7 @@ const HandleAttributeInputType = ({
         <ImageInput
           attribute={attribute}
           changeItemAttribute={changeItemAttribute}
+          isModify={isModify}
         />
       );
     case 'description':
@@ -28,6 +31,7 @@ const HandleAttributeInputType = ({
           attribute={attribute}
           item={item}
           changeItemAttribute={changeItemAttribute}
+          isModify={isModify}
         />
       );
     case 'price':
@@ -36,6 +40,7 @@ const HandleAttributeInputType = ({
           attribute={attribute}
           item={item}
           changeItemAttribute={changeItemAttribute}
+          isModify={isModify}
         />
       );
     case 'category':
@@ -43,6 +48,7 @@ const HandleAttributeInputType = ({
         <CategoryInput
           attribute={attribute}
           changeItemAttribute={changeItemAttribute}
+          isModify={isModify}
         />
       );
     case 'formulas':
@@ -54,7 +60,7 @@ const HandleAttributeInputType = ({
           id={attribute + 'Input'}
           defaultValue={item.attributes[attribute]}
           onChange={(e) => changeItemAttribute(e, attribute)}
-          required
+          required={isModify ? false : true}
         />
       );
   }

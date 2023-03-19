@@ -6,10 +6,12 @@ const TextAreaInput = ({
   attribute,
   item,
   changeItemAttribute,
+  isModify,
 }: {
   attribute: string;
   item: ModifyDashboardItem;
   changeItemAttribute: any;
+  isModify: boolean;
 }) => {
   return (
     <TextArea
@@ -17,7 +19,7 @@ const TextAreaInput = ({
       id={attribute + 'Input'}
       defaultValue={item.attributes[attribute]}
       onChange={(e) => changeItemAttribute(e, attribute)}
-      required
+      required={isModify ? false : true}
     />
   );
 };

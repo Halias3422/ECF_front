@@ -8,9 +8,11 @@ import styled from 'styled-components';
 const CategoryInput = ({
   attribute,
   changeItemAttribute,
+  isModify,
 }: {
   attribute: string;
   changeItemAttribute: any;
+  isModify: boolean;
 }) => {
   const [categories, setCategories] = useState<CategoriesData[]>();
   const [createCategory, setCreateCategory] = useState<boolean>(false);
@@ -90,7 +92,7 @@ const CategoryInput = ({
           <input
             type="text"
             onChange={(e) => setNewCategory(e.target.value)}
-            required
+            required={isModify ? false : true}
           />
           <input
             type="button"

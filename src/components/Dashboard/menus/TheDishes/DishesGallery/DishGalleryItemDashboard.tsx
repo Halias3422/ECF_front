@@ -97,27 +97,29 @@ const DishGalleryItemDashboard = ({
     modifiedDish: GalleryDishData,
     image: DashboardImageData
   ) => {
-    const saveImage = await saveImageOnAPI(modifiedDish, image);
-    if (saveImage && saveImage.status === 201) {
-      const modifiedItem = await postProtectedDataToAPI(
-        API_ROUTES.dishesGallery.modifyDishGalleryItem,
-        modifiedDish,
-        userContext.userSession
-      );
-      if (modifiedItem && modifiedItem.status === 200) {
-        const deleteImage = await deleteImageOnAPI(
-          modifyItem.previousImage as string
-        );
-        if (deleteImage && deleteImage.status === 200) {
-          fetch('/api/revalidate-dish-gallery');
-          retreiveGalleryDishes();
-          return '';
-        }
-        return "impossible de supprimer l'image d'origine";
+    if (image.name !== originalItem.attributes.image.name) {
+      const saveImage = await saveImageOnAPI(modifiedDish, image);
+      if (!saveImage || saveImage.status !== 201) {
+        return "l'image existe déjà";
       }
-      return "impossible de modifier l'élément";
     }
-    return "l'image existe déjà";
+    const modifiedItem = await postProtectedDataToAPI(
+      API_ROUTES.dishesGallery.modifyDishGalleryItem,
+      modifiedDish,
+      userContext.userSession
+    );
+    if (modifiedItem && modifiedItem.status === 200) {
+      const deleteImage = await deleteImageOnAPI(
+        modifyItem.previousImage as string
+      );
+      if (deleteImage && deleteImage.status === 200) {
+        fetch('/api/revalidate-dish-gallery');
+        retreiveGalleryDishes();
+        return '';
+      }
+      return "impossible de supprimer l'image d'origine";
+    }
+    return "impossible de modifier l'élément";
   };
 
   useEffect(() => {
@@ -193,8 +195,10 @@ const ItemContainer = styled.div`
   }
   h3 {
     margin-top: -30px;
+    max-width: 250px;
     margin-bottom: 10px;
     text-align: center;
+    overflow-wrap: break-word;
     color: ${(props) => props.theme.snow};
   }
   margin-bottom: 40px;

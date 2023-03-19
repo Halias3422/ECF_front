@@ -6,10 +6,12 @@ const PriceInput = ({
   attribute,
   item,
   changeItemAttribute,
+  isModify,
 }: {
   attribute: string;
   item: ModifyDashboardItem;
   changeItemAttribute: any;
+  isModify: boolean;
 }) => {
   const formatPriceChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (item.attributes[attribute].length === 0) {
@@ -35,7 +37,7 @@ const PriceInput = ({
         min="0"
         defaultValue={item.attributes[attribute].split('.')[0] || '10'}
         onChange={(e) => formatPriceChange(e)}
-        required
+        required={isModify ? false : true}
       />
       <label htmlFor="priceEuro">euros</label>
       <input
@@ -45,7 +47,7 @@ const PriceInput = ({
         max="99"
         defaultValue={item.attributes[attribute].split('.')[1] || '99'}
         onChange={(e) => formatPriceChange(e)}
-        required
+        required={isModify ? false : true}
       />
       <label htmlFor="priceCentimes">centimes</label>
     </PriceContainer>

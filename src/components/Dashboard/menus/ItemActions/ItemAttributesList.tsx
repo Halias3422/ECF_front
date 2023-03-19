@@ -7,8 +7,10 @@ import HandleAttributeInputType from './InputFields/HandleAttributeInputType';
 
 const ItemAttributesList = ({
   modifyItem,
+  isModify,
 }: {
   modifyItem: ModifyDashboardItem;
+  isModify: boolean;
 }) => {
   const changeItemAttribute = async (
     event: ChangeEvent<HTMLInputElement>,
@@ -29,24 +31,6 @@ const ItemAttributesList = ({
     }
   };
 
-  const findRightUrl = (imageName: string) => {
-    return async (): Promise<string> => {
-      const isDish = await axios.get(
-        `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_${imageName}`
-      );
-      if (isDish.status !== 404) {
-        return `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_${imageName}`;
-      }
-      const isGalleryDish = await axios.get(
-        `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_${imageName}`
-      );
-      if (isGalleryDish.status !== 404) {
-        return `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_${imageName}`;
-      }
-      return '';
-    };
-  };
-
   return (
     <>
       {Object.keys(modifyItem.attributes).map(
@@ -59,6 +43,7 @@ const ItemAttributesList = ({
                   attribute={attribute}
                   item={modifyItem}
                   changeItemAttribute={changeItemAttribute}
+                  isModify={isModify}
                 />
                 {attribute === 'image' && (
                   <img

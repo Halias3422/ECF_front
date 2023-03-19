@@ -82,7 +82,7 @@ const ModifyItemButton = ({
         <BackgroundPopUp id="modifyPopUpBackground">
           <ModifyForm id="popUpForm" onSubmit={(e) => e.preventDefault()}>
             <h2>Modifier l'élément</h2>
-            <ItemAttributesList modifyItem={modifyItem} />
+            <ItemAttributesList modifyItem={modifyItem} isModify />
             {modifyItem.context.confirm && <LoadingAnim />}
             <Error id={'error' + modifyItem.attributes.title}>
               {modifyItem.context.error}
