@@ -52,32 +52,36 @@ const ReservationsDashboard = () => {
     <DashboardContainer className="dashboardConfigPanel">
       <ReservationsContainer className="carteDishesConfigPanelOpening">
         <ReservationsTable>
-          <tr className="themeDarkBlue">
-            <th>Utilisateur</th>
-            <th>Date</th>
-            <th>Heure</th>
-            <th>Couverts</th>
-            <th>Allergies ou demandes</th>
-          </tr>
-          {reservationsList.length === 0 ? (
-            <tr>
-              <td>Aucune réservation enregistrée</td>
+          <thead>
+            <tr className="themeDarkBlue">
+              <th>Utilisateur</th>
+              <th>Date</th>
+              <th>Heure</th>
+              <th>Couverts</th>
+              <th>Allergies ou demandes</th>
             </tr>
-          ) : (
-            reservationsList.map(
-              (reservation: ReservationFormData, index: number) => {
-                return (
-                  <tr key={index}>
-                    <td>{reservation.userMail}</td>
-                    <td>{reservation.date}</td>
-                    <td>{reservation.hour}</td>
-                    <td>{reservation.guestNumber}</td>
-                    <td>{reservation.allergies}</td>
-                  </tr>
-                );
-              }
-            )
-          )}
+          </thead>
+          <tbody>
+            {reservationsList.length === 0 ? (
+              <tr>
+                <td>Aucune réservation enregistrée</td>
+              </tr>
+            ) : (
+              reservationsList.map(
+                (reservation: ReservationFormData, index: number) => {
+                  return (
+                    <tr key={index}>
+                      <td>{reservation.userMail}</td>
+                      <td>{reservation.date}</td>
+                      <td>{reservation.hour}</td>
+                      <td>{reservation.guestNumber}</td>
+                      <td>{reservation.allergies}</td>
+                    </tr>
+                  );
+                }
+              )
+            )}
+          </tbody>
         </ReservationsTable>
       </ReservationsContainer>
     </DashboardContainer>
