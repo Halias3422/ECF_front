@@ -1,4 +1,5 @@
 import { merriweatherSans } from '@/styles/fonts';
+import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -41,12 +42,16 @@ const Section = ({
           })}
         </TextContainer>
         {image && (
-          <img
-            loading="lazy"
-            src={`${process.env.NEXT_PUBLIC_AWS_URL}/images/IMAGES_` + image}
-            alt={imageAlt}
-            title={imageAlt}
-          />
+          <div className="imageContainer">
+            <Image
+              loading="lazy"
+              src={`${process.env.NEXT_PUBLIC_AWS_URL}/images/IMAGES_` + image}
+              alt={imageAlt}
+              title={imageAlt}
+              className="image"
+              fill
+            />
+          </div>
         )}
       </SectionContainer>
     </section>

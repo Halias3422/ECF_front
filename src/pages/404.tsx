@@ -11,7 +11,7 @@ const Custom404 = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
       <Hero
         header="Oups, cette page n'existe pas !"
         paragraphs={["Aucune information n'existe à cette adresse..."]}
-        image="lost-direction.jpg"
+        image="lost-direction.webp"
         imageAlt="Retrouver son chemin"
         childComponents={[
           <MainCTA

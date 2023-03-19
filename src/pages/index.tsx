@@ -22,7 +22,7 @@ export default function Home({
             "<i>Découvrez l'univers culinaire du Chef Arnaud Michant. Une réinvention élégante et sans artifices de la cuisine traditionnelle savoyarde.</i>",
             'Notre équipe passionnée et expérimentée vous attend avec impatience pour vous faire vivre une expérience gastronomique inoubliable dans un cadre chaleureux. Venez découvrir le savoir-faire unique du Quai Antique en plein centre de Chambéry.',
           ]}
-          image="le-quai-antique-exterieur.jpg"
+          image="le-quai-antique-exterieur.webp"
           imageAlt="Photo du restaurant."
           $isOdd={true}
           $textIsLeft
@@ -33,7 +33,7 @@ export default function Home({
           paragraphs={[
             "Le Quai Antique est bien plus qu'un simple restaurant. Laissez-nous vous démontrer pourquoi. Vous n'aurez plus qu'à venir nous rendre visite pour vérifier par vous-mêmes !",
           ]}
-          image="chef-cuisinant.jpg"
+          image="chef-cuisinant.webp"
           imageAlt="Le Chef au travail."
           childComponents={[
             <StrongPointsList />,
@@ -55,7 +55,7 @@ export default function Home({
             'Créez votre compte personnel et gagnez du temps ! Posséder un compte vous permettra de renseigner vos informations et requêtes par défaut lors de vos futures réservations.',
             'Vous pourrez également avoir accès à la liste de vos réservations.',
           ]}
-          image="table-clients.jpg"
+          image="table-clients.webp"
           imageAlt="clients attablés"
           childComponents={[
             <MainCTA

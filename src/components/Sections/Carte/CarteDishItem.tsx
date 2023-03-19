@@ -1,4 +1,5 @@
 import { DishCarteData } from '@/interfaces/dishes';
+import Image from 'next/image';
 import styled from 'styled-components';
 import PriceTag from './PriceTag';
 
@@ -27,13 +28,18 @@ const CarteDishItem = ({
           </HeaderContainer>
           <p className="dishDescription">{dish.description}</p>
         </TextContainer>
-        <DishImage
-          loading="lazy"
-          $isOdd={$isOdd}
-          id={`image${dish.image}`}
-          src={`${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_` + dish.image}
-          alt={dish.title}
-        />
+        <ImageContainer className="imageContainer" $isOdd={$isOdd}>
+          <Image
+            loading="lazy"
+            fill
+            className="image"
+            id={`image${dish.image}`}
+            src={
+              `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_` + dish.image
+            }
+            alt={dish.title}
+          />
+        </ImageContainer>
       </DishCardContainer>
     </DishItemContainer>
   );
@@ -97,7 +103,7 @@ const HeaderContainer = styled.div<{ $isOdd: boolean }>`
   }
 `;
 
-const DishImage = styled.img<{ $isOdd: boolean }>`
+const ImageContainer = styled.div<{ $isOdd: boolean }>`
   width: 95%;
   margin-bottom: 2%;
   @media screen and (min-width: 1025px) {

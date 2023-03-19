@@ -30,7 +30,7 @@ const InscriptionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
               : 'Impatients de vous rencontrer !'
           }
           paragraphs={['']}
-          image="toast-repas.jpg"
+          image="toast-repas.webp"
           imageAlt="Venez vivre des moments inoubliables"
           childComponents={[
             <SignUpForm
@@ -56,7 +56,7 @@ const InscriptionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
             'Créez votre compte personnel et gagnez du temps ! Posséder un compte vous permettra de renseigner vos informations et requêtes par défaut lors de vos futures réservations.',
             'Vous pourrez également avoir accès à la liste de vos réservations.',
           ]}
-          image="table-clients.jpg"
+          image="table-clients.webp"
           imageAlt="Pas de tracas, place au plaisir !"
           childComponents={[
             <MainCTA

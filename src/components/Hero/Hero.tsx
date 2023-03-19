@@ -1,4 +1,5 @@
 import { merriweatherSans } from '@/styles/fonts';
+import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -43,11 +44,15 @@ const Hero = ({
             return <React.Fragment key={index}>{child}</React.Fragment>;
           })}
         </TextContainer>
-        <img
-          src={`${process.env.NEXT_PUBLIC_AWS_URL}/images/IMAGES_` + image}
-          alt={imageAlt}
-          title={imageAlt}
-        />
+        <HeroImageContainer className="imageContainer">
+          <Image
+            src={`${process.env.NEXT_PUBLIC_AWS_URL}/images/IMAGES_` + image}
+            alt={imageAlt}
+            title={imageAlt}
+            fill
+            className="image"
+          />
+        </HeroImageContainer>
       </HeroContainer>
     </section>
   );
@@ -67,6 +72,12 @@ const HeroContainer = styled.article<{ $textIsLeft: boolean }>`
 const TextContainer = styled.div`
   @media screen and (min-width: 1025px) {
     max-width: 50%;
+  }
+`;
+
+const HeroImageContainer = styled.div`
+  @media screen and (min-width: 1025px) {
+    min-width: 50%;
   }
 `;
 

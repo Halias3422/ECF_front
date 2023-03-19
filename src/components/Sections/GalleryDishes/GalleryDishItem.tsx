@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { GalleryDishData } from '@/interfaces/galleryDishes';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -81,15 +82,19 @@ const GalleryDishItem = ({ dish }: { dish: GalleryDishData }) => {
   }, []);
   return (
     <GalleryDishItemContainer className="galleryDishItemContainer">
-      <DishImage
-        loading="lazy"
-        src={
-          `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_` +
-          dish.image
-        }
-        alt={dish.title}
-        title={dish.title}
-      />
+      <div className="imageContainer">
+        <Image
+          loading="lazy"
+          src={
+            `${process.env.NEXT_PUBLIC_AWS_URL}/dishesGallery/DISHESGALLERY_` +
+            dish.image
+          }
+          alt={dish.title}
+          title={dish.title}
+          className="image"
+          fill
+        />
+      </div>
     </GalleryDishItemContainer>
   );
 };
@@ -107,12 +112,11 @@ const GalleryDishItemContainer = styled.article`
   @media screen and (min-width: 1025px) {
     max-width: 32%;
   }
-`;
-
-const DishImage = styled.img`
-  max-width: 100%;
-  flex: 1 1 0;
-  object-fit: cover;
+  > div {
+    max-width: 100%;
+    flex: 1 1 0;
+    object-fit: cover;
+  }
 `;
 
 export default GalleryDishItem;

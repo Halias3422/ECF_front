@@ -15,7 +15,7 @@ const ReserverPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
           paragraphs={[
             "Notre équipe est prête à vous accueillir. Remplissez le formulaire et n'hésitez pas à renseigner vos demandes ou contraintes spécifiques. Nous nous occupons de tout, vous n'avez plus qu'à profiter.",
           ]}
-          image="service-is-ready.jpg"
+          image="service-is-ready.webp"
           imageAlt="Le restaurant est prêt à vous acceuillir !"
           $textIsLeft={false}
           $isOdd={true}
@@ -28,7 +28,7 @@ const ReserverPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
             "La demande de réservation est prise en compte une fois le formulaire complété envoyé. Vous n'avez rien d'autre à faire. Vous pouvez également effectuer votre réservation en nous contactant par téléphone au 01.02.03.04.05.",
             "Pour toute modification ou annulation concernant votre réservation, contactez-nous par téléphone. Nous vous prions de bien vouloir nous prévenir au moins 24h à l'avance afin de garantir le meilleur service.",
           ]}
-          image="landline-phone.jpg"
+          image="landline-phone.webp"
           imageAlt="En cas de questions, appelez nous"
           $textIsLeft={true}
           $isOdd={true}

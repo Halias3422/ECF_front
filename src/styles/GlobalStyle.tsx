@@ -48,12 +48,22 @@ label {
 font-weight: bold;
 }
 
-img {
+.imageContainer {
+	width: 100%;
+> div {
+position: unset !important;
+}
+
+.image {
+object-fit: contain;
+width: 100% !important;
+position: relative !important;
+height: unset !important;
 border-radius: 8px;
-max-width: 100%;
-max-height: 100%;
 background-image: url(https://www.tlbx.app/200.svg);
 }
+}
+
 
 .themeLightGreen {
 background-color: ${colorscheme.lightGreen};
@@ -243,10 +253,9 @@ h2 {
 font-size: 36px;
 }
 
-
-img {
-max-width: 50%;
-max-height: 700px;
+.imageContainer {
+	width: 50%;
+	max-height: 700px;
 }
 
 .section {

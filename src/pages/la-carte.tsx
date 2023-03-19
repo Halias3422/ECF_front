@@ -26,7 +26,7 @@ const CartePage = ({
           childComponents={[
             <ChefsQuote quote="Mon ambition est de faire découvrir à toutes et tous les richesses du terroir savoyard en les mettant en valeur par l'innovation, tout en respectant le savoir transmis par nos anciens." />,
           ]}
-          image="table-full-meals.jpg"
+          image="table-full-meals.webp"
           imageAlt={'Assortiment de plats concoctés par le Chef'}
           $isOdd
           $textIsLeft={false}

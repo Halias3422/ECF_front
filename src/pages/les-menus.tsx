@@ -22,7 +22,7 @@ const MenusPage = ({
           paragraphs={[
             "Nos menus sont pensés de la première à la dernière bouchée pour vous offrir une expérience cohérente, telle que le Chef Arnaud Michant l'a imaginé. Plusieurs formules au choix permettent à tous de personnaliser leur repas selon leurs envies.",
           ]}
-          image="menu.jpg"
+          image="menu.webp"
           imageAlt="Un bon en-cas le temps de lire le menu"
           $isOdd
           $textIsLeft

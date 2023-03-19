@@ -15,7 +15,7 @@ const ConnexionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
         <Hero
           header="Impatients de vous revoir !"
           paragraphs={[]}
-          image="waiter-smiling.jpg"
+          image="waiter-smiling.webp"
           imageAlt="Notre serveuse Magalie vous attend"
           childComponents={[<SignInForm />]}
           $textIsLeft={false}
@@ -29,7 +29,7 @@ const ConnexionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
             'Créez votre compte personnel et gagnez du temps ! Posséder un compte vous permettra de renseigner vos informations et requêtes par défaut lors de vos futures réservations.',
             'Vous pourrez également avoir accès à la liste de vos réservations.',
           ]}
-          image="table-clients.jpg"
+          image="table-clients.webp"
           imageAlt="Pas de tracas, place au plaisir !"
           childComponents={[
             <MainCTA
