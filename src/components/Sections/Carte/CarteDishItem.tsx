@@ -56,10 +56,6 @@ const RowContainer = styled.div<{ $isOdd: boolean }>`
   justify-content: ${(props) => (props.$isOdd ? 'flex-end' : 'flex-start')};
 `;
 
-const EmptyDiv = styled.div`
-  width: 20%;
-`;
-
 const DishItemContainer = styled.article<{ $isOdd: boolean }>`
   display: flex;
   flex-direction: column-reverse;

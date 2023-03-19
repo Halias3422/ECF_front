@@ -22,6 +22,7 @@ const CarteCategoryItem = ({
     context: {
       id: category.category.id as string,
       confirm: false,
+      modified: false,
       error: '',
     },
     attributes: {

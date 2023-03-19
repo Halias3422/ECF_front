@@ -27,6 +27,7 @@ const MenuItemDashboard = ({
     context: {
       id: menu.id as string,
       confirm: false,
+      modified: false,
       error: '',
     },
     attributes: {
@@ -41,6 +42,7 @@ const MenuItemDashboard = ({
   const [deleteItem, setDeleteItem] = useState<DashboardItemContext>({
     id: menu.id as string,
     confirm: false,
+    modified: false,
     error: '',
   });
 

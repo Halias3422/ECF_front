@@ -81,6 +81,7 @@ const FormulasInput = ({
                           context: {
                             id: formula.id as string,
                             confirm: false,
+                            modified: false,
                             error: '',
                           },
                           attributes: {
