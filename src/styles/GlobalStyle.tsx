@@ -109,7 +109,7 @@ background-color: ${colorscheme.snow};
 
 .even {
 background-color: ${colorscheme.lightBlue};
-color: ${colorscheme.snow}
+color: white;
 }
 
 .container {

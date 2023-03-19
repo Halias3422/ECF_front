@@ -34,7 +34,7 @@ const UnorderedList = styled.ul`
   padding: 0;
 `;
 
-const StrongPointItem = styled.div`
+const StrongPointItem = styled.li`
   display: flex;
   gap: 3vw;
   left: 0;
@@ -43,7 +43,7 @@ const StrongPointItem = styled.div`
   width: fit-content;
 `;
 
-const PointContent = styled.li`
+const PointContent = styled.p`
   margin: 0;
 `;
 
