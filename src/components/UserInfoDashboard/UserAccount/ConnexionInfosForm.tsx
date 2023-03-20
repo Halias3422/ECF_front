@@ -73,9 +73,15 @@ const UserDashboardContainer = styled.div`
 const ButtonsContainer = styled.div`
   margin-top: 40px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  justify-content: center;
-  gap: 5%;
+  gap: 10px;
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 5%;
+  }
 `;
 
 const Button = styled.button`

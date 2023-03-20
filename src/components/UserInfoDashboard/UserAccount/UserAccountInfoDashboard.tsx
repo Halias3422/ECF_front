@@ -63,7 +63,7 @@ const UserSubMenuContainer = styled.article`
 `;
 
 const HeaderContainer = styled.div`
-  padding-top: 38px;
+  padding: 38px 2% 0px 2%;
   display: flex;
   justify-content: space-evenly;
   cursor: pointer;

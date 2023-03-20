@@ -60,8 +60,14 @@ const UserInfoDashboard = ({
 
 const MenuContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  padding: 10px;
   justify-content: center;
-  gap: 3%;
+  gap: 10px;
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    gap: 3%;
+  }
 `;
 
 const UserDashboardContainer = styled.div`
