@@ -1,6 +1,5 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI, getProtectedDataFromAPI } from '@/api/utils';
-import Favicon from '@/components/Favicon/Favicon';
 import Footer from '@/components/Sections/Footer/Footer';
 import UserInfoDashboard from '@/components/UserInfoDashboard/UserInfoDashboard';
 import UserContext from '@/context/UserContext';
@@ -41,7 +40,6 @@ const MonComptePage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
     return (
       <>
         <Head>
-          <Favicon />
           <title>Mon compte personnel</title>
           <meta
             name="description"

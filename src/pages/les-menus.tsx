@@ -1,6 +1,5 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI } from '@/api/utils';
-import Favicon from '@/components/Favicon/Favicon';
 import Hero from '@/components/Hero/Hero';
 import Footer from '@/components/Sections/Footer/Footer';
 import MenusSection from '@/components/Sections/Menus/MenusSection';
@@ -19,7 +18,6 @@ const MenusPage = ({
   return (
     <>
       <Head>
-        <Favicon />
         <title>Les Menus - Le Quai Antique</title>
         <meta
           name="description"

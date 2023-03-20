@@ -1,7 +1,6 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI } from '@/api/utils';
 import ChefsQuote from '@/components/ChefsQuote/ChefsQuote';
-import Favicon from '@/components/Favicon/Favicon';
 import Hero from '@/components/Hero/Hero';
 import CarteCategory from '@/components/Sections/Carte/CarteCategory';
 import Footer from '@/components/Sections/Footer/Footer';
@@ -21,7 +20,6 @@ const CartePage = ({
   return (
     <>
       <Head>
-        <Favicon />
         <title>La Carte du restaurant</title>
         <meta
           name="description"

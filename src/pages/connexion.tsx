@@ -14,7 +14,6 @@ const ConnexionPage = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   return (
     <>
       <Head>
-        <Favicon />
         <title>Connexion - Le Quai Antique</title>
         <meta
           name="description"

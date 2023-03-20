@@ -1,6 +1,5 @@
 import { API_ROUTES } from '@/api/routes';
 import { getDataFromAPI } from '@/api/utils';
-import Favicon from '@/components/Favicon/Favicon';
 import Hero from '@/components/Hero/Hero';
 import MainCTA from '@/components/MainCTA/MainCTA';
 import Footer from '@/components/Sections/Footer/Footer';
@@ -11,7 +10,6 @@ const Custom404 = ({ weekSchedule }: { weekSchedule: DaySchedule[] }) => {
   return (
     <>
       <Head>
-        <Favicon />
         <title>Page introuvable</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
