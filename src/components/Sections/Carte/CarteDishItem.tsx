@@ -82,13 +82,13 @@ const DishCardContainer = styled.div<{ $isOdd: boolean }>`
   @media screen and (min-width: 1025px) {
     background: ${(props) =>
       props.$isOdd
-        ? `linear-gradient(${props.theme.lightGreen} 0 25%, ${props.theme.darkGreen} 25% 100%)`
-        : `linear-gradient(${props.theme.darkGreen} 0 25%, ${props.theme.lightGreen} 25% 100%)`};
+        ? `linear-gradient(${props.theme.lightGreen} 0 30%, ${props.theme.darkGreen} 30% 100%)`
+        : `linear-gradient(${props.theme.darkGreen} 0 30%, ${props.theme.lightGreen} 30% 100%)`};
     border-radius: 8px;
     width: 90%;
     flex-direction: ${(props) => (props.$isOdd ? 'row' : 'row-reverse')};
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
   }
 `;
 
@@ -96,7 +96,7 @@ const TextContainer = styled.div`
   width: 100%;
   text-align: center;
   p {
-    margin: 30px 10%;
+    margin: 50px 10%;
   }
   @media screen and (min-width: 1025px) {
     width: 50%;
