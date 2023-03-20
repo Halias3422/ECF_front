@@ -15,6 +15,9 @@ const OptionalInfosForm = ({
   userContext: UserLoginState;
 }) => {
   const [requestState, setRequestState] = useState<string>('');
+  const [newInfo, setNewInfo] = useState<UserOptionalInfo>(
+    JSON.parse(JSON.stringify(userInfo))
+  );
 
   const handleModifyUserOptionalInfo = async (event: FormEvent) => {
     event.preventDefault();
@@ -23,7 +26,7 @@ const OptionalInfosForm = ({
     ) as HTMLParagraphElement;
     const response = await postProtectedDataToAPI(
       API_ROUTES.users.updateOptionalInfo,
-      userInfo,
+      newInfo,
       userContext.userSession
     );
     if (response && response.status === 200) {
@@ -50,6 +53,12 @@ const OptionalInfosForm = ({
           defaultValue={userInfo.defaultGuestNumber}
           min="1"
           max="45"
+          onChange={(e) =>
+            setNewInfo({
+              ...newInfo,
+              defaultGuestNumber: parseInt(e.currentTarget.value),
+            })
+          }
         />
         <label htmlFor="defaultAllergies">Allergies ou autres demandes:</label>
         <DefaultAllergies
@@ -57,6 +66,9 @@ const OptionalInfosForm = ({
           id="defaultAllergies"
           name="defaultAllergies"
           defaultValue={userInfo.defaultAllergies}
+          onChange={(e) =>
+            setNewInfo({ ...newInfo, defaultAllergies: e.currentTarget.value })
+          }
         />
         <SubmitContainer>
           <FormSubmit textContent="Modifier" theme="themeDarkGreen" />
