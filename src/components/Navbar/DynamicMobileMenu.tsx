@@ -70,11 +70,18 @@ const DynamicMobileMenu = ({
           theme="themeDarkGreen"
         />
         {!userContext.loggedIn ? (
-          <NavbarLink
-            textContent="Connexion"
-            url="/connexion"
-            theme="themeDarkGreen"
-          />
+          <>
+            <NavbarLink
+              textContent="Connexion"
+              url="/connexion"
+              theme="themeDarkGreen"
+            />
+            <NavbarLink
+              textContent="Inscription"
+              url="/inscription"
+              theme="themeDarkGreen"
+            />
+          </>
         ) : (
           <AccountButton
             textContent="Mon compte"

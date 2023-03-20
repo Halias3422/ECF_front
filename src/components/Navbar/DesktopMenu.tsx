@@ -44,11 +44,18 @@ const DesktopMenu = ({ userContext }: { userContext: UserLoginState }) => {
         </MenuLinkSeparator>
         <MenuLinkSeparator>
           {!userContext.userSession ? (
-            <NavbarLink
-              textContent="Connexion"
-              url="/connexion"
-              theme="themeLightGreen"
-            />
+            <>
+              <NavbarLink
+                textContent="Connexion"
+                url="/connexion"
+                theme="themeLightGreen"
+              />
+              <NavbarLink
+                textContent="Inscription"
+                url="/inscription"
+                theme="themeLightGreen"
+              />
+            </>
           ) : (
             <AccountButton
               textContent="Mon compte"
@@ -86,7 +93,7 @@ const MenuLinkSeparator = styled.div`
 
 const GreenLinksContainer = styled.div`
   display: flex;
-  gap: 2vw;
+  gap: 1.5vw;
   justify-content: space-evenly;
 `;
 

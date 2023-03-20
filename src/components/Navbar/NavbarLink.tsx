@@ -34,7 +34,7 @@ const Link = styled.a`
       props.href === '/reserver' ? '10px 20px' : '6px 10px'};
   }
   min-width: fit-content;
-  width: 6vw;
+  width: 5vw;
   @media screen and (min-width: 1201px) {
 `;
 
