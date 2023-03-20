@@ -13,14 +13,17 @@ import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DeleteItemButton from '../../ItemActions/DeleteItemButton';
 import ModifyItemButton from '../../ItemActions/ModifyItemButton';
+import ModifyPositionButton from '../../ItemActions/ModifyPositionButton';
 
 const CarteItemDashboard = ({
   dish,
+  allDishes,
   category,
   $isOdd,
   retreiveDishes,
 }: {
   dish: DishCarteData;
+  allDishes: DishCarteData[];
   category: CarteCategoryData;
   $isOdd: boolean;
   retreiveDishes: any;
@@ -196,6 +199,12 @@ const CarteItemDashboard = ({
           modifyItem={modifyItem}
           setModifyItem={setModifyItem}
         />
+        <ModifyPositionButton
+          item={dish}
+          allItems={allDishes}
+          apiRoute={API_ROUTES.dishes.modifyDishItem}
+          retreiveItems={retreiveDishes}
+        />
       </ConfigButtonsContainer>
       <CarteDishItem dish={dish} $isOdd={$isOdd} />
     </CarteItemContainer>
@@ -216,6 +225,7 @@ const ConfigButtonsContainer = styled.div<{ $isOdd: boolean }>`
   height: 50%;
   width: 10%;
   margin-bottom: 42px;
+  padding: 15px 0px;
   border-radius: ${(props) =>
     props.$isOdd ? '0px 24px 24px 0px' : '24px 0px 0px 24px'};
   display: flex;

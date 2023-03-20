@@ -12,12 +12,15 @@ import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DeleteItemButton from '../../ItemActions/DeleteItemButton';
 import ModifyItemButton from '../../ItemActions/ModifyItemButton';
+import ModifyPositionButton from '../../ItemActions/ModifyPositionButton';
 
 const DishGalleryItemDashboard = ({
   dish,
+  galleryDishes,
   retreiveGalleryDishes,
 }: {
   dish: GalleryDishData;
+  galleryDishes: GalleryDishData[];
   retreiveGalleryDishes: any;
 }) => {
   const originalItem = {
@@ -180,6 +183,12 @@ const DishGalleryItemDashboard = ({
           modifyItem={modifyItem}
           setModifyItem={setModifyItem}
         />
+        <ModifyPositionButton
+          item={dish}
+          allItems={galleryDishes}
+          apiRoute={API_ROUTES.dishesGallery.modifyDishGalleryItem}
+          retreiveItems={retreiveGalleryDishes}
+        />
       </ButtonsContainer>
     </ItemContainer>
   );
@@ -214,7 +223,7 @@ const ButtonsContainer = styled.div`
   width: fit-content;
   margin: 0 auto;
   margin-bottom: 10px;
-  padding: 5px 5px;
+  padding: 5px 10px;
   background-color: ${(props) => props.theme.lightGreen};
   border-radius: 12px;
   button {

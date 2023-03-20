@@ -9,12 +9,15 @@ import styled from 'styled-components';
 import BackgroundPopUp from '../../ItemActions/BackgroundPopUp';
 import FormSubmitButtons from '../../ItemActions/FormSubmitButtons';
 import ModifyItemButton from '../../ItemActions/ModifyItemButton';
+import ModifyPositionButton from '../../ItemActions/ModifyPositionButton';
 
 const CarteCategoryItem = ({
   category,
+  allCategories,
   retreiveDishes,
 }: {
   category: CarteCategoryData;
+  allCategories: CarteCategoryData[];
   retreiveDishes: any;
 }) => {
   const { userContext } = useContext(UserContext);
@@ -90,6 +93,7 @@ const CarteCategoryItem = ({
     category.category = {
       id: category.category.id,
       name: modifyItem.attributes.name,
+      position: category.category.position,
     };
     retreiveDishes();
     fetch('/api/revalidate-dishes');
@@ -115,6 +119,7 @@ const CarteCategoryItem = ({
       handleModifyCategory();
     }
   }, [modifyItem.context.confirm]);
+
   return (
     <>
       <CategoryHeader className="themeDarkBlue carteDishItemOpening">
@@ -130,6 +135,12 @@ const CarteCategoryItem = ({
             originalItem={originalItem}
             modifyItem={modifyItem}
             setModifyItem={setModifyItem}
+          />
+          <ModifyPositionButton
+            item={category.category}
+            allItems={[...allCategories].map((category) => category.category)}
+            apiRoute={API_ROUTES.categories.modifyCategory}
+            retreiveItems={retreiveDishes}
           />
         </ButtonsContainer>
       </CategoryHeader>

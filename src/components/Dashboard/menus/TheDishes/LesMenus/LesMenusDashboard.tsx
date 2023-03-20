@@ -90,6 +90,7 @@ const LesMenusDashboard = () => {
                     menu={menu}
                     index={index}
                     retreiveMenus={retreiveMenus}
+                    allMenus={menus}
                   />
                 </React.Fragment>
               );

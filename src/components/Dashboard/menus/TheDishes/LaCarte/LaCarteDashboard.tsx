@@ -150,6 +150,17 @@ const LaCarteDashboard = () => {
     }
   }, [createItem]);
 
+  const getAllCategories = () => {
+    const categories = [];
+    if (carteDishes) {
+      for (let i = 0; i < carteDishes.length; i++) {
+        categories.push(carteDishes[i].category);
+      }
+      return categories;
+    }
+    return [];
+  };
+
   return (
     <DashboardContainer className="dashboardConfigPanel">
       <CarteDishesContainer className="carteDishesConfigPanelOpening">
@@ -162,6 +173,7 @@ const LaCarteDashboard = () => {
               <React.Fragment key={index + category.category.name}>
                 <CarteCategoryItem
                   category={category}
+                  allCategories={carteDishes}
                   retreiveDishes={() => retreiveDishes()}
                 />
                 {category.dishes.map((dish: DishCarteData, index: number) => {
@@ -173,6 +185,7 @@ const LaCarteDashboard = () => {
                     >
                       <CarteItemDashboard
                         dish={dish}
+                        allDishes={category.dishes}
                         category={category}
                         $isOdd={totalCardIndex % 2 !== 0}
                         retreiveDishes={retreiveDishes}

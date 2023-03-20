@@ -31,6 +31,7 @@ export const API_ROUTES = {
   },
   formulas: {
     deleteFormula: '/api/delete-formula',
+    modifyFormula: '/api/modify-formula',
   },
   users: {
     login: '/api/user-login',

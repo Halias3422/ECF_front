@@ -138,6 +138,7 @@ const DishesGalleryDashboard = () => {
               <React.Fragment key={dish.image + dish.title + dish.id}>
                 <DishGalleryItemDashboard
                   dish={dish}
+                  galleryDishes={galleryDishes}
                   retreiveGalleryDishes={retreiveGalleryDishes}
                 />
               </React.Fragment>

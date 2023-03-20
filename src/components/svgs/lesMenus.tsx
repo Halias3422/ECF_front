@@ -4,6 +4,8 @@ const SvgLesMenus = () => (
   <svg
     id="_x32_"
     xmlns="http://www.w3.org/2000/svg"
+    width={52}
+    height={52}
     viewBox="0 0 512 512"
     xmlSpace="preserve"
     fill="#000"

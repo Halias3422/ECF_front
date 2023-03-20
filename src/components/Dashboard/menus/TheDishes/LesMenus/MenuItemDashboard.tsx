@@ -11,15 +11,18 @@ import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DeleteItemButton from '../../ItemActions/DeleteItemButton';
 import ModifyItemButton from '../../ItemActions/ModifyItemButton';
+import ModifyPositionButton from '../../ItemActions/ModifyPositionButton';
 
 const MenuItemDashboard = ({
   menu,
   index,
   retreiveMenus,
+  allMenus,
 }: {
   menu: Menu;
   index: number;
   retreiveMenus: any;
+  allMenus: Menu[];
 }) => {
   const { userContext } = useContext(UserContext);
 
@@ -132,6 +135,12 @@ const MenuItemDashboard = ({
           originalItem={originalItem}
           modifyItem={modifyItem}
           setModifyItem={setModifyItem}
+        />
+        <ModifyPositionButton
+          item={menu}
+          allItems={allMenus}
+          apiRoute={API_ROUTES.menus.modifyMenu}
+          retreiveItems={retreiveMenus}
         />
       </ConfigButtonsContainer>
     </MenuItemContainer>

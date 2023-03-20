@@ -2,7 +2,8 @@ import SvgAddFormula from '@/components/svgs/addFormula';
 import SvgDelete from '@/components/svgs/delete';
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
 import { Formula } from '@/interfaces/formulas';
-import React, { useState } from 'react';
+import colorscheme from '@/styles/colorscheme';
+import React, { useEffect, useState } from 'react';
 import { ChangeEvent } from 'react';
 import styled from 'styled-components';
 import { resizePopUpHeight } from '../BackgroundPopUp';
@@ -70,7 +71,8 @@ const FormulasInput = ({
               (formulaAttribute: string, attributeIndex: number) => {
                 if (
                   formulaAttribute !== 'id' &&
-                  formulaAttribute !== 'menuId'
+                  formulaAttribute !== 'menuId' &&
+                  formulaAttribute !== 'position'
                 ) {
                   return (
                     <React.Fragment key={formulaAttribute + attributeIndex}>
@@ -141,6 +143,9 @@ const TitleContainer = styled.div`
 
 const DeleteButton = styled.button`
   margin-left: 10px;
+  background-color: ${(props) => props.theme.snow};
+  border-radius: 8px;
+  border: ${(props) => `1px solid ${props.theme.darkGrey}`};
   width: 42px;
   height: 42px;
   cursor: pointer;
