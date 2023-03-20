@@ -17,16 +17,18 @@ const FooterContact = () => {
       <ContactInfoItem label="Nous trouver" value="" />
       {!openFrame ? (
         <MapPlaceholder>
-          <MapOpenButton
-            className={roboto.className + ' themeLightGreen raiseOnHover'}
-            type="button"
-            id="showMap"
-            name="showMap"
-            title="Montrer la carte"
-            onClick={() => setOpenFrame(!openFrame)}
-          >
-            Montrer la carte
-          </MapOpenButton>
+          <div className="raiseOnHover">
+            <MapOpenButton
+              className={roboto.className + ' themeLightGreen'}
+              type="button"
+              id="showMap"
+              name="showMap"
+              title="Montrer la carte"
+              onClick={() => setOpenFrame(!openFrame)}
+            >
+              Montrer la carte
+            </MapOpenButton>
+          </div>
         </MapPlaceholder>
       ) : (
         <>

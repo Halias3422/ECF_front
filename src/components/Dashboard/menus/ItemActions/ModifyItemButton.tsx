@@ -90,13 +90,14 @@ const ModifyItemButton = ({
 
   return (
     <div>
-      <Button
-        title="Modifier élément"
-        className="raiseOnHover"
-        onClick={() => handleModifyItemClick()}
-      >
-        <SvgPencil />
-      </Button>
+      <div className="raiseOnHover">
+        <Button
+          title="Modifier élément"
+          onClick={() => handleModifyItemClick()}
+        >
+          <SvgPencil />
+        </Button>
+      </div>
       {openPopUp && (
         <BackgroundPopUp id="modifyPopUpBackground">
           <ModifyForm id="popUpForm" onSubmit={(e) => e.preventDefault()}>

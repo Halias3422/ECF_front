@@ -28,14 +28,16 @@ const DashboardButton = ({
     currSvg.style.fill = `${colorscheme.snow}`;
   };
   return (
-    <ButtonContainer
-      className="subMenuButton themeSnow dashboardMenuLinkOpening raiseOnHover"
-      id={title}
-      onClick={() => handleButtonClick()}
-    >
-      <h3>{title}</h3>
-      {svg}
-    </ButtonContainer>
+    <div className="raiseOnHover">
+      <ButtonContainer
+        className="subMenuButton themeSnow dashboardMenuLinkOpening"
+        id={title}
+        onClick={() => handleButtonClick()}
+      >
+        <h3>{title}</h3>
+        {svg}
+      </ButtonContainer>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ describe('La Carte on mobile', () => {
 
   before(() => {
     cy.visit(baseUrl);
-    cy.get('section[class*="CarteCategory"]').each(($category) => {
+    cy.get('article[class*="CarteCategory"]').each(($category) => {
       $carteCategories.push($category);
     });
     cy.get('article[class*="CarteDishItem"]').each(($dish) => {
@@ -19,7 +19,7 @@ describe('La Carte on mobile', () => {
           $priceTags.push($priceTag);
         });
       cy.wrap($dish)
-        .get('img[class*="DishImage"]')
+        .get('img[class*="image"]')
         .each(($dishImage) => {
           $dishImages.push($dishImage);
         });
@@ -79,7 +79,7 @@ describe('La Carte on desktop', () => {
 
   before(() => {
     cy.visit(baseUrl);
-    cy.get('section[class*="CarteCategory"]').each(($category) => {
+    cy.get('article[class*="CarteCategory"]').each(($category) => {
       $carteCategories.push($category);
     });
     cy.get('article[class*="CarteDishItem"]').each(($dish) => {
@@ -90,7 +90,7 @@ describe('La Carte on desktop', () => {
           $priceTags.push($priceTag);
         });
       cy.wrap($dish)
-        .get('img[class*="DishImage"]')
+        .get('img[class*="image"]')
         .each(($dishImage) => {
           $dishImages.push($dishImage);
         });

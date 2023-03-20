@@ -53,14 +53,16 @@ const AvailableHoursList = ({
               availableReservations.morning.map(
                 (hour: string, index: number) => {
                   return (
-                    <HourButton
-                      type="button"
-                      className="themeDarkGreen raiseOnHover"
-                      key={index + hour}
-                      onClick={(e) => handleSelectHour(e, 'morning')}
-                    >
-                      {hour}
-                    </HourButton>
+                    <div className="raiseOnHover">
+                      <HourButton
+                        type="button"
+                        className="themeDarkGreen"
+                        key={index + hour}
+                        onClick={(e) => handleSelectHour(e, 'morning')}
+                      >
+                        {hour}
+                      </HourButton>
+                    </div>
                   );
                 }
               )
@@ -94,14 +96,16 @@ const AvailableHoursList = ({
               availableReservations.afternoon.map(
                 (hour: string, index: number) => {
                   return (
-                    <HourButton
-                      type="button"
-                      className="themeDarkGreen raiseOnHover"
-                      key={index + hour}
-                      onClick={(e) => handleSelectHour(e, 'afternoon')}
-                    >
-                      {hour}
-                    </HourButton>
+                    <div className="raiseOnHover">
+                      <HourButton
+                        type="button"
+                        className="themeDarkGreen"
+                        key={index + hour}
+                        onClick={(e) => handleSelectHour(e, 'afternoon')}
+                      >
+                        {hour}
+                      </HourButton>
+                    </div>
                   );
                 }
               )

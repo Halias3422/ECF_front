@@ -72,13 +72,15 @@ const CreateItemButton = ({
   return (
     <>
       <Container id="createItemButton">
-        <Button
-          title={title}
-          className="themeLightGreen raiseOnHover"
-          onClick={() => setCreateItem(true)}
-        >
-          {icon}
-        </Button>
+        <div className="raiseOnHover">
+          <Button
+            title={title}
+            className="themeLightGreen"
+            onClick={() => setCreateItem(true)}
+          >
+            {icon}
+          </Button>
+        </div>
       </Container>
       {createItem && (
         <BackgroundPopUp id="createPopUpBackground">

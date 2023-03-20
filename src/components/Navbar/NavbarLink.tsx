@@ -11,13 +11,15 @@ const NavbarLink = ({
   theme: string;
 }) => {
   return (
-    <Link
-      role="button"
-      className={`${merriweatherSans.className} ${theme} raiseOnHover`}
-      href={url}
-    >
-      {textContent}
-    </Link>
+    <div className="raiseOnHover">
+      <Link
+        role="button"
+        className={`${merriweatherSans.className} ${theme}`}
+        href={url}
+      >
+        {textContent}
+      </Link>
+    </div>
   );
 };
 

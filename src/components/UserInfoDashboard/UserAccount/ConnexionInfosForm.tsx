@@ -20,18 +20,22 @@ const ConnexionInfosForm = ({
     <UserDashboardContainer className="dashboardMenuOpening">
       <h3>Modifier:</h3>
       <ButtonsContainer>
-        <Button
-          className="themeSnow raiseOnHover"
-          onClick={() => setSelectedButton('email')}
-        >
-          <h3>Mon adresse mail</h3>
-        </Button>
-        <Button
-          className="themeSnow raiseOnHover"
-          onClick={() => setSelectedButton('password')}
-        >
-          <h3>Mon mot de passe</h3>
-        </Button>
+        <div className="raiseOnHover">
+          <Button
+            className="themeSnow"
+            onClick={() => setSelectedButton('email')}
+          >
+            <h3>Mon adresse mail</h3>
+          </Button>
+        </div>
+        <div className="raiseOnHover">
+          <Button
+            className="themeSnow"
+            onClick={() => setSelectedButton('password')}
+          >
+            <h3>Mon mot de passe</h3>
+          </Button>
+        </div>
       </ButtonsContainer>
       {selectedButton === 'email' && (
         <BackgroundPopUp>

@@ -9,11 +9,13 @@ const FormSubmit = ({
   theme: string;
 }) => {
   return (
-    <Submit
-      type="submit"
-      className={`${merriweatherSans.className} ${theme} raiseOnHover`}
-      value={textContent}
-    />
+    <div className="raiseOnHover">
+      <Submit
+        type="submit"
+        className={`${merriweatherSans.className} ${theme}`}
+        value={textContent}
+      />
+    </div>
   );
 };
 
@@ -24,7 +26,7 @@ const Submit = styled.input`
   font-size: 22px;
   width: 100%;
   max-width: 324px;
-  padding: 4px 0px;
+  padding: 4px 15px;
   font-weight: bold;
 	border-radius 6px;
 	cursor: pointer;

@@ -105,7 +105,7 @@ const SignUpForm = ({
           <SignUpInfoItem>
             <label htmlFor="mailInput">Adresse mail:</label>
             <FormInput
-              type="text"
+              type="email"
               id="mailInput"
               onChange={(event) =>
                 setSignUpInfo({ ...signUpInfo, email: event.target.value })

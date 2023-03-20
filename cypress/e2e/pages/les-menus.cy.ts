@@ -6,12 +6,12 @@ describe('Menus on Mobile', () => {
 
   before(() => {
     cy.visit(baseUrl);
-    cy.get('div[id="menusSection"]')
+    cy.get('section[id="menusSection"]')
       .find('article')
       .each(($menu) => {
         $menuItems.push($menu);
         cy.wrap($menu)
-          .get('section[id*="formula"]')
+          .get('div[id*="formula"]')
           .each(($formula) => {
             $menusFormulas.push($formula);
           });
@@ -24,7 +24,7 @@ describe('Menus on Mobile', () => {
   });
 
   it('should contain at least one menu', () => {
-    cy.get('div[id="menusSection"]').find('article');
+    cy.get('section[id="menusSection"]').find('article');
   });
 
   it('every menu should have a title', () => {
@@ -35,7 +35,7 @@ describe('Menus on Mobile', () => {
 
   it('every menu should have at least one formula', () => {
     for (const $menu of $menuItems) {
-      expect($menu.html()).contains('<section');
+      expect($menu.html()).contains('<div');
     }
   });
 
@@ -64,12 +64,12 @@ describe('Menus on Desktop', () => {
 
   before(() => {
     cy.visit(baseUrl);
-    cy.get('div[id="menusSection"]')
+    cy.get('section[id="menusSection"]')
       .find('article')
       .each(($menu) => {
         $menuItems.push($menu);
         cy.wrap($menu)
-          .get('section[id*="formula"]')
+          .get('div[id*="formula"]')
           .each(($formula) => {
             $menusFormulas.push($formula);
           });
@@ -82,7 +82,7 @@ describe('Menus on Desktop', () => {
   });
 
   it('should contain at least one menu', () => {
-    cy.get('div[id="menusSection"]').find('article');
+    cy.get('section[id="menusSection"]').find('article');
   });
 
   it('every menu should have a title', () => {
@@ -93,7 +93,7 @@ describe('Menus on Desktop', () => {
 
   it('every menu should have at least one formula', () => {
     for (const $menu of $menuItems) {
-      expect($menu.html()).contains('<section');
+      expect($menu.html()).contains('<div');
     }
   });
 

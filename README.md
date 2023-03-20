@@ -1,22 +1,33 @@
 # Front-end ECF
 
-## Setup
-
-run the following command to install the dependencies
+1. Installation des dépendances requises
 
 ```
 yarn
 ```
 
-## Development commands
+2. Lancer l'application en local
 
 ```
-//to format files
-yarn prettier
-
-//to check prettier format and run cypress tests
-yarn test
-
-//to run locally
 yarn dev
+```
+
+3. Pour simuler la production
+
+```
+yarn build && yarn start
+```
+
+## Autres commandes:
+
+Lancer Prettier
+
+```
+yarn prettier
+```
+
+Lancer Cypress (l'application doit être en cours d'exécution)
+
+```
+yarn test // ou yarn cypress open pour ouvrir l'interface web
 ```

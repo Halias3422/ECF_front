@@ -11,13 +11,15 @@ const MainCTA = ({
   theme: string;
 }) => {
   return (
-    <CTA
-      role="button"
-      href={url}
-      className={`${merriweatherSans.className} ${theme} raiseOnHover`}
-    >
-      {textContent}
-    </CTA>
+    <div className="raiseOnHover">
+      <CTA
+        role="button"
+        href={url}
+        className={`${merriweatherSans.className} ${theme}`}
+      >
+        {textContent}
+      </CTA>
+    </div>
   );
 };
 

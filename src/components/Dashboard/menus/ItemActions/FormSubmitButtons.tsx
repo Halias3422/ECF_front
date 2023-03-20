@@ -24,18 +24,16 @@ const FormSubmitButtons = ({
   };
   return (
     <SubmitContainer>
-      <Confirm
-        type="submit"
-        value="Confirmer"
-        className="raiseOnHover"
-        onClick={() => checkRequiredFields()}
-      />
-      <Cancel
-        type="button"
-        value="Annuler"
-        className="raiseOnHover"
-        onClick={() => setCancel(true)}
-      />
+      <div className="raiseOnHover">
+        <Confirm
+          type="submit"
+          value="Confirmer"
+          onClick={() => checkRequiredFields()}
+        />
+      </div>
+      <div className="raiseOnHover">
+        <Cancel type="button" value="Annuler" onClick={() => setCancel(true)} />
+      </div>
     </SubmitContainer>
   );
 };
