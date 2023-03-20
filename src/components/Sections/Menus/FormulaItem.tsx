@@ -16,8 +16,10 @@ const FormulaItemContainer = styled.div`
   overflow-wrap: anywhere;
   p {
     text-align: center;
+    white-space: pre-wrap;
   }
-  padding-bottom: 20px;
+  padding-bottom: 40px;
+  max-width: 90%;
 `;
 
 const FormulaPrice = styled.p`
@@ -25,7 +27,8 @@ const FormulaPrice = styled.p`
   font-weight: bold;
   border-radius: 16px;
   padding: 15px;
-
+  max-width: 50%;
+  margin: 0 auto;
   @media screen and (min-width: 1025px) {
     font-size: 22px;
   }

@@ -68,7 +68,10 @@ const FormulasInput = ({
             </TitleContainer>
             {Object.keys(formula).map(
               (formulaAttribute: string, attributeIndex: number) => {
-                if (formulaAttribute !== 'id') {
+                if (
+                  formulaAttribute !== 'id' &&
+                  formulaAttribute !== 'menuId'
+                ) {
                   return (
                     <React.Fragment key={formulaAttribute + attributeIndex}>
                       <label htmlFor={formula.title + formulaAttribute}>

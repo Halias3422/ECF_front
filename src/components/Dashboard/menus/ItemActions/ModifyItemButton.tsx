@@ -20,8 +20,20 @@ const ModifyItemButton = ({
   const [confirm, setConfirm] = useState<boolean>(false);
   const [cancel, setCancel] = useState<boolean>(false);
 
+  useEffect(() => {}, [confirm]);
+
   const handleModifyItemClick = () => {
     setOpenPopUp(!openPopUp);
+    setConfirm(false);
+    setModifyItem({
+      ...modifyItem,
+      context: {
+        ...modifyItem.context,
+        modified: false,
+        confirm: false,
+      },
+    });
+    setCancel(false);
   };
 
   const changeErrorDisplay = (display: string) => {
@@ -37,6 +49,7 @@ const ModifyItemButton = ({
 
   useEffect(() => {
     changeErrorDisplay('block');
+    setConfirm(false);
     resizePopUpHeight();
   }, [modifyItem.context.error]);
 

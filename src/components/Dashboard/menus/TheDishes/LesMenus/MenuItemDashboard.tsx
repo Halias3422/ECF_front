@@ -67,6 +67,13 @@ const MenuItemDashboard = ({
         title: modifyItem.attributes.title,
         formulas: modifyItem.attributes.formulas,
       };
+      setModifyItem({
+        ...modifyItem,
+        context: {
+          ...modifyItem.context,
+          modified: true,
+        },
+      });
       retreiveMenus();
       fetch('/api/revalidate-menus');
     }
