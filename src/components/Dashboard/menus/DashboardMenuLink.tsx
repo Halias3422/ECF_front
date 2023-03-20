@@ -80,24 +80,27 @@ const DashboardContainer = styled.div``;
 
 const MenuLinkContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-color: ${(props) => props.theme.darkBlue};
   padding: 3px 3px;
-  border-radius: 26px;
-  .left {
-    border-top-left-radius: 24px;
-    border-bottom-left-radius: 24px;
-  }
-  .right {
-    border-top-right-radius: 24px;
-    border-bottom-right-radius: 24px;
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    border-radius: 26px;
+    .left {
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+    }
+    .right {
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
   }
 `;
 
 const MenuButtonItem = styled.button`
   font-size: 28px;
   white-space: nowrap;
-  border: none;
   padding: 5px 15px;
   cursor: pointer;
   border: ${(props) => `2px solid ${props.theme.snow}`};

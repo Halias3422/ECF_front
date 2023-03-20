@@ -119,8 +119,10 @@ const DashboardContainer = styled.div`
 
 const MenusContainer = styled.div`
   width: 100%;
-  min-width: 1200px;
   min-height: fit-content;
+  @media screen and (min-width: 1200px) {
+    min-width: 1200px;
+  }
 `;
 
 const MenusBackground = styled.div`

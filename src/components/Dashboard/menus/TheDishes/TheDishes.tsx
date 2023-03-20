@@ -55,8 +55,15 @@ const TheDishes = ({}: {}) => {
 
 const MenuContainer = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 3%;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 3%;
+  }
 `;
 
 const PanelContainer = styled.div<{ $openedConfigPanel: string }>`

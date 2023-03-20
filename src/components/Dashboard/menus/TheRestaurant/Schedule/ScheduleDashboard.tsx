@@ -162,6 +162,10 @@ const GridContainer = styled.div`
   gap: 50px;
   padding: 40px 20px;
   border-radius: 24px;
+  @media screen and (max-width: 769px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const DayContainer = styled.div<{ $isOdd: boolean }>`

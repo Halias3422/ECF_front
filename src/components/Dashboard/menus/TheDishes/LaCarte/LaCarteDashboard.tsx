@@ -217,11 +217,13 @@ const DashboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 769px) {
+    max-width: 90%;
+  }
 `;
 
 const CarteDishesContainer = styled.div`
   width: 100%;
-  min-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -47,6 +47,10 @@ const MenuContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 3%;
+  @media screen and (max-width: 769px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 const PanelContainer = styled.div<{ $openedConfigPanel: string }>`
