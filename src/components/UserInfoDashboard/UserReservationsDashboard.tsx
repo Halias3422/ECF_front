@@ -104,9 +104,10 @@ const ReservationsListContainer = styled.div`
 const ReservationContainer = styled.div<{ $isOdd: boolean }>`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   p {
-    font-size: 24px;
+    font-size: 20px;
     margin: 0px;
   }
   padding: 30px;
@@ -115,6 +116,12 @@ const ReservationContainer = styled.div<{ $isOdd: boolean }>`
     `3px solid ${
       props.$isOdd ? props.theme.lightGreen : props.theme.darkGreen
     }`};
+  @media screen and (min-width: 1025px) {
+    flex-direction: row;
+    p {
+      font-size: 24px;
+    }
+  }
 `;
 
 export default UserReservationsDashboard;
