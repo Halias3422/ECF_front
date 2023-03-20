@@ -22,11 +22,12 @@ const DashboardAccueilPage = () => {
         response.status !== 200 ||
         response.data.data.role !== 1
       ) {
-        window.location.href = '/';
+        window.location.href = '/404';
+      } else if (response.status === 200) {
+        setIsAuthorized(true);
       }
-      setIsAuthorized(true);
     } else {
-      window.location.href = '/';
+      window.location.href = '/404';
     }
   };
 

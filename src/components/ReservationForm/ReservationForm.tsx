@@ -23,6 +23,7 @@ import styled from 'styled-components';
 import BackgroundPopUp from '../Dashboard/menus/ItemActions/BackgroundPopUp';
 import FormSubmitButtons from '../Dashboard/menus/ItemActions/FormSubmitButtons';
 import FormSubmit from '../FormSubmit/FormSubmit';
+import LoadingAnim from '../svgs/loadingAnim';
 import AvailableHoursList from '../UserInfoDashboard/Reservations/AvailableHoursList';
 import { getAvailableHours } from '../UserInfoDashboard/Reservations/reservationsUtils';
 
@@ -174,76 +175,85 @@ const ReservationForm = ({
         <ReservationFormContainer>
           <Header className="themeLightGreen">Réservation</Header>
           <Form onSubmit={(e) => handleReservationSubmit(e)}>
-            <GuestsAndDateContainer>
-              <FormItem>
-                <label htmlFor="numberGuests">Nombre de couverts:</label>
-                <input
-                  type="number"
-                  id="numberGuests"
-                  className={`flexInput ${roboto.className}`}
-                  min="1"
-                  max="45"
-                  defaultValue={reservationData.guestNumber}
-                  onChange={(e) =>
-                    setReservationData({
-                      ...reservationData,
-                      guestNumber: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </FormItem>
-              <FormItem>
-                <label htmlFor="date">Date:</label>
-                <input
-                  type="date"
-                  id="date"
-                  className={`flexInput ${roboto.className}`}
-                  onClick={(e) => showDatePicker(e)}
-                  onKeyDown={(e) => e.preventDefault()}
-                  min={minReservationDate}
-                  max={maxReservationDate}
-                  onChange={(e) =>
-                    setReservationData({
-                      ...reservationData,
-                      date: e.target.value,
-                      hour: '',
-                    })
-                  }
-                  required
-                />
-              </FormItem>
-            </GuestsAndDateContainer>
-            <FormItem id="AvailableHoursList">
-              {reservationData.date && (
-                <AvailableHoursList
-                  availableReservations={availableReservations}
-                  reservationData={reservationData}
-                  setReservationData={setReservationData}
-                />
-              )}
-            </FormItem>
-            <FormItem>
-              <label htmlFor="allergies">
-                Allergies ou demandes supplémentaires:
-              </label>
-              <TextArea
-                id="allergies"
-                defaultValue={reservationData.allergies}
-                className={roboto.className}
-                onChange={(e) =>
-                  setReservationData({
-                    ...reservationData,
-                    allergies: e.target.value,
-                  })
-                }
-              />
-            </FormItem>
-            {reservationData.hour && (
-              <FormItem id="submitItem">
-                <p id="submitStatus">{submitStatus}</p>
-                <FormSubmit textContent="Confirmer" theme="themeDarkGreen" />
-              </FormItem>
+            {weekSchedule ? (
+              <>
+                <GuestsAndDateContainer>
+                  <FormItem>
+                    <label htmlFor="numberGuests">Nombre de couverts:</label>
+                    <input
+                      type="number"
+                      id="numberGuests"
+                      className={`flexInput ${roboto.className}`}
+                      min="1"
+                      max="45"
+                      defaultValue={reservationData.guestNumber}
+                      onChange={(e) =>
+                        setReservationData({
+                          ...reservationData,
+                          guestNumber: e.target.value,
+                        })
+                      }
+                      required
+                    />
+                  </FormItem>
+                  <FormItem>
+                    <label htmlFor="date">Date:</label>
+                    <input
+                      type="date"
+                      id="date"
+                      className={`flexInput ${roboto.className}`}
+                      onClick={(e) => showDatePicker(e)}
+                      onKeyDown={(e) => e.preventDefault()}
+                      min={minReservationDate}
+                      max={maxReservationDate}
+                      onChange={(e) =>
+                        setReservationData({
+                          ...reservationData,
+                          date: e.target.value,
+                          hour: '',
+                        })
+                      }
+                      required
+                    />
+                  </FormItem>
+                </GuestsAndDateContainer>
+                <FormItem id="AvailableHoursList">
+                  {reservationData.date && (
+                    <AvailableHoursList
+                      availableReservations={availableReservations}
+                      reservationData={reservationData}
+                      setReservationData={setReservationData}
+                    />
+                  )}
+                </FormItem>
+                <FormItem>
+                  <label htmlFor="allergies">
+                    Allergies ou demandes supplémentaires:
+                  </label>
+                  <TextArea
+                    id="allergies"
+                    defaultValue={reservationData.allergies}
+                    className={roboto.className}
+                    onChange={(e) =>
+                      setReservationData({
+                        ...reservationData,
+                        allergies: e.target.value,
+                      })
+                    }
+                  />
+                </FormItem>
+                {reservationData.hour && (
+                  <FormItem id="submitItem">
+                    <p id="submitStatus">{submitStatus}</p>
+                    <FormSubmit
+                      textContent="Confirmer"
+                      theme="themeDarkGreen"
+                    />
+                  </FormItem>
+                )}
+              </>
+            ) : (
+              <LoadingAnim />
             )}
           </Form>
         </ReservationFormContainer>
