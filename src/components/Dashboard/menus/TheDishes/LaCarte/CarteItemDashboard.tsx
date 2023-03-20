@@ -45,6 +45,7 @@ const CarteItemDashboard = ({
       },
       price: dish.price,
       category: category.category.name,
+      position: dish.position,
     },
     previousImage: `${process.env.NEXT_PUBLIC_AWS_URL}/dishes/DISHES_${dish.image}`,
   };
@@ -152,6 +153,7 @@ const CarteItemDashboard = ({
         description: modifyItem.attributes.description,
         price: modifyItem.attributes.price,
         category: modifyItem.attributes.category,
+        position: modifyItem.attributes.position,
       };
       const response = await handleModifyDishItem(modifiedDish, image);
       if (response.length === 0) {
@@ -161,6 +163,7 @@ const CarteItemDashboard = ({
           image: modifyItem.attributes.image.name,
           description: modifyItem.attributes.description,
           price: modifyItem.attributes.price,
+          position: modifyItem.attributes.position,
         };
       } else {
         setModifyItem({

@@ -77,7 +77,7 @@ const CategoryInput = ({
         name="category"
         id="categorySelect"
         onChange={(e) => handleSelectedOption(e)}
-        value={selectedCategory ? selectedCategory : ''}
+        value={selectedCategory ? selectedCategory : 'default'}
       >
         <option id="optionLegend" disabled value="default">
           -- Choisir une catégorie --

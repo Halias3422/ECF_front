@@ -35,7 +35,7 @@ const ItemAttributesList = ({
     <>
       {Object.keys(modifyItem.attributes).map(
         (attribute: string, index: number) => {
-          if (attribute !== 'id') {
+          if (attribute !== 'id' && attribute !== 'position') {
             return (
               <Attribute key={index} className="itemAttribute">
                 <label htmlFor={attribute}>{attribute}:</label>

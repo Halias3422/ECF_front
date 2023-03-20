@@ -1,5 +1,5 @@
 import { ModifyDashboardItem } from '@/interfaces/dashboard';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 import styled from 'styled-components';
 
 const PriceInput = ({
@@ -13,9 +13,11 @@ const PriceInput = ({
   changeItemAttribute: any;
   isModify: boolean;
 }) => {
-  const formatPriceChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (item.attributes[attribute].length === 0) {
+  const formatPriceChange = (e?: ChangeEvent<HTMLInputElement>) => {
+    if (item.attributes[attribute].length === 0 || !e) {
       item.attributes[attribute] = '10.99';
+      changeItemAttribute({ target: { value: '10.99' } }, attribute);
+      return;
     }
     const newPrice = item.attributes[attribute].split('.');
     if (e.target.id === 'priceEuros') {
@@ -28,6 +30,10 @@ const PriceInput = ({
       attribute
     );
   };
+
+  useEffect(() => {
+    formatPriceChange();
+  }, []);
 
   return (
     <PriceContainer>

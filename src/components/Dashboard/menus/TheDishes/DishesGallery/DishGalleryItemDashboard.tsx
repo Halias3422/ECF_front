@@ -32,6 +32,7 @@ const DishGalleryItemDashboard = ({
     },
     attributes: {
       title: dish.title,
+      position: dish.position,
       image: {
         file: dish.image,
         name: dish.image,
@@ -113,6 +114,10 @@ const DishGalleryItemDashboard = ({
       modifiedDish,
       userContext.userSession
     );
+    if (image.name === originalItem.attributes.image.name) {
+      retreiveGalleryDishes();
+      return '';
+    }
     if (modifiedItem && modifiedItem.status === 200) {
       const deleteImage = await deleteImageOnAPI(
         modifyItem.previousImage as string
@@ -136,6 +141,7 @@ const DishGalleryItemDashboard = ({
         id: modifyItem.context.id,
         title: modifyItem.attributes.title,
         image: modifyItem.attributes.image.name,
+        position: modifyItem.attributes.position,
       };
       const response = await handleModifyDishGalleryItem(modifiedDish, image);
       if (response.length === 0) {
@@ -143,6 +149,7 @@ const DishGalleryItemDashboard = ({
           id: dish.id,
           title: modifyItem.attributes.title,
           image: modifyItem.attributes.image.name,
+          position: modifyItem.attributes.position,
         };
       } else {
         setModifyItem({

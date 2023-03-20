@@ -28,6 +28,7 @@ const FormulaPrice = styled.p`
   border-radius: 16px;
   padding: 15px;
   max-width: 50%;
+  min-width: fit-content;
   margin: 0 auto;
   @media screen and (min-width: 1025px) {
     font-size: 22px;

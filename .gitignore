@@ -31,5 +31,4 @@ cypress/support
 cypress/videos
 
 # env
-.env.development
 .env.production

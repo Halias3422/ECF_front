@@ -5,6 +5,7 @@ export interface DishFormData {
   image: string;
   price: string;
   category: string;
+  position: number;
 }
 
 export interface DishCarteData {
@@ -13,4 +14,5 @@ export interface DishCarteData {
   image: string;
   description: string;
   price: string;
+  position: number;
 }

@@ -2,6 +2,7 @@ export interface GalleryDishData {
   id?: string;
   image: string;
   title: string;
+  position: number;
 }
 
 export interface GalleryDishDashboard {

@@ -63,7 +63,11 @@ const LaCarteDashboard = () => {
         ];
       }
     }
-    setCarteDishes(carteDishes);
+    setCarteDishes(
+      carteDishes.sort((a: CarteCategoryData, b: CarteCategoryData) =>
+        a.category.position > b.category.position ? 1 : -1
+      )
+    );
   };
 
   useEffect(() => {
@@ -120,6 +124,7 @@ const LaCarteDashboard = () => {
         image: newItem.attributes.image.name,
         price: newItem.attributes.price,
         category: newItem.attributes.category,
+        position: newItem.attributes.position,
       };
       const image = {
         ...newItem.attributes.image,
@@ -149,17 +154,6 @@ const LaCarteDashboard = () => {
       setNewItem(JSON.parse(JSON.stringify(defaultNewItem)));
     }
   }, [createItem]);
-
-  const getAllCategories = () => {
-    const categories = [];
-    if (carteDishes) {
-      for (let i = 0; i < carteDishes.length; i++) {
-        categories.push(carteDishes[i].category);
-      }
-      return categories;
-    }
-    return [];
-  };
 
   return (
     <DashboardContainer className="dashboardConfigPanel">

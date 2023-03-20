@@ -95,6 +95,7 @@ const DishesGalleryDashboard = () => {
       const dish = {
         title: newItem.attributes.title,
         image: newItem.attributes.image.name,
+        position: newItem.attributes.position,
       };
       const image = {
         ...newItem.attributes.image,

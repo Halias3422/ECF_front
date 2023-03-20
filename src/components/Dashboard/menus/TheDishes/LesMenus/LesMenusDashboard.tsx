@@ -32,6 +32,17 @@ const LesMenusDashboard = () => {
   );
 
   const handleCreateNewMenu = async () => {
+    if (newItem.attributes.formulas.length === 0) {
+      setNewItem({
+        ...newItem,
+        context: {
+          ...newItem.context,
+          error: 'Erreur: Le menu doit posséder au moins une formule',
+          confirm: false,
+        },
+      });
+      return;
+    }
     const response = await postProtectedDataToAPI(
       API_ROUTES.menus.createNewMenu,
       newItem.attributes,

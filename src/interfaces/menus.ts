@@ -4,4 +4,5 @@ export interface Menu {
   id?: string;
   title: string;
   formulas: Formula[];
+  position: number;
 }

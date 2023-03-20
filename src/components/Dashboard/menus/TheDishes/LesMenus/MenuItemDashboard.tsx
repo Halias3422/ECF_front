@@ -36,6 +36,7 @@ const MenuItemDashboard = ({
     attributes: {
       id: menu.id,
       title: menu.title,
+      position: menu.position,
       formulas: menu.formulas,
     },
   };
@@ -69,6 +70,7 @@ const MenuItemDashboard = ({
         id: menu.id,
         title: modifyItem.attributes.title,
         formulas: modifyItem.attributes.formulas,
+        position: modifyItem.attributes.position,
       };
       setModifyItem({
         ...modifyItem,
@@ -104,11 +106,13 @@ const MenuItemDashboard = ({
           title: formula.title,
           description: formula.description,
           price: formula.price,
+          position: formula.position,
         });
       }
       const modifiedMenu = {
         id: modifyItem.attributes.id,
         title: modifyItem.attributes.title,
+        position: modifyItem.attributes.position,
         formulas: modifiedFormulas,
       };
       await handleModifyMenuItem(modifiedMenu);

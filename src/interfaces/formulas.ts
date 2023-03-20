@@ -3,4 +3,5 @@ export interface Formula {
   title: string;
   description: string;
   price: string;
+  position: number;
 }
