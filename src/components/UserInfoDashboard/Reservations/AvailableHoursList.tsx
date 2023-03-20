@@ -53,7 +53,7 @@ const AvailableHoursList = ({
               availableReservations.morning.map(
                 (hour: string, index: number) => {
                   return (
-                    <div className="raiseOnHover">
+                    <div className="raiseOnHover" key={index}>
                       <HourButton
                         type="button"
                         className="themeDarkGreen"
@@ -96,7 +96,7 @@ const AvailableHoursList = ({
               availableReservations.afternoon.map(
                 (hour: string, index: number) => {
                   return (
-                    <div className="raiseOnHover">
+                    <div className="raiseOnHover" key={index}>
                       <HourButton
                         type="button"
                         className="themeDarkGreen"

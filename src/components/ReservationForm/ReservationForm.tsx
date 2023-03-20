@@ -20,6 +20,8 @@ import {
   useState,
 } from 'react';
 import styled from 'styled-components';
+import BackgroundPopUp from '../Dashboard/menus/ItemActions/BackgroundPopUp';
+import FormSubmitButtons from '../Dashboard/menus/ItemActions/FormSubmitButtons';
 import FormSubmit from '../FormSubmit/FormSubmit';
 import AvailableHoursList from '../UserInfoDashboard/Reservations/AvailableHoursList';
 import { getAvailableHours } from '../UserInfoDashboard/Reservations/reservationsUtils';
@@ -49,6 +51,9 @@ const ReservationForm = ({
   const [restaurantSeatsCapacity, setRestaurantSeatsCapacity] =
     useState<number>(0);
   const [submitStatus, setSubmitStatus] = useState<string>('');
+  const [warningPopUp, setWarningPopUp] = useState<boolean>(false);
+  const [warningConfirm, setWarningConfirm] = useState<boolean>(false);
+  const [warningCancel, setWarningCancel] = useState<boolean>(false);
 
   const today = new Date();
   //return yyyy-mm-dd format
@@ -108,8 +113,12 @@ const ReservationForm = ({
     }
   };
 
-  const handleReservationSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleReservationSubmit = async (e?: FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
+    if (submitStatus.length > 0 && !warningPopUp) {
+      setWarningPopUp(true);
+      return;
+    }
     const submitElement = document.getElementById(
       'submitStatus'
     ) as HTMLParagraphElement;
@@ -130,9 +139,31 @@ const ReservationForm = ({
           }`
         );
         submitElement.style.color = colorscheme.darkGreen;
+        await getRestaurantSeatsCapacity();
+        await getAvailableHours(
+          reservationData,
+          weekSchedule,
+          setAvailableReservations,
+          restaurantSeatsCapacity
+        );
       }
     }
   };
+
+  useEffect(() => {
+    if (warningCancel) {
+      setWarningCancel(false);
+      setWarningPopUp(false);
+    }
+  }, [warningCancel]);
+
+  useEffect(() => {
+    if (warningConfirm) {
+      setWarningPopUp(false);
+      setWarningConfirm(false);
+      handleReservationSubmit();
+    }
+  }, [warningConfirm]);
 
   return (
     <section
@@ -217,6 +248,19 @@ const ReservationForm = ({
           </Form>
         </ReservationFormContainer>
       </div>
+      {warningPopUp && (
+        <BackgroundPopUp>
+          <h3 className="themeSnow">
+            Vous avez déjà confirmé votre réservation.
+            <br />
+            Confirmez-vous vouloir réserver à nouveau ?
+          </h3>
+          <FormSubmitButtons
+            setConfirm={setWarningConfirm}
+            setCancel={setWarningCancel}
+          />
+        </BackgroundPopUp>
+      )}
     </section>
   );
 };
