@@ -30,12 +30,12 @@ const Link = styled.a`
   font-weight: bold;
   height: fit-content;
   font-size: ${(props) => (props.href === '/reserver' ? '18px' : '16px')};
-    padding: ${(props) =>
-      props.href === '/reserver' ? '10px 20px' : '6px 10px'};
-  }
-  min-width: fit-content;
-  width: 5vw;
+  padding: ${(props) =>
+    props.href === '/reserver' ? '10px 20px' : '6px 10px'};
   @media screen and (min-width: 1201px) {
+    min-width: fit-content;
+    width: 5vw;
+  }
 `;
 
 export default NavbarLink;
